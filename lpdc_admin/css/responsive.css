@@ -1,0 +1,40 @@
+@media screen and (max-width: 7000px) {
+  .evaluate {
+    display: inline;
+  }
+  .evaluate1 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .evaluate {
+    display: inline;
+  }
+  .evaluate1 {
+    display: none;
+  }
+}
+
+
+@media screen and (max-width: 767px) {
+  .evaluate {
+    display: none;
+  }
+  .evaluate1 {
+    display: inline;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .evaluate {
+    display: none;
+  }
+  .evaluate1 {
+    display: inline;
+  }
+
+  .input_edit {
+    width: 95%;
+  }
+}
