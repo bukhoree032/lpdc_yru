@@ -32,27 +32,14 @@ class Welcome extends CI_Controller {
 		$this->session->set_userdata("back_page",'househole_manag');
     }
 
-	// public function index()
-	// {
-	// 	$househole['househole']=$this->Manage_m->manage();
-	// 	$manage_dashboard['manage_dashboard']=$this->Manage_m->manage_dashboard();
-	// 	$manage_year['manage_year']=$this->Manage_m->manage_year();
-	// 	$manage_provinces['manage_provinces']=$this->Manage_m->manage_provinces();
-	// 	$activity_nav['activity_nav']=$this->Manage_m->activity_nav();
-
-	// 	$this->load->view('page',$manage_dashboard);
-	// 	$this->load->view('page',$activity_nav);
-	// 	$this->load->view('head',$manage_provinces);
-	// 	$this->load->view('page',$manage_year);
-	// 	$this->load->view('household/manage/household_data',$househole);
-	// }
-
 	public function index()
 	{
-		$this->load->view('household/manage/url_manage');
-		
+		if(empty($this->session->userdata('login'))){
+			$this->load->view('login/login');
+		}else{
+			$this->load->view('household/manage/url_manage');
+		}
 	}
-
 
 	public function login()
 	{
@@ -66,7 +53,7 @@ class Welcome extends CI_Controller {
 
 		if ($check_login['check_login']) {
 			$this->session->set_userdata("login","ok");
-			$this->index();
+			$this->load->view('household/manage/url_manage');
 	    }else{
 			$this->load->view('login/login');
 		}

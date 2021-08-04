@@ -207,8 +207,12 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <!--แผงควบคุม -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+            <li class="nav-item">
+            <?php if ($this->session->userdata('back_page') == 'Dashboard'){ ?>
+              <a href="<?php echo site_url("Dashboard_c/Dashboard_c/"); ?>" class="nav-link active">
+            <?php }else{ ?> 
+              <a href="<?php echo site_url("Dashboard_c/Dashboard_c/"); ?>" class="nav-link">
+            <?php } ?>
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 แผงควบคุม

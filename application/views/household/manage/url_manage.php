@@ -9,6 +9,6 @@
 	$this->session->set_flashdata('manage_success','ลงทะเบียนสำเร็จ');
 }?>
 
-<form name="aaa" id="aaa" method="post" action="<?php echo site_url("Household_c/Manage_c/index/") ?>" enctype="multipart/form-data">
+<form name="aaa" id="aaa" method="post" action="<?php echo site_url("Dashboard_c/Dashboard_c/index/") ?>" enctype="multipart/form-data">
 	
 </form>
