@@ -174,7 +174,17 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    
+    <?php if(empty($this->session->userdata('login'))){ ?>
+      <script type="text/javascript">
+        $(window).load(function(){
+          document.getElementById("check_login").submit();
+        });
+      </script>
+      <form name="check_login" id="check_login" method="post" action="<?php echo site_url("Welcome/index/") ?>" enctype="multipart/form-data">
+	
+      </form>
+      <?php } ?>
+      
       <!-- Sidebar user (optional) -->
       <?php if (!$this->session->userdata('login') == '') { ?>
         <div class="sidebar">
