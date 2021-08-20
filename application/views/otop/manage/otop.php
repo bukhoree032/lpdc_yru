@@ -36,7 +36,7 @@
                               <div class="progress-bar" style="width: 100%"></div>
                            </div>
                            <span class="progress-description">
-                           <?php echo $o_manage_parish['all_parish'] ;?> ตำบล <?php echo $o_manage_parish['all_district'] ;?> อำเภอ
+                           <?php echo $o_manage_parish['all_parish'] ;?> ตำบล <?php echo $o_manage_parish['all_district'] ;?> อำเภอ <?php echo $o_manage_parish['all_moo'] ;?> หมู่บ้าน
                            </span>
                         </div>
                         <!-- /.info-box-content -->
@@ -52,7 +52,7 @@
                               <div class="progress-bar" style="width: 100%"></div>
                            </div>
                            <span class="progress-description" >
-                           <?php echo $o_manage_parish['all_parish62'] ;?> ตำบล  <?php echo $o_manage_parish['all_district62'] ;?> อำเภอ
+                           <?php echo $o_manage_parish['all_parish62'] ;?> ตำบล  <?php echo $o_manage_parish['all_district62'] ;?> อำเภอ <?php echo $o_manage_parish['all_moo62'] ;?> หมู่บ้าน
                            </span>
                         </div>
                         <!-- /.info-box-content -->
@@ -68,7 +68,7 @@
                               <div class="progress-bar" style="width: 100%"></div>
                            </div>
                            <span class="progress-description" >
-                           <?php echo $o_manage_parish['all_parish'] ;?> ตำบล  <?php echo $o_manage_parish['all_district'] ;?> อำเภอ
+                           <?php echo $o_manage_parish['all_parish'] ;?> ตำบล  <?php echo $o_manage_parish['all_district'] ;?> อำเภอ <?php echo $o_manage_parish['all_moo'] ;?> หมู่บ้าน
                            </span>
                         </div>
                      </div>
@@ -88,7 +88,7 @@
                               <div class="progress-bar" style="width: 100%"></div>
                            </div>
                            <span class="progress-description">
-                           <?php echo $o_manage_parish['nara_parish'] ;?> ตำบล  <?php echo $o_manage_parish['nara_district'] ;?> อำเภอ
+                           <?php echo $o_manage_parish['nara_parish'] ;?> ตำบล  <?php echo $o_manage_parish['nara_district'] ;?> อำเภอ <?php echo $o_manage_parish['nara_moo'] ;?> หมู่บ้าน
                            </span>
                         </div>
                         <!-- /.info-box-content -->
@@ -104,7 +104,7 @@
                               <div class="progress-bar" style="width: 100%"></div>
                            </div>
                            <span class="progress-description" >
-                           <?php echo $o_manage_parish['nara_parish62'] ;?> ตำบล  <?php echo $o_manage_parish['nara_district62'] ;?> อำเภอ
+                           <?php echo $o_manage_parish['nara_parish62'] ;?> ตำบล  <?php echo $o_manage_parish['nara_district62'] ;?> อำเภอ <?php echo $o_manage_parish['nara_moo62'] ;?> หมู่บ้าน
                            </span>
                         </div>
                         <!-- /.info-box-content -->
@@ -120,7 +120,7 @@
                               <div class="progress-bar" style="width: 100%"></div>
                            </div>
                            <span class="progress-description" >
-                           <?php echo $o_manage_parish['nara_parish'] ;?> ตำบล  <?php echo $o_manage_parish['nara_district'] ;?> อำเภอ
+                           <?php echo $o_manage_parish['nara_parish'] ;?> ตำบล  <?php echo $o_manage_parish['nara_district'] ;?> อำเภอ <?php echo $o_manage_parish['nara_moo'] ;?> หมู่บ้าน
                            </span>
                         </div>
                         <!-- /.info-box-content -->
@@ -143,7 +143,7 @@
                               <div class="progress-bar" style="width: 100%"></div>
                            </div>
                            <span class="progress-description">
-                           <?php echo $o_manage_parish['yala_parish'] ;?> ตำบล  <?php echo $o_manage_parish['yala_district'] ;?> อำเภอ
+                           <?php echo $o_manage_parish['yala_parish'] ;?> ตำบล  <?php echo $o_manage_parish['yala_district'] ;?> อำเภอ <?php echo $o_manage_parish['yala_moo'] ;?> หมู่บ้าน
                            </span>
                         </div>
                         <!-- /.info-box-content -->
@@ -159,7 +159,7 @@
                               <div class="progress-bar" style="width: 100%"></div>
                            </div>
                            <span class="progress-description" >
-                           <?php echo $o_manage_parish['yala_parish62'] ;?> ตำบล  <?php echo $o_manage_parish['yala_district62'] ;?> อำเภอ
+                           <?php echo $o_manage_parish['yala_parish62'] ;?> ตำบล  <?php echo $o_manage_parish['yala_district62'] ;?> อำเภอ <?php echo $o_manage_parish['yala_moo62'] ;?> หมู่บ้าน
                            </span>
                         </div>
                         <!-- /.info-box-content -->
@@ -175,7 +175,7 @@
                               <div class="progress-bar" style="width: 100%"></div>
                            </div>
                            <span class="progress-description" >
-                           <?php echo $o_manage_parish['yala_parish'] ;?> ตำบล  <?php echo $o_manage_parish['yala_district'] ;?> อำเภอ
+                           <?php echo $o_manage_parish['yala_parish'] ;?> ตำบล  <?php echo $o_manage_parish['yala_district'] ;?> อำเภอ <?php echo $o_manage_parish['yala_moo'] ;?> หมู่บ้าน
                            </span>
                         </div>
                         <!-- /.info-box-content -->
@@ -196,7 +196,7 @@
                               <div class="progress-bar" style="width: 100%"></div>
                            </div>
                            <span class="progress-description">
-                           <?php echo $o_manage_parish['pat_parish'] ;?> ตำบล  <?php echo $o_manage_parish['pat_district'] ;?> อำเภอ
+                           <?php echo $o_manage_parish['pat_parish'] ;?> ตำบล  <?php echo $o_manage_parish['pat_district'] ;?> อำเภอ <?php echo $o_manage_parish['pat_moo'] ;?> หมู่บ้าน
                            </span>
                         </div>
                         <!-- /.info-box-content -->
@@ -212,7 +212,7 @@
                               <div class="progress-bar" style="width: 100%"></div>
                            </div>
                            <span class="progress-description" >
-                           <?php echo $o_manage_parish['pat_parish62'] ;?> ตำบล  <?php echo $o_manage_parish['pat_district62'] ;?> อำเภอ
+                           <?php echo $o_manage_parish['pat_parish62'] ;?> ตำบล  <?php echo $o_manage_parish['pat_district62'] ;?> อำเภอ <?php echo $o_manage_parish['pat_moo62'] ;?> หมู่บ้าน
                            </span>
                         </div>
                         <!-- /.info-box-content -->
@@ -228,7 +228,7 @@
                               <div class="progress-bar" style="width: 100%"></div>
                            </div>
                            <span class="progress-description" >
-                           <?php echo $o_manage_parish['pat_parish'] ;?> ตำบล  <?php echo $o_manage_parish['pat_district'] ;?> อำเภอ
+                           <?php echo $o_manage_parish['pat_parish'] ;?> ตำบล  <?php echo $o_manage_parish['pat_district'] ;?> อำเภอ <?php echo $o_manage_parish['pat_moo'] ;?> หมู่บ้าน
                            </span>
                         </div>
                         <!-- /.info-box-content -->

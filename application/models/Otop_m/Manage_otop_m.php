@@ -821,6 +821,14 @@ class Manage_otop_m extends CI_Model {
 									  ");
 		$all_parish63 = $o_parish->num_rows();
 		$all_district63 = $o_district->num_rows();
+		$all_moo63 = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT o_swine
+												FROM  otop
+												WHERE o_parish = '$value[o_parish]' AND o_row_budget = '$year'
+			")->num_rows();
+			$all_moo63 += $rows_parish;
+		}
 
 
 		$o_parish = $this->db->query(" SELECT DISTINCT o_parish
@@ -833,6 +841,14 @@ class Manage_otop_m extends CI_Model {
 									  ");
 		$pat_parish63 = $o_parish->num_rows();
 		$pat_district63 = $o_district->num_rows();
+		$pat_moo63 = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT o_swine
+												FROM  otop
+												WHERE o_parish = '$value[o_parish]' AND o_row_budget = '$year'
+			")->num_rows();
+			$pat_moo63 += $rows_parish;
+		}
 
 		$o_parish = $this->db->query(" SELECT DISTINCT o_parish
 										FROM  otop
@@ -844,6 +860,14 @@ class Manage_otop_m extends CI_Model {
 									  ");
 		$yala_parish63 = $o_parish->num_rows();
 		$yala_district63 = $o_district->num_rows();
+		$yala_moo63 = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT o_swine
+												FROM  otop
+												WHERE o_parish = '$value[o_parish]' AND o_row_budget = '$year'
+			")->num_rows();
+			$yala_moo63 += $rows_parish;
+		}
 
 		$o_parish = $this->db->query(" SELECT DISTINCT o_parish
 										FROM  otop
@@ -855,6 +879,14 @@ class Manage_otop_m extends CI_Model {
 									  ");
 		$nara_parish63 = $o_parish->num_rows();
 		$nara_district63 = $o_district->num_rows();
+		$nara_moo63 = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT o_swine
+												FROM  otop
+												WHERE o_parish = '$value[o_parish]' AND o_row_budget = '$year'
+			")->num_rows();
+			$nara_moo63 += $rows_parish;
+		}
 
 		if ($year) {
 			$year = $year-1;
@@ -874,6 +906,14 @@ class Manage_otop_m extends CI_Model {
 									  ");
 		$all_parish62 = $o_parish->num_rows();
 		$all_district62 = $o_district->num_rows();
+		$all_moo62 = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT o_swine
+												FROM  otop
+												WHERE o_parish = '$value[o_parish]' AND o_row_budget = '$year'
+			")->num_rows();
+			$all_moo62 += $rows_parish;
+		}
 
 
 		$o_parish = $this->db->query(" SELECT DISTINCT o_parish
@@ -886,6 +926,14 @@ class Manage_otop_m extends CI_Model {
 									  ");
 		$pat_parish62 = $o_parish->num_rows();
 		$pat_district62 = $o_district->num_rows();
+		$pat_moo62 = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT o_swine
+												FROM  otop
+												WHERE o_parish = '$value[o_parish]' AND o_row_budget = '$year'
+			")->num_rows();
+			$pat_moo62 += $rows_parish;
+		}
 
 		$o_parish = $this->db->query(" SELECT DISTINCT o_parish
 										FROM  otop
@@ -897,6 +945,14 @@ class Manage_otop_m extends CI_Model {
 									  ");
 		$yala_parish62 = $o_parish->num_rows();
 		$yala_district62 = $o_district->num_rows();
+		$yala_moo62 = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT o_swine
+												FROM  otop
+												WHERE o_parish = '$value[o_parish]' AND o_row_budget = '$year'
+			")->num_rows();
+			$yala_moo62 += $rows_parish;
+		}
 
 		$o_parish = $this->db->query(" SELECT DISTINCT o_parish
 										FROM  otop
@@ -908,6 +964,14 @@ class Manage_otop_m extends CI_Model {
 									  ");
 		$nara_parish62 = $o_parish->num_rows();
 		$nara_district62 = $o_district->num_rows();
+		$nara_moo62 = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT o_swine
+												FROM  otop
+												WHERE o_parish = '$value[o_parish]' AND o_row_budget = '$year'
+			")->num_rows();
+			$nara_moo62 += $rows_parish;
+		}
 
 		$o_parish = $this->db->query(" SELECT DISTINCT o_parish
 										FROM  otop
@@ -917,6 +981,14 @@ class Manage_otop_m extends CI_Model {
 									  ");
 		$all_parish = $o_parish->num_rows();
 		$all_district = $o_district->num_rows();
+		$all_moo = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT o_swine
+												FROM  otop
+												WHERE o_parish = '$value[o_parish]'
+			")->num_rows();
+			$all_moo += $rows_parish;
+		}
 
 
 		$o_parish = $this->db->query(" SELECT DISTINCT o_parish
@@ -929,6 +1001,14 @@ class Manage_otop_m extends CI_Model {
 									  ");
 		$pat_parish = $o_parish->num_rows();
 		$pat_district = $o_district->num_rows();
+		$pat_moo = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT o_swine
+												FROM  otop
+												WHERE o_parish = '$value[o_parish]'
+			")->num_rows();
+			$pat_moo += $rows_parish;
+		}
 
 		$o_parish = $this->db->query(" SELECT DISTINCT o_parish
 										FROM  otop
@@ -940,6 +1020,14 @@ class Manage_otop_m extends CI_Model {
 									  ");
 		$yala_parish = $o_parish->num_rows();
 		$yala_district = $o_district->num_rows();
+		$yala_moo = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT o_swine
+												FROM  otop
+												WHERE o_parish = '$value[o_parish]'
+			")->num_rows();
+			$yala_moo += $rows_parish;
+		}
 
 		$o_parish = $this->db->query(" SELECT DISTINCT o_parish
 										FROM  otop
@@ -951,6 +1039,14 @@ class Manage_otop_m extends CI_Model {
 									  ");
 		$nara_parish = $o_parish->num_rows();
 		$nara_district = $o_district->num_rows();
+		$nara_moo = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT o_swine
+												FROM  otop
+												WHERE o_parish = '$value[o_parish]'
+			")->num_rows();
+			$nara_moo += $rows_parish;
+		}
 
 
 		$data = array(
@@ -983,6 +1079,21 @@ class Manage_otop_m extends CI_Model {
 					   'yala_district' => $yala_district,
 					   'nara_parish' => $nara_parish,
 					   'nara_district' => $nara_district,
+
+					   'all_moo' => $all_moo,
+					   'pat_moo' => $pat_moo,
+					   'yala_moo' => $yala_moo,
+					   'nara_moo' => $nara_moo,
+
+					   'all_moo62' => $all_moo62,
+					   'pat_moo62' => $pat_moo62,
+					   'yala_moo62' => $yala_moo62,
+					   'nara_moo62' => $nara_moo62,
+
+					   'all_moo63' => $all_moo63,
+					   'pat_moo63' => $pat_moo63,
+					   'yala_moo63' => $yala_moo63,
+					   'nara_moo63' => $nara_moo63,
 					 );
 		return $data;
 	}
