@@ -167,75 +167,6 @@ class Japo_m extends CI_Model {
 		return $data;
 	}
 
-	public function japo_insert() 
-	{
-		$date_time = date("Y/m/d H:i:s");//ดึงเวลาปัจจุบันใส่ในตัวแปร
-		$h_gender = $this->input->post('h_title');
-		if ($h_gender == 'นาย') {
-			$h_gender_gen ='ชาย';
-		}else{
-			$h_gender_gen ='หญิง';
-		}
-
-		$query_id = $this->db->query("SELECT j_id 
-									FROM japomodel 
-									ORDER BY j_id DESC LIMIT 1");
-		$numrow = $query_id->num_rows();
-		foreach ($query_id->result_array() as $rs) { //ไปวิ่งเช็คข้อมูล
-			$cal = $rs["j_id"]; //ตรงนี้เราจะได้ค่า CP18100
-		}
-
-		if ($numrow == 0) { //นับแถวของข้อมูล ถ้าเท่ากับ 0
-    		$j_id = "1";
-		}else{
-			$cal++;
-			$j_id = $cal;
-		}
-
-		$this->db->select('j_id');
-		$this->db->where('j_id',$j_id);
-		$query_num = $this->db->get('japomodel');
-		$num = $query_num->num_rows();
-		if($num > 0){
-			//รหัสครัวเรือนมซ้ำ
-			return "false_h_id";
-		}else{
-			$data = array(
-						  'j_id' => $j_id,
-						  'j_row_budget' => $this->input->post('h_row_budget'),
-						  'j_title' => $this->input->post('h_title'),
-						  'j_name' => $this->input->post('h_name'),
-						  'j_name' => $this->input->post('h_surname'),
-						  'j_house_number' => $this->input->post('h_house_number'),
-						//   'j_age' => $this->input->post('h_age'),
-						//   'j_gender' => $h_gender_gen,
-						//   'j_education' => $this->input->post('h_education'),
-						//   'j_alley' => $this->input->post('h_alley'),
-						//   'j_street' => $this->input->post('h_street'),
-						  'j_swine' => $this->input->post('h_swine'),
-						  'j_village' => $this->input->post('h_village'),
-						  'j_parish	' => $this->input->post('h_parish'),
-						  'j_district' => $this->input->post('h_district'),
-						  'j_province' => $this->input->post('h_province'),
-						  'j_tel' => $this->input->post('h_tel'),
-						//   'j_revenue' => $this->input->post('h_revenue'),
-						//   'j_occupation' => $this->input->post('h_occupation'),
-						//   'j_status' => "1",
-						//   'j_status_bin' => "1",
-						  'j_date' => $date_time,
-						);
-			// $this->db->insert('halal_member',$data);
-			$query_check=$this->db->insert('japomodel',$data);
-
-			if ($query_check) {
-				$this->session->set_flashdata('rigister_success','บันทึกการเปลียนแปลงสำเร็จ');
-				return "false_true";
-			}else{
-			  	return "false_regieter";
-			}
-		}
-	}
-
 	public function manage_update() 
 	{	
 		$h_id = $this->input->post('h_id');
@@ -374,6 +305,14 @@ class Japo_m extends CI_Model {
 									  ");
 		$all_parish = $o_parish->num_rows();
 		$all_district = $o_district->num_rows();
+		$all_moo = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT j_swine
+												FROM  japomodel
+												WHERE j_parish = '$value[j_parish]'
+			")->num_rows();
+			$all_moo += $rows_parish;
+		}
 
 
 		$o_parish = $this->db->query(" SELECT DISTINCT j_parish
@@ -386,6 +325,14 @@ class Japo_m extends CI_Model {
 									  ");
 		$pat_parish = $o_parish->num_rows();
 		$pat_district = $o_district->num_rows();
+		$pat_moo = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT j_swine
+												FROM  japomodel
+												WHERE j_parish = '$value[j_parish]'
+			")->num_rows();
+			$pat_moo += $rows_parish;
+		}
 
 		$o_parish = $this->db->query(" SELECT DISTINCT j_parish
 										FROM  japomodel
@@ -397,6 +344,14 @@ class Japo_m extends CI_Model {
 									  ");
 		$yala_parish = $o_parish->num_rows();
 		$yala_district = $o_district->num_rows();
+		$yala_moo = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT j_swine
+												FROM  japomodel
+												WHERE j_parish = '$value[j_parish]'
+			")->num_rows();
+			$yala_moo += $rows_parish;
+		}
 
 		$o_parish = $this->db->query(" SELECT DISTINCT j_parish
 										FROM  japomodel
@@ -408,6 +363,14 @@ class Japo_m extends CI_Model {
 									  ");
 		$nara_parish = $o_parish->num_rows();
 		$nara_district = $o_district->num_rows();
+		$nara_moo = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT j_swine
+												FROM  japomodel
+												WHERE j_parish = '$value[j_parish]'
+			")->num_rows();
+			$nara_moo += $rows_parish;
+		}
 
 
 		$quer_code = $this->db->query(" SELECT j_title,j_province
@@ -492,6 +455,14 @@ class Japo_m extends CI_Model {
 									  ");
 		$all_parish62 = $o_parish->num_rows();
 		$all_district62 = $o_district->num_rows();
+		$all_moo62 = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT j_swine
+												FROM  japomodel
+												WHERE j_parish = '$value[j_parish]' AND j_row_budget != '$year'
+			")->num_rows();
+			$all_moo62 += $rows_parish;
+		}
 
 
 		$o_parish = $this->db->query(" SELECT DISTINCT j_parish
@@ -504,6 +475,14 @@ class Japo_m extends CI_Model {
 									  ");
 		$pat_parish62 = $o_parish->num_rows();
 		$pat_district62 = $o_district->num_rows();
+		$pat_moo62 = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT j_swine
+												FROM  japomodel
+												WHERE j_parish = '$value[j_parish]' AND j_row_budget != '$year'
+			")->num_rows();
+			$pat_moo62 += $rows_parish;
+		}
 
 		$o_parish = $this->db->query(" SELECT DISTINCT j_parish
 										FROM  japomodel
@@ -515,6 +494,14 @@ class Japo_m extends CI_Model {
 									  ");
 		$yala_parish62 = $o_parish->num_rows();
 		$yala_district62 = $o_district->num_rows();
+		$yala_moo62 = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT j_swine
+												FROM  japomodel
+												WHERE j_parish = '$value[j_parish]' AND j_row_budget != '$year'
+			")->num_rows();
+			$yala_moo62 += $rows_parish;
+		}
 
 		$o_parish = $this->db->query(" SELECT DISTINCT j_parish
 										FROM  japomodel
@@ -526,6 +513,14 @@ class Japo_m extends CI_Model {
 									  ");
 		$nara_parish62 = $o_parish->num_rows();
 		$nara_district62 = $o_district->num_rows();
+		$nara_moo62 = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT j_swine
+												FROM  japomodel
+												WHERE j_parish = '$value[j_parish]' AND j_row_budget != '$year'
+			")->num_rows();
+			$nara_moo62 += $rows_parish;
+		}
 
 
 		$quer_code = $this->db->query(" SELECT j_title,j_province
@@ -784,6 +779,16 @@ class Japo_m extends CI_Model {
 					   'yala_district' => $yala_district,
 					   'nara_parish' => $nara_parish,
 					   'nara_district' => $nara_district,
+
+					   'all_moo' => $all_moo,
+					   'pat_moo' => $pat_moo,
+					   'yala_moo' => $yala_moo,
+					   'nara_moo' => $nara_moo,
+
+					   'all_moo62' => $all_moo62,
+					   'pat_moo62' => $pat_moo62,
+					   'yala_moo62' => $yala_moo62,
+					   'nara_moo62' => $nara_moo62,
 					 );
 		return $data;
 	}

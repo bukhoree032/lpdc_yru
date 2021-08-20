@@ -37,7 +37,7 @@
                         </div>
                         <span class="progress-description">
                            <span class="progress-description" >
-                              <?php echo $hold_dashboard['all_parish'] ;?> ตำบล  <?php echo $hold_dashboard['all_district'] ;?> อำเภอ
+                              <?php echo $hold_dashboard['all_parish'] ;?> ตำบล  <?php echo $hold_dashboard['all_district'] ;?> อำเภอ  <?php echo $hold_dashboard['all_moo'] ;?> หมู่บ้าน
                            </span>
                          </span>
                       </div>
@@ -56,7 +56,7 @@
                             <div class="progress-bar" style="width: 100%"></div>
                           </div>
                           <span class="progress-description">
-                                <?php echo $hold_dashboard['all_parish62'] ;?> ตำบล  <?php echo $hold_dashboard['all_district62'] ;?> อำเภอ
+                                <?php echo $hold_dashboard['all_parish62'] ;?> ตำบล  <?php echo $hold_dashboard['all_district62'] ;?> อำเภอ  <?php echo $hold_dashboard['all_moo62'] ;?> หมู่บ้าน
                            </span>
                         </div>
                         <!-- /.info-box-content -->
@@ -79,7 +79,7 @@
                             <div class="progress-bar" style="width: 100%"></div>
                          </div>
                          <span class="progress-description">
-                              <?php echo $hold_dashboard['nara_parish'] ;?> ตำบล  <?php echo $hold_dashboard['nara_district'] ;?> อำเภอ
+                              <?php echo $hold_dashboard['nara_parish'] ;?> ตำบล  <?php echo $hold_dashboard['nara_district'] ;?> อำเภอ  <?php echo $hold_dashboard['nara_moo'] ;?> หมู่บ้าน
                          </span>
                       </div>
                       <!-- /.info-box-content -->
@@ -96,7 +96,7 @@
                               <div class="progress-bar" style="width: 100%"></div>
                            </div>
                            <span class="progress-description">
-                                <?php echo $hold_dashboard['nara_parish62'] ;?> ตำบล  <?php echo $hold_dashboard['nara_district62'] ;?> อำเภอ
+                                <?php echo $hold_dashboard['nara_parish62'] ;?> ตำบล  <?php echo $hold_dashboard['nara_district62'] ;?> อำเภอ  <?php echo $hold_dashboard['nara_moo62'] ;?> หมู่บ้าน
                            </span>
                         </div>
                         <!-- /.info-box-content -->
@@ -120,7 +120,7 @@
                             <div class="progress-bar" style="width: 100%"></div>
                          </div>
                          <span class="progress-description">
-                              <?php echo $hold_dashboard['yala_parish'] ;?> ตำบล  <?php echo $hold_dashboard['yala_district'] ;?> อำเภอ
+                              <?php echo $hold_dashboard['yala_parish'] ;?> ตำบล  <?php echo $hold_dashboard['yala_district'] ;?> อำเภอ  <?php echo $hold_dashboard['yala_moo'] ;?> หมู่บ้าน
                          </span>
                       </div>
                       <!-- /.info-box-content -->
@@ -137,7 +137,7 @@
                               <div class="progress-bar" style="width: 100%"></div>
                            </div>
                            <span class="progress-description">
-                                <?php echo $hold_dashboard['yala_parish62'] ;?> ตำบล  <?php echo $hold_dashboard['yala_district62'] ;?> อำเภอ
+                                <?php echo $hold_dashboard['yala_parish62'] ;?> ตำบล  <?php echo $hold_dashboard['yala_district62'] ;?> อำเภอ  <?php echo $hold_dashboard['yala_moo62'] ;?> หมู่บ้าน
                            </span>
                         </div>
                         <!-- /.info-box-content -->
@@ -159,7 +159,7 @@
                             <div class="progress-bar" style="width: 100%"></div>
                          </div>
                          <span class="progress-description">
-                              <?php echo $hold_dashboard['pat_parish'] ;?> ตำบล  <?php echo $hold_dashboard['pat_district'] ;?> อำเภอ
+                              <?php echo $hold_dashboard['pat_parish'] ;?> ตำบล  <?php echo $hold_dashboard['pat_district'] ;?> อำเภอ  <?php echo $hold_dashboard['pat_moo'] ;?> หมู่บ้าน
                          </span>
                       </div>
                       <!-- /.info-box-content -->
@@ -176,7 +176,7 @@
                               <div class="progress-bar" style="width: 100%"></div>
                            </div>
                            <span class="progress-description">
-                                <?php echo $hold_dashboard['pat_parish62'] ;?> ตำบล  <?php echo $hold_dashboard['pat_district62'] ;?> อำเภอ
+                                <?php echo $hold_dashboard['pat_parish62'] ;?> ตำบล  <?php echo $hold_dashboard['pat_district62'] ;?> อำเภอ  <?php echo $hold_dashboard['pat_moo62'] ;?> หมู่บ้าน
                            </span>
                         </div>
                         <!-- /.info-box-content -->
