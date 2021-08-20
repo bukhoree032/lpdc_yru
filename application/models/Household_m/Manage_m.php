@@ -437,48 +437,94 @@ class Manage_m extends CI_Model {
 
 		$o_parish = $this->db->query(" SELECT DISTINCT h_parish
 										FROM  household
-										WHERE household.h_row_budget = '$year'
+										-- WHERE household.h_row_budget = '$year'
 									  ");
 		$o_district = $this->db->query(" SELECT DISTINCT h_district
 										FROM  household
-										WHERE household.h_row_budget = '$year'
+										-- WHERE household.h_row_budget = '$year'
 									  ");
+		$data['Household']['all_parish'] = $o_parish;
+		$data['Household']['all_district'] = $o_district;
 		$all_parish = $o_parish->num_rows();
 		$all_district = $o_district->num_rows();
+		$all_moo = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT h_swine
+												FROM  household
+												WHERE h_parish = '$value[h_parish]'
+			")->num_rows();
+			$all_moo += $rows_parish;
+		}
 
 
 		$o_parish = $this->db->query(" SELECT DISTINCT h_parish
 										FROM  household
-										WHERE household.h_row_budget = '$year'AND household.h_province = '74'
+										-- WHERE household.h_row_budget = '$year'AND household.h_province = '74'
+										WHERE household.h_province = '74'
 									  ");
 		$o_district = $this->db->query(" SELECT DISTINCT h_district
 										FROM  household
-										WHERE household.h_row_budget = '$year' AND household.h_province = '74'
+										-- WHERE household.h_row_budget = '$year' AND household.h_province = '74'
+										WHERE household.h_province = '74'
 									  ");
+		$data['Household']['pat_parish'] = $o_parish;
+		$data['Household']['pat_district'] = $o_district;
 		$pat_parish = $o_parish->num_rows();
 		$pat_district = $o_district->num_rows();
+		$pat_moo = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT h_swine
+												FROM  household
+												WHERE h_parish = '$value[h_parish]'
+			")->num_rows();
+			$pat_moo += $rows_parish;
+		}
 
 		$o_parish = $this->db->query(" SELECT DISTINCT h_parish
 										FROM  household
-										WHERE household.h_row_budget = '$year'AND household.h_province = '75'
+										-- WHERE household.h_row_budget = '$year'AND household.h_province = '75'
+										WHERE household.h_province = '75'
 									  ");
 		$o_district = $this->db->query(" SELECT DISTINCT h_district
 										FROM  household
-										WHERE household.h_row_budget = '$year' AND household.h_province = '75'
+										-- WHERE household.h_row_budget = '$year' AND household.h_province = '75'
+										WHERE household.h_province = '75'
 									  ");
+		$data['Household']['yala_parish'] = $o_parish;
+		$data['Household']['yala_district'] = $o_district;
 		$yala_parish = $o_parish->num_rows();
 		$yala_district = $o_district->num_rows();
+		$yala_moo = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT h_swine
+												FROM  household
+												WHERE h_parish = '$value[h_parish]'
+			")->num_rows();
+			$yala_moo += $rows_parish;
+		}
 
 		$o_parish = $this->db->query(" SELECT DISTINCT h_parish
 										FROM  household
-										WHERE household.h_row_budget = '$year'AND household.h_province = '76'
+										-- WHERE household.h_row_budget = '$year'AND household.h_province = '76'
+										WHERE household.h_province = '76'
 									  ");
 		$o_district = $this->db->query(" SELECT DISTINCT h_district
 										FROM  household
-										WHERE household.h_row_budget = '$year' AND household.h_province = '76'
+										-- WHERE household.h_row_budget = '$year' AND household.h_province = '76'
+										WHERE household.h_province = '76'
 									  ");
+		$data['Household']['nara_parish'] = $o_parish;
+		$data['Household']['nara_district'] = $o_district;
 		$nara_parish = $o_parish->num_rows();
 		$nara_district = $o_district->num_rows();
+		$nara_moo = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT h_swine
+												FROM  household
+												WHERE h_parish = '$value[h_parish]'
+			")->num_rows();
+			$nara_moo += $rows_parish;
+		}
 
 
 		$quer_code = $this->db->query(" SELECT h_title,h_province,h_status_past
@@ -594,42 +640,88 @@ class Manage_m extends CI_Model {
 										FROM  household
 										WHERE household.h_row_budget != '$year'
 									  ");
+		$data['Household']['all_parish62'] = $o_parish;
+		$data['Household']['all_district62'] = $o_district;
 		$all_parish62 = $o_parish->num_rows();
 		$all_district62 = $o_district->num_rows();
+		$all_moo62 = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT h_swine
+												FROM  household
+												WHERE h_parish = '$value[h_parish]' AND h_row_budget != '$year'
+			")->num_rows();
+			$all_moo62 += $rows_parish;
+		}
 
 
 		$o_parish = $this->db->query(" SELECT DISTINCT h_parish
 										FROM  household
 										WHERE household.h_row_budget != '$year'AND household.h_province = '74'
+										-- WHERE household.h_province = '74'
 									  ");
 		$o_district = $this->db->query(" SELECT DISTINCT h_district
 										FROM  household
 										WHERE household.h_row_budget != '$year' AND household.h_province = '74'
+										-- WHERE household.h_province = '74'
 									  ");
+		$data['Household']['pat_parish62'] = $o_parish;
+		$data['Household']['pat_district62'] = $o_district;
 		$pat_parish62 = $o_parish->num_rows();
 		$pat_district62 = $o_district->num_rows();
+		$pat_moo62 = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT h_swine
+												FROM  household
+												WHERE h_parish = '$value[h_parish]' AND h_row_budget != '$year'
+			")->num_rows();
+			$pat_moo62 += $rows_parish;
+		}
 
 		$o_parish = $this->db->query(" SELECT DISTINCT h_parish
 										FROM  household
 										WHERE household.h_row_budget != '$year'AND household.h_province = '75'
+										-- WHERE household.h_province = '75'
 									  ");
 		$o_district = $this->db->query(" SELECT DISTINCT h_district
 										FROM  household
 										WHERE household.h_row_budget != '$year' AND household.h_province = '75'
+										-- WHERE household.h_province = '75'
 									  ");
+		$data['Household']['yala_parish62'] = $o_parish;
+		$data['Household']['yala_district62'] = $o_district;
 		$yala_parish62 = $o_parish->num_rows();
 		$yala_district62 = $o_district->num_rows();
+		$yala_moo62 = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT h_swine
+												FROM  household
+												WHERE h_parish = '$value[h_parish]' AND h_row_budget != '$year'
+			")->num_rows();
+			$yala_moo62 += $rows_parish;
+		}
 
 		$o_parish = $this->db->query(" SELECT DISTINCT h_parish
 										FROM  household
 										WHERE household.h_row_budget != '$year'AND household.h_province = '76'
+										-- WHERE household.h_province = '76'
 									  ");
 		$o_district = $this->db->query(" SELECT DISTINCT h_district
 										FROM  household
 										WHERE household.h_row_budget != '$year' AND household.h_province = '76'
+										-- WHERE household.h_province = '76'
 									  ");
+		$data['Household']['nara_parish62'] = $o_parish;
+		$data['Household']['nara_district62'] = $o_district;
 		$nara_parish62 = $o_parish->num_rows();
 		$nara_district62 = $o_district->num_rows();
+		$nara_moo62 = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT h_swine
+												FROM  household
+												WHERE h_parish = '$value[h_parish]' AND h_row_budget != '$year'
+			")->num_rows();
+			$nara_moo62 += $rows_parish;
+		}
 
 
 		$quer_code = $this->db->query(" SELECT h_title,h_province,h_status_past
@@ -846,8 +938,6 @@ class Manage_m extends CI_Model {
 		    }
 		}
 
-
-
 		$data = array(
 					   'all_num' => $all_num,
 					   'all_men' => $all_men,
@@ -943,7 +1033,7 @@ class Manage_m extends CI_Model {
 					   'yala_district62' => $yala_district62,
 					   'nara_parish62' => $nara_parish62,
 					   'nara_district62' => $nara_district62,
-
+					   
 					   'all_parish' => $all_parish,
 					   'all_district' => $all_district,
 					   'pat_parish' => $pat_parish,
@@ -952,6 +1042,16 @@ class Manage_m extends CI_Model {
 					   'yala_district' => $yala_district,
 					   'nara_parish' => $nara_parish,
 					   'nara_district' => $nara_district,
+					   
+					   'all_moo' => $all_moo,
+					   'pat_moo' => $pat_moo,
+					   'yala_moo' => $yala_moo,
+					   'nara_moo' => $nara_moo,
+					   
+					   'all_moo62' => $all_moo62,
+					   'pat_moo62' => $pat_moo62,
+					   'yala_moo62' => $yala_moo62,
+					   'nara_moo62' => $nara_moo62,
 					 );
 		return $data;
 	}
