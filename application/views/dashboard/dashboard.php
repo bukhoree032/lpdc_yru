@@ -86,6 +86,23 @@
             <!-- /.card -->
           </div>
 
+          <div class="col-md-4 ">
+            <div class="card card-success">
+              <div class="card-header">
+                <h3 class="card-title">หมู่บ้าน</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div id="moo" style="min-height: 400px; height: 250px; max-height: 250px; max-width: 100%;"></div>
+              </div>
+            </div>
+          </div>
+
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -152,8 +169,8 @@
   var data = [{labels:xArray, values:yArray, type:"pie"}];
 
   Plotly.newPlot("Household", data, layout);
-  </script>
-  <script>
+</script>
+<script>
   var xArray = ["ยะลา", "นราธิวาส", "ปัตตานี"];
   var yArray = [<?php echo $Dashboard['yala_parish'] ?>, <?php echo $Dashboard['nara_parish'] ?>, <?php echo $Dashboard['pat_parish'] ?>];
 
@@ -162,16 +179,26 @@
   var data = [{labels:xArray, values:yArray, hole:.4, type:"pie"}];
 
   Plotly.newPlot("parish", data, layout);
-  </script>
-  <script>
+</script>
+<script>
   var xArray = ["ยะลา", "นราธิวาส", "ปัตตานี"];
-  var yArray = [<?php echo $Dashboard['nara_district'] ?>, <?php echo $Dashboard['yala_district'] ?>, <?php echo $Dashboard['pat_district'] ?>];
+  var yArray = [<?php echo $Dashboard['yala_district'] ?>, <?php echo $Dashboard['nara_district'] ?>, <?php echo $Dashboard['pat_district'] ?>];
 
   var layout = {title:"อำเภอทั้งหมด <?php echo $Dashboard['all_district'] ?> อำเภอ"};
 
   var data = [{labels:xArray, values:yArray, hole:.4, type:"pie"}];
 
   Plotly.newPlot("district", data, layout);
+</script>
+<script>
+  var xArray = ["ยะลา", "นราธิวาส", "ปัตตานี"];
+  var yArray = [<?php echo $yala_moo ?>, <?php echo $nara_moo ?>, <?php echo $pat_moo ?>];
+
+  var layout = {title:"อำเภอทั้งหมด <?php echo $all_moo ?> อำเภอ"};
+
+  var data = [{labels:xArray, values:yArray, hole:.4, type:"pie"}];
+
+  Plotly.newPlot("moo", data, layout);
 </script>
 </body>
 </html>
