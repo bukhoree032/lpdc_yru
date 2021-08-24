@@ -194,7 +194,7 @@
   var xArray = ["ยะลา", "นราธิวาส", "ปัตตานี"];
   var yArray = [<?php echo $yala_moo ?>, <?php echo $nara_moo ?>, <?php echo $pat_moo ?>];
 
-  var layout = {title:"อำเภอทั้งหมด <?php echo $all_moo ?> อำเภอ"};
+  var layout = {title:"หมู่บ้านทั้งหมด <?php echo $all_moo ?> หมู่บ้าน"};
 
   var data = [{labels:xArray, values:yArray, hole:.4, type:"pie"}];
 
