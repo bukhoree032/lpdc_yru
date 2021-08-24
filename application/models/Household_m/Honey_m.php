@@ -550,6 +550,14 @@ class Honey_m extends CI_Model {
 									  ");
 		$all_parish62 = $o_parish->num_rows();
 		$all_district62 = $o_district->num_rows();
+		$all_moo62 = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT h_swine
+												FROM  household
+												WHERE h_parish = '$value[h_parish]' AND h_row_budget != '$year' AND NOT household.h_status_bin = '2'  AND household.h_status_past = '1' AND household.h_occupation = '$ac_id'
+			")->num_rows();
+			$all_moo62 += $rows_parish;
+		}
 
 
 		$o_parish = $this->db->query(" SELECT DISTINCT h_parish
@@ -566,6 +574,14 @@ class Honey_m extends CI_Model {
 									  ");
 		$pat_parish62 = $o_parish->num_rows();
 		$pat_district62 = $o_district->num_rows();
+		$pat_moo62 = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT h_swine
+												FROM  household
+												WHERE h_parish = '$value[h_parish]' AND h_row_budget != '$year' AND NOT household.h_status_bin = '2'  AND household.h_status_past = '1' AND household.h_occupation = '$ac_id'
+			")->num_rows();
+			$pat_moo62 += $rows_parish;
+		}
 
 		$o_parish = $this->db->query(" SELECT DISTINCT h_parish
 										FROM  household
@@ -581,6 +597,14 @@ class Honey_m extends CI_Model {
 									  ");
 		$yala_parish62 = $o_parish->num_rows();
 		$yala_district62 = $o_district->num_rows();
+		$yala_moo62 = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT h_swine
+												FROM  household
+												WHERE h_parish = '$value[h_parish]' AND h_row_budget != '$year' AND NOT household.h_status_bin = '2'  AND household.h_status_past = '1' AND household.h_occupation = '$ac_id'
+			")->num_rows();
+			$yala_moo62 += $rows_parish;
+		}
 
 		$o_parish = $this->db->query(" SELECT DISTINCT h_parish
 										FROM  household
@@ -596,6 +620,14 @@ class Honey_m extends CI_Model {
 									  ");
 		$nara_parish62 = $o_parish->num_rows();
 		$nara_district62 = $o_district->num_rows();
+		$nara_moo62 = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT h_swine
+												FROM  household
+												WHERE h_parish = '$value[h_parish]' AND h_row_budget != '$year' AND NOT household.h_status_bin = '2'  AND household.h_status_past = '1' AND household.h_occupation = '$ac_id'
+			")->num_rows();
+			$nara_moo62 += $rows_parish;
+		}
 
 		$quer_code = $this->db->query(" SELECT h_title,h_province
 										FROM  household
@@ -678,6 +710,14 @@ class Honey_m extends CI_Model {
 									  ");
 		$all_parish = $o_parish->num_rows();
 		$all_district = $o_district->num_rows();
+		$all_moo = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT h_swine
+												FROM  household
+												WHERE h_parish = '$value[h_parish]' AND NOT household.h_status_bin = '2'  AND household.h_status_past = '1' AND household.h_occupation = '$ac_id'
+			")->num_rows();
+			$all_moo += $rows_parish;
+		}
 
 
 		$o_parish = $this->db->query(" SELECT DISTINCT h_parish
@@ -694,6 +734,14 @@ class Honey_m extends CI_Model {
 									  ");
 		$pat_parish = $o_parish->num_rows();
 		$pat_district = $o_district->num_rows();
+		$pat_moo = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT h_swine
+												FROM  household
+												WHERE h_parish = '$value[h_parish]' AND NOT household.h_status_bin = '2'  AND household.h_status_past = '1' AND household.h_occupation = '$ac_id'
+			")->num_rows();
+			$pat_moo += $rows_parish;
+		}
 
 		$o_parish = $this->db->query(" SELECT DISTINCT h_parish
 										FROM  household
@@ -709,6 +757,14 @@ class Honey_m extends CI_Model {
 									  ");
 		$yala_parish = $o_parish->num_rows();
 		$yala_district = $o_district->num_rows();
+		$yala_moo = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT h_swine
+												FROM  household
+												WHERE h_parish = '$value[h_parish]' AND NOT household.h_status_bin = '2'  AND household.h_status_past = '1' AND household.h_occupation = '$ac_id'
+			")->num_rows();
+			$yala_moo += $rows_parish;
+		}
 
 		$o_parish = $this->db->query(" SELECT DISTINCT h_parish
 										FROM  household
@@ -724,6 +780,14 @@ class Honey_m extends CI_Model {
 									  ");
 		$nara_parish = $o_parish->num_rows();
 		$nara_district = $o_district->num_rows();
+		$nara_moo = 0;
+		foreach ($o_parish->result_array() as $key => $value) {
+			$rows_parish = $this->db->query(" 	SELECT DISTINCT h_swine
+												FROM  household
+												WHERE h_parish = '$value[h_parish]' AND NOT household.h_status_bin = '2'  AND household.h_status_past = '1' AND household.h_occupation = '$ac_id'
+			")->num_rows();
+			$nara_moo += $rows_parish;
+		}
 
 		$quer_code = $this->db->query(" SELECT h_title,h_province
 										FROM  household
@@ -854,6 +918,16 @@ class Honey_m extends CI_Model {
 					   'yala_district' => $yala_district,
 					   'nara_parish' => $nara_parish,
 					   'nara_district' => $nara_district,
+
+					   'all_moo' => $all_moo,
+					   'pat_moo' => $pat_moo,
+					   'yala_moo' => $yala_moo,
+					   'nara_moo' => $nara_moo,
+
+					   'all_moo62' => $all_moo62,
+					   'pat_moo62' => $pat_moo62,
+					   'yala_moo62' => $yala_moo62,
+					   'nara_moo62' => $nara_moo62,
 					 );
 		return $data;
 	}
