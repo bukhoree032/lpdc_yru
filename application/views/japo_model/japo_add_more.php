@@ -39,180 +39,16 @@
           <form action="<?php echo site_url("Japo_c/Manage_japo_c/japo_insert/"); ?>" method="post" enctype="multipart/form-data">
           <!-- /.card-header -->
             <div class="card-body">
-              <div class="row">
-                <div class="col-md-2">
-                <div class="form-group">
-                  <label>ปีงบประมาน </label>
-                  <select class="form-control select2bs4" name="j_row_budget" style="width: 100%;">
-                    <?php $date_time = date("Y");?>
-                      <option value="<?php echo $date_time + '543' ?>" selected="selected"><?php echo $date_time + '543' ?></option>
-                      <option><?php echo $date_time + '543' + '1' ?></option>
-                      <option><?php echo $date_time + '543' +  '0' ?></option>
-                      <option><?php echo $date_time + '543' +  '-1' ?></option>
-                      <option><?php echo $date_time + '543' +  '-2' ?></option>
-                  </select>
-                </div>
-              </div>
-                <div class="col-md-12">
-                  <div class="">
-                    <h5 class="card-title">ข้อมูลสวนตัว</h5>
-                  </div>
-                  <div class="" style="margin-top: 30px"></div>
-                </div>
-                <div class="col-md-2">
-                  <div class="form-group">
-                    <label>คำนำหน้า</label>
-                    <select class="form-control select2bs4" name="j_title" style="width: 100%;" required>
-                      <option value="" selected="selected">-- คำนำหน้า --</option>
-                      <option value="นาย">นาย</option>
-                      <option value="นาง">นาง</option>
-                      <option value="นางสาว">นางสาว</option>
-                    </select>
-                  </div>
-                  </div>
-                  <!-- /.form-group -->
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label>ชื่อ</label>
-                    <input type="text" class="form-control" name="j_name" value="" required>
-                  </div>
-                  <!-- /.form-group -->
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label>สกุล</label>
-                    <input type="text" class="form-control" name="j_surname" value="" required>
-                  </div>
-                  <!-- /.form-group -->
-                </div>
-                <div class="col-md-2">
-                </div>
-                <div class="col-md-1">
-                  <div class="form-group">
-                    <label>อายุ</label>
-                    <input type="text" class="form-control" name="j_age" value="">
-                  </div>
-                  <!-- /.form-group -->
-                </div>
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <label>อาชีพที่ส่งเสริม</label>
-                    <select class="form-control select2bs4" name="j_occupation[]" style="width: 100%;" multiple>
-                      <?php foreach ($manage_year['acti'] as $acti) { ?>
-                        <option value="<?php echo $acti->ac_id; ?>"><?php echo $acti->ac_initials; ?></option>
-                      <?php } ?>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-2">
-                  <div class="form-group">
-                    <label>รายได้</label>
-                    <input type="text" class="form-control" name="j_revenue" >
-                  </div>
-                </div>
-                <!-- <div class="col-md-2">
-                  <div class="form-group">
-                    <label>ระดับการศึกษา</label>
-                    <input type="text" class="form-control" name="j_education">
-                  </div>
-                </div> -->
-                <div class="col-md-2">
-                  <div class="form-group">
-                    <label>เบอร์โทร</label>
-                    <input type="text" class="form-control" name="j_tel">
-                  </div>
-                  <!-- /.form-group -->
-                </div>
-                <div class="col-md-9">
-                </div>
-                <div class="col-md-12">
-                  <div class="">
-                    <hr>
-                    <h5 class="card-title">ข้อมูลที่อยู่</h5>
-                  </div>
-                  <div class="" style="margin-top: 50px"></div>
-                </div>
-                <div class="col-md-2">
-                  <div class="form-group">
-                    <label>บ้านเลขที่</label>
-                    <input type="text" class="form-control" name="j_house_number">
-                  </div>
-                  <!-- /.form-group -->
-                </div>
-                <div class="col-md-2">
-                  <div class="form-group">
-                    <label>บ้าน</label>
-                    <input type="text" class="form-control" name="j_village">
-                  </div>
-                  <!-- /.form-group -->
-                </div>
-                <div class="col-md-1">
-                  <div class="form-group">
-                    <label>หมู่</label>
-                    <input type="text" class="form-control" name="j_swine">
-                  </div>
-                  <!-- /.form-group -->
-                </div>
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <label>ซอย</label>
-                    <input type="text" class="form-control" name="j_alley">
-                  </div>
-                  <!-- /.form-group -->
-                </div>
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <label>ถนน</label>
-                    <input type="text" class="form-control" name="j_street">
-                  </div>
-                  <!-- /.form-group -->
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label>ตำบล</label>
-                    <select class="form-control select2" name="j_parish" style="width: 100%;" required>
-                        <option value="" selected="selected">-- เลือกตำบล --</option>
-                      <?php foreach ($provinces['dis'] as $pro) { ?>
-                        <option value="<?php echo $pro->dis_name_th; ?>" ><?php echo $pro->dis_name_th; ?></option>
-                      <?php } ?>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label>อำเถอ</label>
-                    <select class="form-control select2" name="j_district" style="width: 100%;" required>
-                      <option value="" selected="selected">-- เลือกอำเภอ --</option>
-                      <?php foreach ($provinces['aum'] as $pro) { ?>
-                        <option value="<?php echo $pro->aum_name_th; ?>" ><?php echo $pro->aum_name_th; ?></option>
-                      <?php } ?>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="form-group">
-                    <label>จังหวัด</label>
-                    <select class="form-control select2" name="j_province" style="width: 100%;" required>
-                        <option value="" selected="selected">-- เลือกจังหวัด --</option>
-                      <?php foreach ($provinces['pro'] as $pro) { ?>
-                        <option value="<?php echo $pro->pro_id; ?>" ><?php echo $pro->name_th; ?></option>
-                      <?php } ?>
-                    </select>
-                  </div>
-                </div>
-                <!-- <div class="col-sm-2"><button type="submit" class="btn btn-block bg-gradient-primary btn-sm" style="width: 100%">บันทึก</button></div> -->
-                <!-- /.col -->
-              </div>
               <div class="col-md-12">
                 <div class="">
                   <hr>
-                  <h5 class="card-title">ข้อมูลเพิ่มเติม</h5>
+                  <h5 class="card-title">ข้อมูลส่วนตัว</h5>
                 </div>
                 <div class="" style="margin-top: 50px"></div>
               </div>
               <div class="row">
                 <div class="col-md-12">
-                  <!-- <div class="col-md-12">
+                  <div class="col-md-12">
                     <br>
                     รูปโปรไฟล์ : <br>
                     <input id="file-inputp" name="profile" type="file" >
@@ -228,8 +64,8 @@
                         </div>
                       </div>                                  
                     </div>
-                  </div> -->
-                  <!-- <div class="col-md-12">
+                  </div>
+                  <div class="col-md-12">
                     <br>
                     รูปสภาพแวดล้อม :<br> 
                     <input id="file-input" name="around[]" type="file" multiple>
@@ -245,7 +81,7 @@
                           </div>
                           <div class="card-body">
                             <div class="row">
-                              <div class="row"> -->
+                              <div class="row">
                                 <!-- <?php foreach ($manage_detail_imag["around"] as $around) { ?>
                                   <div class="col-sm-2" id="imag_<?php echo $around->im_id; ?>">
                                     <a href="" data-toggle="lightbox" data-title="sample 1 - white" data-gallery="gallery">
@@ -255,14 +91,14 @@
                                     </div>
                                   </div>
                                 <?php } ?> -->
-                                <!-- <div id="preview"></div>
+                                <div id="preview"></div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div> -->
+                  </div>
                   <div class="col-sm-12"><br>
                     <div  id="geo_data">
                       ละติจูด : <input type="text" class="form-control" name="lat" value=""  style="width:30%;" >
@@ -400,7 +236,7 @@
                     title: "คุณอยู่ที่นี่."
                 });
                 google.maps.event.addListener(marker, 'dragend', function(event) {
-                    $("#geo_data").html('ละติจูด: <input type="text" class="form-control" name="lat" value="'+marker.getPosition().lat()+'"  style="width:30%;" ><br /> ลองติจูด: <input type="text" class="form-control" name="long" value="'+marker.getPosition().lng()+'"  style="width:30%;" >');
+                    $("#geo_data").html('lat: '+marker.getPosition().lat()+'<br />long: '+marker.getPosition().lng());
                 });
             }
         }

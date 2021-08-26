@@ -133,7 +133,6 @@ class Japo_m extends CI_Model {
 		return $data;
 	}
 
-
 	public function manage_detail($h_id)
 	{ 
 		$quer_code = $this->db->query(" SELECT *
@@ -167,11 +166,119 @@ class Japo_m extends CI_Model {
 		return $data;
 	}
 
+	public function japo_insert() 
+	{
+		$date_time = date("Y/m/d H:i:s");//ดึงเวลาปัจจุบันใส่ในตัวแปร
+		$j_gender = $this->input->post('j_title');
+		if ($j_gender == 'นาย') {
+			$j_gender_gen ='ชาย';
+		}else{
+			$j_gender_gen ='หญิง';
+		}
+		$j_occupation = $this->input->post('j_occupation');
+
+		if(isset($j_occupation)){
+			$j_occupation = serialize($j_occupation);
+		}
+
+		$data = array(
+						'j_row_budget' => $this->input->post('j_row_budget'),
+						'j_occupation' => $j_occupation,
+						'j_title' => $this->input->post('j_title'),
+						'j_name' => $this->input->post('j_name'),
+						'j_surname' => $this->input->post('j_surname'),
+						'j_age' => $this->input->post('j_age'),
+						'j_gender_gen' => $j_gender_gen,
+						'j_revenue' => $this->input->post('j_revenue'),
+						'j_house_number' => $this->input->post('j_house_number'),
+						'j_alley' => $this->input->post('j_alley'),
+						'j_street' => $this->input->post('j_street'),
+						'j_swine' => $this->input->post('j_swine'),
+						'j_village' => $this->input->post('j_village'),
+						'j_parish	' => $this->input->post('j_parish'),
+						'j_district' => $this->input->post('j_district'),
+						'j_province' => $this->input->post('j_province'),
+						'j_latitude' => $this->input->post('lat'),
+						'j_longitude' => $this->input->post('long'),
+						'j_tel' => $this->input->post('j_tel'),
+					);
+		$query_check=$this->db->insert('japomodel',$data);
+		
+		if ($query_check) {
+			$this->session->set_flashdata('rigister_success','บันทึกการเปลียนแปลงสำเร็จ');
+			return "false_true";
+		}else{
+			return "false_regieter";
+		}
+	}
+
+	public function japo_update() 
+	{
+		
+		$date_time = date("Y/m/d H:i:s");//ดึงเวลาปัจจุบันใส่ในตัวแปร
+		$j_gender = $this->input->post('j_title');
+		if ($j_gender == 'นาย') {
+			$j_gender_gen ='ชาย';
+		}else{
+			$j_gender_gen ='หญิง';
+		}
+		// $j_occupation = $this->input->post('j_occupation');
+
+		// if(isset($j_occupation)){
+		// 	$j_occupation = serialize($j_occupation);
+		// }
+
+		$data = array(
+						'j_row_budget' => $this->input->post('j_row_budget'),
+						// 'j_occupation' => $j_occupation,
+						'j_title' => $this->input->post('j_title'),
+						'j_name' => $this->input->post('j_name'),
+						'j_surname' => $this->input->post('j_surname'),
+						'j_age' => $this->input->post('j_age'),
+						'j_gender_gen' => $j_gender_gen,
+						'j_revenue' => $this->input->post('j_revenue'),
+						'j_house_number' => $this->input->post('j_house_number'),
+						'j_alley' => $this->input->post('j_alley'),
+						'j_street' => $this->input->post('j_street'),
+						'j_swine' => $this->input->post('j_swine'),
+						'j_village' => $this->input->post('j_village'),
+						'j_parish	' => $this->input->post('j_parish'),
+						'j_district' => $this->input->post('j_district'),
+						'j_province' => $this->input->post('j_province'),
+						'j_latitude' => $this->input->post('lat'),
+						'j_longitude' => $this->input->post('long'),
+						'j_tel' => $this->input->post('j_tel'),
+					);
+
+		$this->db->where('j_id ',$this->input->post('j_id'));
+		$query_check=$this->db->update('japomodel',$data);
+
+		if ($query_check) {
+			$this->session->set_flashdata('rigister_success','บันทึกการเปลียนแปลงสำเร็จ');
+			return "false_true";
+		}else{
+				return "false_regieter";
+		}
+	}
+
+	public function japo_edit($j_id)
+	{ 
+		$data['quer_code'] = $this->db->query(" SELECT *
+										FROM  japomodel
+										LEFT JOIN provinces ON provinces.pro_id = japomodel.j_province
+										WHERE japomodel.j_id = '$j_id'
+									  ")->result_array()['0'];
+
+		$data['activity'] = $this->db->query(" SELECT ac_id,ac_initials FROM  activity ")->result_array();
+
+		return $data;
+	}
+
 	public function manage_update() 
 	{	
-		$h_id = $this->input->post('h_id');
+		$h_id = $this->input->post('j_id');
 		$date_time = date("Y/m/d H:i:s");//ดึงเวลาปัจจุบันใส่ในตัวแปร
-		$h_title = $this->input->post('h_title');
+		$h_title = $this->input->post('j_title');
 		if ($h_title == 'นาย') {
 			$h_gender_gen ='ชาย';
 		}else{
@@ -179,27 +286,26 @@ class Japo_m extends CI_Model {
 		}
 
 		$data = array(
-					  // 'h_row_budget' => $this->input->post('h_row_budget'),
-					  'h_title' => $this->input->post('h_title'),
-					  'h_name' => $this->input->post('h_name'),
-					  'h_surname' => $this->input->post('h_surname'),
-					  'h_house_number' => $this->input->post('h_house_number'),
-					  'h_age' => $this->input->post('h_age'),
-					  'h_gender' => $h_gender_gen,
-					  'h_education' => $this->input->post('h_education'),
-					  'h_alley' => $this->input->post('h_alley'),
-					  'h_street' => $this->input->post('h_street'),
-					  'h_swine' => $this->input->post('h_swine'),
-					  'h_village' => $this->input->post('h_village'),
-					  'h_parish	' => $this->input->post('h_parish'),
-					  'h_district' => $this->input->post('h_district'),
-					  'h_province' => $this->input->post('h_province'),
-					  'h_tel' => $this->input->post('h_tel'),
-					  'h_revenue' => $this->input->post('h_revenue'),
-					  'h_occupation' => $this->input->post('h_occupation'),
-					  'h_date' => $date_time,
-					);
-		// $this->db->insert('halal_member',$data);
+			'j_row_budget' => $this->input->post('j_row_budget'),
+			'j_occupation' => $j_occupation,
+			'j_title' => $this->input->post('j_title'),
+			'j_name' => $this->input->post('j_name'),
+			'j_surname' => $this->input->post('j_surname'),
+			'j_age' => $this->input->post('j_age'),
+			'j_gender_gen' => $j_gender_gen,
+			'j_revenue' => $this->input->post('j_revenue'),
+			'j_house_number' => $this->input->post('j_house_number'),
+			'j_alley' => $this->input->post('j_alley'),
+			'j_street' => $this->input->post('j_street'),
+			'j_swine' => $this->input->post('j_swine'),
+			'j_village' => $this->input->post('j_village'),
+			'j_parish	' => $this->input->post('j_parish'),
+			'j_district' => $this->input->post('j_district'),
+			'j_province' => $this->input->post('j_province'),
+			'j_latitude' => $this->input->post('lat'),
+			'j_longitude' => $this->input->post('long'),
+			'j_tel' => $this->input->post('j_tel'),
+		);
 
 		$this->db->where('h_id',$h_id);
 		$query_check=$this->db->update('household',$data);
@@ -209,6 +315,37 @@ class Japo_m extends CI_Model {
 			return "false_true";
 		}else{
 		  	return "false_regieter";
+		}
+	}
+
+	public function japo_deal($j_id)
+	{ 
+		$data['quer_deal'] = $this->db->query(" SELECT japomodel_share.*,ac_initials
+										FROM  japomodel_share
+										LEFT JOIN activity ON japomodel_share.j_s_occupation = activity.ac_id
+										WHERE japomodel_share.j_s_h_id = '$j_id'
+									  ")->result_array();
+
+		$data['quer_code'] = $this->db->query(" SELECT *
+										FROM  japomodel
+										LEFT JOIN provinces ON japomodel.j_province = provinces.pro_id
+										WHERE japomodel.j_id = '$j_id'
+									  ")->result_array()['0'];
+
+		$data['activity'] = $this->db->query(" SELECT ac_id,ac_initials FROM  activity ")->result_array();
+
+		return $data;
+	}
+
+	public function insert_deal() 
+	{
+		$query_check=$this->db->insert('japomodel_share',$this->input->post());
+
+		if ($query_check) {
+			$this->session->set_flashdata('rigister_success','บันทึกการเปลียนแปลงสำเร็จ');
+			return "false_true";
+		}else{
+			return "false_regieter";
 		}
 	}
 

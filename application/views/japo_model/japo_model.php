@@ -77,7 +77,7 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
-                      <th style="width: 6%">ลำดับ</th>
+                      <th style="width: 4%">ลำดับ</th>
                       <th style="width: 15%">ชื่อ-สกุล</th>
                       <th style="width: 25%">ที่อยู่</th>
                       <!-- <th style="width: 12%">ความพร้อม</th> -->
@@ -85,7 +85,7 @@
                       <th style="width: 6%">นำทาง</th>
                       <!-- <th style="width: 8%">รายได้</th> -->
                       <?php if (!$this->session->userdata('login') == '') { ?>
-                        <!-- <th style="width: 11%">จัดการ</th> -->
+                        <th style="width: 12%">จัดการ</th>
                       <?php }else{
 
                       } ?>
@@ -107,19 +107,25 @@
                         <button type="button" class="btn btn-block btn-success btn-xs" onclick="window.location='http://www.google.com/maps/place/<?php echo $hous->j_latitude; ?>,<?php echo $hous->j_longitude; ?>'">นำทาง</button>
                       </td>
                       <?php if (!$this->session->userdata('login') == '') { ?>
-                        <!-- <td>
+                        <td>
                           <div class="row">
                             <div class="col-sm-4">
-                               <button type="button" class="btn btn-block btn-primary btn-xs" onclick="window.location='<?php echo site_url("Household_c/Manage_c/househole/".$hous->j_id); ?>'"><i class="far fa-eye"></i></button>
+                              <button type="button" class="btn btn-block btn-primary btn-xs" onclick="window.location='<?php echo site_url("Japo_c/Manage_japo_c/japo_deal/".$hous->j_id); ?>'">ช่วยเหลือ</button>
                             </div>
                             <div class="col-sm-4">
-                              <button type="button" class="btn btn-block btn-success btn-xs" onclick="window.location='<?php echo site_url("Household_c/Manage_c/househole_edit/".$hous->j_id); ?>'"><i class="fas fa-edit"></i></button>
+                              <form action="" method="post"enctype="multipart/form-data">
+                                <button type="submit" class="btn btn-block btn-success btn-xs">ติดตาม</button>
+                                <input type="" hidden="hidden" name="acid" value="">
+                              </form>
                             </div>
-                            <div class="col-sm-4">
-                              <button type="button" class="btn btn-block btn-danger btn-xs" onclick="window.location='<?php echo site_url("Household_c/Manage_c/househole_bin/".$hous->j_id); ?>'"><i class="fas fa-prescription-bottle"></i></button>
+                            <div class="col-sm-2">
+                              <button type="button" class="btn btn-block btn-success btn-xs" onclick="window.location='<?php echo site_url("Japo_c/Manage_japo_c/japo_edit/".$hous->j_id); ?>'"><i class="fas fa-edit"></i></button>
+                            </div>
+                            <div class="col-sm-2">
+                              <button type="button" class="btn btn-block btn-danger btn-xs" onclick="window.location='<?php echo site_url("Japo_c/Manage_japo_c/japo_bin/".$hous->j_id); ?>'"><i class="fas fa-prescription-bottle"></i></button>
                             </div>
                           </div>
-                        </td> -->
+                        </td>
                       <?php }else{
 
                       } ?>
