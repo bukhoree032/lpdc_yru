@@ -20,7 +20,7 @@
 
 <div id="vegetable" class="tabcontent">
   <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
-  <?php $this->load->view('japo_model/tablink/tablink_mushroom'); ?>
+  <?php $this->load->view('japo_model/tablink/tablink_vegetable'); ?>
 </div>
 
 <div id="mushroom" class="tabcontent">

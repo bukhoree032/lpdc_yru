@@ -1,4 +1,21 @@
-<table id="example1" class="table table-bordered table-striped">
+<script>
+  $(function () {
+    $("#example_honey").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+<table id="example_honey" class="table table-bordered table-striped">
     <thead>
         <tr>
             <th style="width: 3%">ลำดับ</th>
