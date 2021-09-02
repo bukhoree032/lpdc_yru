@@ -38,20 +38,23 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-sm-2">
-                      <!-- <button type="button" class="btn btn-block bg-gradient-primary btn-sm" data-toggle="modal" data-target="#myModal" style="width: 100%">+ อุปกรณ์</button> -->
-                      <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">+ ส่งเสริม
-                        </button>
-                        <ul class="dropdown-menu">
+                    <!-- <button type="button" class="btn btn-block bg-gradient-primary btn-sm" data-toggle="modal" data-target="#myModal" style="width: 100%">+ อุปกรณ์</button> -->
+                    <div class="dropdown">
+                      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="width: 100%">+ ส่งเสริม </button>
+                      <ul class="dropdown-menu">
+                        <?php if(isset($occupation)){ ?>
                           <?php foreach ($occupation as $key => $value) { ?>
                             <li data-toggle="modal" data-target="#myModal_<?php echo $key ?>"><a style='cursor: pointer;'><?php echo $value ?></a></li>
                           <?php } ?>
-                        </ul>
-                      </div>
+                        <?php }else{ ?>
+                            <li><a style='cursor: pointer;'>ไม่มีอาชีพ</a></li>
+                        <?php } ?>
+                      </ul>
                     </div>
-                  <!-- <div class="col-sm-2">
-                      <button type="button" class="btn btn-block bg-gradient-primary btn-sm" data-toggle="modal" data-target="#myModal" style="width: 100%">+ ส่งเสริม</button>
-                  </div> -->
+                  </div>
+                  <div class="col-sm-2">
+                    <a type="button" class="btn btn-primary" href="<?php echo site_url("Japo_c/Manage_japo_c/japo_trace/".$j_id); ?>" style="width: 100%">+ ติดตาม</a>
+                  </div>
                   <!-- ------------------------model------------------------ -->
                   <?php $this->load->view('japo_model/modal_deal/honey'); ?>
                   <?php $this->load->view('japo_model/modal_deal/chicken'); ?>
@@ -90,7 +93,7 @@
                     <th style="width: 12%">อาชีพ</th>
                     <th style="width: 30%">ช่วยเหลือ</th>
                     <th style="width: 20%">หมายเหตุ</th>
-                    <th style="width: 10%">ติดตาม</th>
+                    <!-- <th style="width: 10%">ติดตาม</th> -->
                     <th style="width: 10%">แก้ไข</th>
                   </tr>
                   </thead>
@@ -98,31 +101,40 @@
                     <?php foreach ($japo_deal['quer_deal'] as $key => $value) { ?>
                       <?php
                         if($value['j_s_occupation'] == '8'){
-                          $data = chicken($value['j_s_receive'], $value['j_s_occupation']);
+                          $data = chicken($value['j_s_receive'], $value['j_s_receive_empty']);
+                          $this->load->view('japo_model/modal_deal_edit/chicken',$value);
                         }
                         if($value['j_s_occupation'] == '9'){
-                          $data = honey($value['j_s_receive'], $value['j_s_occupation']);
+                          $data = honey($value['j_s_receive'], $value['j_s_receive_empty']);
+                          $this->load->view('japo_model/modal_deal_edit/honey',$value);
                         }
                         if($value['j_s_occupation'] == '10'){
-                          $data = mushroom($value['j_s_receive'], $value['j_s_occupation']);
+                          $data = mushroom($value['j_s_receive'], $value['j_s_receive_empty']);
+                          $this->load->view('japo_model/modal_deal_edit/mushroom',$value);
                         }
                         if($value['j_s_occupation'] == '29'){
-                          $data = vegetable($value['j_s_receive'], $value['j_s_occupation']);
+                          $data = vegetable($value['j_s_receive'], $value['j_s_receive_empty']);
+                          $this->load->view('japo_model/modal_deal_edit/vegetable',$value);
                         }
-                          // $data = honey("4" ,"0")
                       ?>
                       <tr>
                         <td><?php echo $key+1 ?></td>
                         <td><?php echo $value['ac_initials'] ?></td>
                         <td><?php echo $data; ?></td>
                         <td><?php echo $value['j_s_annotation'] ?></td>
-                        <td>
+                        <!-- <td>
                           <form action="" method="post"enctype="multipart/form-data">
                             <button type="submit" class="btn btn-block btn-success btn-xs">ติดตาม</button>
                             <input type="" hidden="hidden" name="deal" value="">
                           </form>
+                        </td> -->
+                        <td>
+                          <div class="row">
+                            <div class="col-sm-6">
+                              <button type="button" class="btn btn-block btn-success btn-xs" data-toggle="modal" data-target="#myModal_edit_<?php echo $value['j_s_id'] ?>" style="width: 100%"><i class="fas fa-edit"></i></button>
+                            </div>
+                          </div>
                         </td>
-                        <td></td>
                       </tr>
                     <?php } ?>
                   </tbody>

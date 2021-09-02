@@ -113,7 +113,7 @@
                               <button type="button" class="btn btn-block btn-primary btn-xs" onclick="window.location='<?php echo site_url("Japo_c/Manage_japo_c/japo_deal/".$hous->j_id); ?>'">ช่วยเหลือ</button>
                             </div>
                             <div class="col-sm-4">
-                              <form action="" method="post"enctype="multipart/form-data">
+                              <form action="<?php echo site_url("Japo_c/Manage_japo_c/japo_trace/".$hous->j_id); ?>" method="post"enctype="multipart/form-data">
                                 <button type="submit" class="btn btn-block btn-success btn-xs">ติดตาม</button>
                                 <input type="" hidden="hidden" name="acid" value="">
                               </form>

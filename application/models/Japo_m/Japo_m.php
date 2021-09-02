@@ -349,6 +349,51 @@ class Japo_m extends CI_Model {
 		}
 	}
 
+	public function update_deal($j_s_id) 
+	{
+		
+		$this->db->where('j_s_id',$j_s_id);
+		$query_check=$this->db->update('japomodel_share',$this->input->post());
+
+		if ($query_check) {
+			$this->session->set_flashdata('rigister_success','บันทึกการเปลียนแปลงสำเร็จ');
+			return "false_true";
+		}else{
+				return "false_regieter";
+		}
+	}
+
+	public function japo_trace($j_id)
+	{ 
+		$data['quer_trace'] = $this->db->query(" SELECT japomodel_trace.*,ac_initials
+										FROM  japomodel_trace
+										LEFT JOIN activity ON japomodel_trace.j_t_occupation = activity.ac_id
+										WHERE japomodel_trace.j_t_h_id = '$j_id'
+									  ")->result_array();
+
+		$data['quer_code'] = $this->db->query(" SELECT *
+										FROM  japomodel
+										LEFT JOIN provinces ON japomodel.j_province = provinces.pro_id
+										WHERE japomodel.j_id = '$j_id'
+									  ")->result_array()['0'];
+
+		$data['activity'] = $this->db->query(" SELECT ac_id,ac_initials FROM  activity ")->result_array();
+
+		return $data;
+	}
+
+	public function insert_trace() 
+	{
+		$query_check=$this->db->insert('japomodel_trace',$this->input->post());
+
+		if ($query_check) {
+			$this->session->set_flashdata('rigister_success','บันทึกการเปลียนแปลงสำเร็จ');
+			return "false_true";
+		}else{
+			return "false_regieter";
+		}
+	}
+
 	public function manage_bin($h_id) //ลบ
 	{
 		$data = array(

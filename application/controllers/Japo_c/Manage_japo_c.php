@@ -104,20 +104,20 @@ class Manage_japo_c extends CI_Controller {
 
 	public function japo_deal($j_id)
 	{
-		// $data_selec=$this->Japo_m->japo_edit($j_id);
 		$data['japo_deal']=$this->Japo_m->japo_deal($j_id);
 
-		$j_occupation = unserialize($data['japo_deal']['quer_code']['j_occupation']);
-
-		foreach ($j_occupation as $key => $value) {
-			foreach ($data['japo_deal']['activity'] as $key_activity => $value_activity) {
-				if($value == $value_activity['ac_id']){
-					$data_occupation[$value_activity['ac_id']] = $value_activity['ac_initials'];
+		if(isset($data['japo_deal']['quer_code']['j_occupation'])){
+			$j_occupation = unserialize($data['japo_deal']['quer_code']['j_occupation']);
+			foreach ($j_occupation as $key => $value) {
+				foreach ($data['japo_deal']['activity'] as $key_activity => $value_activity) {
+					if($value == $value_activity['ac_id']){
+						$data_occupation[$value_activity['ac_id']] = $value_activity['ac_initials'];
+					}
 				}
 			}
+			$data['occupation'] = $data_occupation;
 		}
 
-		$data['occupation']= $data_occupation;
 		$data['j_id']= $j_id;
 		$data['activity_nav']=$this->Manage_m->activity_nav();
 
@@ -132,5 +132,45 @@ class Manage_japo_c extends CI_Controller {
 		$data['j_id'] = $j_id;
 
 		$this->load->view('japo_model/url_deal',$data);
+	}
+
+	public function update_deal($j_s_id)
+	{
+		$this->Japo_m->update_deal($j_s_id);
+		$data['j_id'] = $this->input->post('j_s_h_id');
+
+		$this->load->view('japo_model/url_deal',$data);
+	}
+
+	public function japo_trace($j_id)
+	{
+		$data['trace']=$this->Japo_m->japo_trace($j_id);
+
+		if(isset($data['trace']['quer_code']['j_occupation'])){
+			$j_occupation = unserialize($data['trace']['quer_code']['j_occupation']);
+			foreach ($j_occupation as $key => $value) {
+				foreach ($data['trace']['activity'] as $key_activity => $value_activity) {
+					if($value == $value_activity['ac_id']){
+						$data_occupation[$value_activity['ac_id']] = $value_activity['ac_initials'];
+					}
+				}
+			}
+			$data['occupation'] = $data_occupation;
+		}
+
+		$data['activity_nav']=$this->Manage_m->activity_nav();
+		$data['j_id'] = $j_id;
+		
+		$this->load->view('head',$data);
+		$this->load->view('popup/success');
+		$this->load->view('japo_model/trace');
+	}
+
+	public function insert_trace($j_id)
+	{
+		$this->Japo_m->insert_trace($j_id);
+		$data['j_id'] = $j_id;
+
+		$this->load->view('japo_model/url_trace',$data);
 	}
 }

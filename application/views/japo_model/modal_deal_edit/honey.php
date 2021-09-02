@@ -1,8 +1,8 @@
 
-<div class="modal" id="myModal_9">
+<div class="modal" id="myModal_edit_<?php echo $j_s_id; ?>">
     <div class="modal-dialog">
         <div class="modal-content">
-        <form action="<?php echo site_url("Japo_c/Manage_japo_c/insert_deal/".$j_id); ?>" method="post"enctype="multipart/form-data">
+        <form action="<?php echo site_url("Japo_c/Manage_japo_c/update_deal/".$j_s_id); ?>" method="post"enctype="multipart/form-data">
         
             <div class="modal-header">
             <h4 class="modal-title">บันทึกประวัติการช่วยเหลือ</h4>
@@ -17,7 +17,7 @@
                     <p>รังที่มีผึ้ง : </p>
                 </div>
                 <div class="col-md-5">
-                    <input type="text" class=" form-control" name="j_s_receive" value="5">
+                    <input type="text" class=" form-control" name="j_s_receive" value="<?php echo $j_s_receive ?>">
                 </div> 
                 <div  class="col-md-3" style="margin-top: 10px;">&nbsp;&nbsp; รัง</div>
             </div>
@@ -26,7 +26,7 @@
                     <p>รังเปล่า : </p>
                 </div>
                 <div class="col-md-5">
-                    <input type="text" class=" form-control" name="j_s_receive_empty" value="0">
+                    <input type="text" class=" form-control" name="j_s_receive_empty" value="<?php echo $j_s_receive_empty ?>">
                 </div> 
                 <div  class="col-md-3" style="margin-top: 10px;">&nbsp;&nbsp; รัง</div>
             </div>
@@ -35,7 +35,7 @@
                 <p>หมายเหตุ : </p>
                 </div>
                 <div class="col-md-8">
-                <textarea class="form-control" name="j_s_annotation" rows="4" id="comment"></textarea>
+                <textarea class="form-control" name="j_s_annotation" rows="4" id="comment"><?php echo $j_s_annotation ?></textarea>
                 </div>
             </div>
             </div>
@@ -47,3 +47,4 @@
         </div>
     </div>
 </div>
+
