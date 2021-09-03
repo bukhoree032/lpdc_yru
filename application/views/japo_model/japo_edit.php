@@ -121,7 +121,7 @@
                 <div class="col-md-2">
                   <div class="form-group">
                     <label>รายได้</label>
-                    <input type="text" class="form-control" name="j_revenue" value="<?php echo $quer_code['j_revenue  '] ?>">
+                    <input type="text" class="form-control" name="j_revenue" value="<?php echo $quer_code['j_revenue'] ?>">
                   </div>
                 </div>
                 <!-- <div class="col-md-2">
