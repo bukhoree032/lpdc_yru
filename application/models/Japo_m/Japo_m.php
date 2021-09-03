@@ -222,15 +222,15 @@ class Japo_m extends CI_Model {
 		}else{
 			$j_gender_gen ='หญิง';
 		}
-		// $j_occupation = $this->input->post('j_occupation');
+		$j_occupation = $this->input->post('j_occupation');
 
-		// if(isset($j_occupation)){
-		// 	$j_occupation = serialize($j_occupation);
-		// }
+		if(isset($j_occupation)){
+			$j_occupation = serialize($j_occupation);
+		}
 
 		$data = array(
 						'j_row_budget' => $this->input->post('j_row_budget'),
-						// 'j_occupation' => $j_occupation,
+						'j_occupation' => $j_occupation,
 						'j_title' => $this->input->post('j_title'),
 						'j_name' => $this->input->post('j_name'),
 						'j_surname' => $this->input->post('j_surname'),

@@ -13,7 +13,7 @@
                 <div class="card-header">
                   <div class="row">
                     <div class="col-sm-2">
-                      <button type="button" class="btn btn-block bg-gradient-primary btn-sm" style="width: 100%" onclick="window.location='<?php echo site_url("japo_c/Manage_japo_c/japo_add"); ?>'">+ เพิ่มสมาชิก</button>
+                      <a type="button" class="btn btn-block bg-gradient-primary btn-sm" style="width: 100%" href="<?php echo site_url("Japo_c/Manage_japo_c/japo_add/"); ?>">+ เพิ่มสมาชิก</a>
                     </div>
                   </div>
                 </div>

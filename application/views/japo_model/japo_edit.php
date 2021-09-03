@@ -99,9 +99,21 @@
                   <div class="form-group">
                     <label>อาชีพที่ส่งเสริม</label>
                     <select class="form-control select2bs4" name="j_occupation[]" style="width: 100%;" multiple>
-                      <option value="ฟฟฟฟฟ" selectet>ฟฟฟฟฟ</option>
+                      <?php if($quer_code['j_occupation'] != '') {
+                        $j_occupation = unserialize($quer_code['j_occupation']);
+                      }?>
                       <?php foreach ($manage_year['acti'] as $acti) { ?>
-                        <option value="<?php echo $acti->ac_id; ?>"><?php echo $acti->ac_initials; ?></option>
+                        <?php if($quer_code['j_occupation'] != '') { ?>
+                          <?php foreach ($j_occupation as $occupation) { ?>
+                            <?php if($acti->ac_id == $occupation){ ?>
+                              <option value="<?php echo $acti->ac_id; ?>" selected><?php echo $acti->ac_initials; ?></option>
+                            <?php }else{ ?>
+                              <option value="<?php echo $acti->ac_id; ?>"><?php echo $acti->ac_initials; ?></option>
+                            <?php } ?>
+                          <?php } ?>
+                        <?php }else{ ?>
+                          <option value="<?php echo $acti->ac_id; ?>"><?php echo $acti->ac_initials; ?></option>
+                        <?php } ?>
                       <?php } ?>
                     </select>
                   </div>
