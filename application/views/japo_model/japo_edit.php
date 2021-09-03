@@ -40,13 +40,13 @@
           <!-- /.card-header -->
             <div class="card-body">
               <div class="row">
-                <input type="hidden" name="j_id" value="<?php echo $quer_code['j_id'] ??null ?>">
+                <input type="hidden" name="j_id" value="<?php echo $quer_code['j_id'] ?>">
                 <div class="col-md-2">
                 <div class="form-group">
                   <label>ปีงบประมาน </label>
                   <select class="form-control select2bs4" name="j_row_budget" style="width: 100%;">
                     <?php $date_time = date("Y");?>
-                      <option value="<?php echo $quer_code['j_row_budget'] ??null ?>" selected="selected"><?php echo $quer_code['j_row_budget'] ??null ?></option>
+                      <option value="<?php echo $quer_code['j_row_budget'] ?>" selected="selected"><?php echo $quer_code['j_row_budget'] ?></option>
                       <option><?php echo $date_time + '543' + '1' ?></option>
                       <option><?php echo $date_time + '543' +  '0' ?></option>
                       <option><?php echo $date_time + '543' +  '-1' ?></option>
@@ -64,7 +64,7 @@
                   <div class="form-group">
                     <label>คำนำหน้า</label>
                     <select class="form-control select2bs4" name="j_title" style="width: 100%;" required>
-                      <option value="<?php echo $quer_code['j_title'] ??null ?>" selected="selected"><?php echo $quer_code['j_title'] ??null ?></option>
+                      <option value="<?php echo $quer_code['j_title'] ?>" selected="selected"><?php echo $quer_code['j_title'] ?></option>
                       <option value="นาย">นาย</option>
                       <option value="นาง">นาง</option>
                       <option value="นางสาว">นางสาว</option>
@@ -75,14 +75,14 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label>ชื่อ</label>
-                    <input type="text" class="form-control" name="j_name" value="<?php echo $quer_code['j_name'] ??null ?>" required>
+                    <input type="text" class="form-control" name="j_name" value="<?php echo $quer_code['j_name'] ?>" required>
                   </div>
                   <!-- /.form-group -->
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                     <label>สกุล</label>
-                    <input type="text" class="form-control" name="j_surname" value="<?php echo $quer_code['j_surname'] ??null ?>" required>
+                    <input type="text" class="form-control" name="j_surname" value="<?php echo $quer_code['j_surname'] ?>" required>
                   </div>
                   <!-- /.form-group -->
                 </div>
@@ -91,7 +91,7 @@
                 <div class="col-md-1">
                   <div class="form-group">
                     <label>อายุ</label>
-                    <input type="text" class="form-control" name="j_age" value="<?php echo $quer_code['j_age'] ??null ?>">
+                    <input type="text" class="form-control" name="j_age" value="<?php echo $quer_code['j_age'] ?>">
                   </div>
                   <!-- /.form-group -->
                 </div>
@@ -121,7 +121,7 @@
                 <div class="col-md-2">
                   <div class="form-group">
                     <label>รายได้</label>
-                    <input type="text" class="form-control" name="j_revenue" value="<?php echo $quer_code['j_revenue  '] ??null ?>">
+                    <input type="text" class="form-control" name="j_revenue" value="<?php echo $quer_code['j_revenue  '] ?>">
                   </div>
                 </div>
                 <!-- <div class="col-md-2">
@@ -133,7 +133,7 @@
                 <div class="col-md-2">
                   <div class="form-group">
                     <label>เบอร์โทร</label>
-                    <input type="text" class="form-control" name="j_tel" value="<?php echo $quer_code['j_tel'] ??null ?>">
+                    <input type="text" class="form-control" name="j_tel" value="<?php echo $quer_code['j_tel'] ?>">
                   </div>
                   <!-- /.form-group -->
                 </div>
@@ -149,35 +149,35 @@
                 <div class="col-md-2">
                   <div class="form-group">
                     <label>บ้านเลขที่</label>
-                    <input type="text" class="form-control" name="j_house_number" value="<?php echo $quer_code['j_house_number'] ??null ?>">
+                    <input type="text" class="form-control" name="j_house_number" value="<?php echo $quer_code['j_house_number'] ?>">
                   </div>
                   <!-- /.form-group -->
                 </div>
                 <div class="col-md-2">
                   <div class="form-group">
                     <label>บ้าน</label>
-                    <input type="text" class="form-control" name="j_village" value="<?php echo $quer_code['j_village'] ??null ?>">
+                    <input type="text" class="form-control" name="j_village" value="<?php echo $quer_code['j_village'] ?>">
                   </div>
                   <!-- /.form-group -->
                 </div>
                 <div class="col-md-1">
                   <div class="form-group">
                     <label>หมู่</label>
-                    <input type="text" class="form-control" name="j_swine" value="<?php echo $quer_code['j_swine'] ??null ?>">
+                    <input type="text" class="form-control" name="j_swine" value="<?php echo $quer_code['j_swine'] ?>">
                   </div>
                   <!-- /.form-group -->
                 </div>
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>ซอย</label>
-                    <input type="text" class="form-control" name="j_alley" value="<?php echo $quer_code['j_alley'] ??null ?>">
+                    <input type="text" class="form-control" name="j_alley" value="<?php echo $quer_code['j_alley'] ?>">
                   </div>
                   <!-- /.form-group -->
                 </div>
                 <div class="col-md-3">
                   <div class="form-group">
                     <label>ถนน</label>
-                    <input type="text" class="form-control" name="j_street" value="<?php echo $quer_code['j_street'] ??null ?>">
+                    <input type="text" class="form-control" name="j_street" value="<?php echo $quer_code['j_street'] ?>">
                   </div>
                   <!-- /.form-group -->
                 </div>
@@ -185,7 +185,7 @@
                   <div class="form-group">
                     <label>ตำบล</label>
                     <select class="form-control select2" name="j_parish" style="width: 100%;" required>
-                        <option value="<?php echo $quer_code['j_parish'] ??null ?>" selected="selected"><?php echo $quer_code['j_parish'] ??null ?></option>
+                        <option value="<?php echo $quer_code['j_parish'] ?>" selected="selected"><?php echo $quer_code['j_parish'] ?></option>
                       <?php foreach ($provinces['dis'] as $pro) { ?>
                         <option value="<?php echo $pro->dis_name_th; ?>" ><?php echo $pro->dis_name_th; ?></option>
                       <?php } ?>
@@ -196,7 +196,7 @@
                   <div class="form-group">
                     <label>อำเถอ</label>
                     <select class="form-control select2" name="j_district" style="width: 100%;" required>
-                      <option value="<?php echo $quer_code['j_district'] ??null ?>" selected="selected"><?php echo $quer_code['j_district'] ??null ?></option>
+                      <option value="<?php echo $quer_code['j_district'] ?>" selected="selected"><?php echo $quer_code['j_district'] ?></option>
                       <?php foreach ($provinces['aum'] as $pro) { ?>
                         <option value="<?php echo $pro->aum_name_th; ?>" ><?php echo $pro->aum_name_th; ?></option>
                       <?php } ?>
@@ -207,7 +207,7 @@
                   <div class="form-group">
                     <label>จังหวัด</label>
                     <select class="form-control select2" name="j_province" style="width: 100%;" required>
-                        <option value="<?php echo $quer_code['j_province'] ??null ?>" selected="selected"><?php echo $quer_code['name_th'] ??null ?></option>
+                        <option value="<?php echo $quer_code['j_province'] ?>" selected="selected"><?php echo $quer_code['name_th'] ?></option>
                       <?php foreach ($provinces['pro'] as $pro) { ?>
                         <option value="<?php echo $pro->pro_id; ?>" ><?php echo $pro->name_th; ?></option>
                       <?php } ?>
@@ -279,8 +279,8 @@
                   </div> -->
                   <div class="col-sm-12"><br>
                     <div  id="geo_data">
-                      ละติจูด : <input type="text" class="form-control" name="lat" value="<?php echo $quer_code['j_latitude'] ??null ?>"  style="width:30%;" >
-                      ลองติจูด : <input type="text" class="form-control" name="long" value="<?php echo $quer_code['j_longitude'] ??null ?>" style="width:30%;" >
+                      ละติจูด : <input type="text" class="form-control" name="lat" value="<?php echo $quer_code['j_latitude'] ?>"  style="width:30%;" >
+                      ลองติจูด : <input type="text" class="form-control" name="long" value="<?php echo $quer_code['j_longitude'] ?>" style="width:30%;" >
                     </div>
                     <br>
                     <button type="button" class="btn bg-gradient-primary" onclick="myFunction()">+ ปักหมุดที่อยู่ปัจจุบัน</button>
