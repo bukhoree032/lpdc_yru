@@ -47,9 +47,15 @@
                     <td><?php echo $value['j_t_annotition'] ?></td>
                     <td>
                         <div class="row">
-                        <div class="col-sm-6">
-                            <!-- <button type="button" class="btn btn-block btn-success btn-xs" data-toggle="modal" data-target="#myModal_edit_<?php echo $value['j_s_id'] ?>" style="width: 100%"><i class="fas fa-edit"></i></button> -->
-                        </div>
+                            <div class="col-sm-6">
+                                <!-- <button type="button" class="btn btn-block btn-success btn-xs" data-toggle="modal" data-target="#myModal_edit_<?php echo $value['j_s_id'] ?>" style="width: 100%"><i class="fas fa-edit"></i></button> -->
+                            </div>
+                            <div class="col-sm-6">
+                              <form action="<?php echo site_url("Japo_c/Manage_japo_c/japo_trace_delete/".$value['j_t_id']); ?>" method="post"enctype="multipart/form-data">
+                                <button type="submit" class="btn btn-block btn-danger btn-xs"><i class="fas fa-prescription-bottle"></i></button>
+                                <input type="" hidden="hidden" name="j_t_h_id" value="<?php echo $value['j_t_h_id']; ?>">
+                              </form>
+                            </div>
                         </div>
                     </td>
                 </tr>
