@@ -122,7 +122,7 @@
                               <button type="button" class="btn btn-block btn-success btn-xs" onclick="window.location='<?php echo site_url("Japo_c/Manage_japo_c/japo_edit/".$hous->j_id); ?>'"><i class="fas fa-edit"></i></button>
                             </div>
                             <div class="col-sm-2">
-                              <button type="button" class="btn btn-block btn-danger btn-xs" onclick="window.location='<?php echo site_url("Japo_c/Manage_japo_c/japo_bin/".$hous->j_id); ?>'"><i class="fas fa-prescription-bottle"></i></button>
+                              <button type="button" class="btn btn-block btn-danger btn-xs" onclick="window.location='<?php echo site_url("Japo_c/Manage_japo_c/japo_delete/".$hous->j_id); ?>'"><i class="fas fa-prescription-bottle"></i></button>
                             </div>
                           </div>
                         </td>

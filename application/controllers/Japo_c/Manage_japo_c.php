@@ -85,6 +85,16 @@ class Manage_japo_c extends CI_Controller {
 		$this->load->view('japo_model/url_index');
 	}
 
+	public function japo_delete($j_id)
+	{
+		$this->Japo_m->delete($j_id,'j_s_h_id','japomodel_share');
+		$this->Japo_m->delete($j_id,'j_t_h_id','japomodel_trace');
+		
+		$this->Japo_m->delete($j_id,'j_id','japomodel');
+
+		$this->load->view('japo_model/url_index');
+	}
+
 	public function japo_search()
 	{
 		// echo $ac_id;
@@ -142,6 +152,14 @@ class Manage_japo_c extends CI_Controller {
 		$this->load->view('japo_model/url_deal',$data);
 	}
 
+	public function japo_deal_delete($j_s_id)
+	{
+		$this->Japo_m->delete($j_s_id,'j_s_id','japomodel_share');
+		$data['j_id'] = $this->input->post('j_s_h_id');
+
+		$this->load->view('japo_model/url_deal',$data);
+	}
+
 	public function japo_trace($j_id)
 	{
 		$data['trace']=$this->Japo_m->japo_trace($j_id);
@@ -170,6 +188,14 @@ class Manage_japo_c extends CI_Controller {
 	{
 		$this->Japo_m->insert_trace($j_id);
 		$data['j_id'] = $j_id;
+
+		$this->load->view('japo_model/url_trace',$data);
+	}
+
+	public function japo_trace_delete($j_t_id)
+	{
+		$this->Japo_m->delete($j_t_id,'j_t_id','japomodel_trace');
+		$data['j_id'] = $this->input->post('j_t_h_id');
 
 		$this->load->view('japo_model/url_trace',$data);
 	}

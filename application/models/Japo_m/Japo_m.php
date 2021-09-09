@@ -1,9 +1,16 @@
 <?php  
 class Japo_m extends CI_Model {
 	
-	public function manage()
+	public function delete($id,$j_s_id,$db)
+	{	
+		echo $j_s_id."/".$db;
+		$this->db->where($j_s_id,$id);
+        $this->db->delete($db);
+	}
 
-	{	$check = "";
+	public function manage()
+	{	
+		$check = "";
 		if ($this->session->userdata('japo_search_pro')) {
 			$check = "1";
 		}else if ($this->session->userdata('japo_search_year')) {
