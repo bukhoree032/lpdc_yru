@@ -27,7 +27,7 @@
           <div class="col-md-3 col-sm-6 col-12">
              <div class="row">
                 <div class="col-md-12 col-sm-6 col-12">
-                     <div class="info-box" style="background-color: #26cae4; color: #fff">
+                     <div class="info-box" style="background-color: #26cae4; color: #fff; cursor: pointer;"  onClick="window.location='<?php echo site_url("Household_c/Manage_c/dashbordMoo/"); ?>';">
                       <span class="info-box-icon"><?php echo $manage_dashboard['all_num'] ;?></span>
                       <div class="info-box-content">
                         <span class="info-box-text">ครัวเรือนยากจนทั้งหมด ปี <?php echo $manage_dashboard['year63'] ;?></span>
@@ -44,7 +44,7 @@
                    <!-- /.info-box -->
                 </div>
                 <div class="col-md-12 col-sm-6 col-12">
-                     <div class="info-box" style="background-color: #26cae4; color: #fff">
+                     <div class="info-box" style="background-color: #26cae4; color: #fff; cursor: pointer;"  onClick="window.location='<?php echo site_url("Household_c/Manage_c/dashbordMoo/"); ?>';">
                       <span class="info-box-icon"><?php echo $manage_dashboard['all_num62'] ;?></i></span>
                       <div class="info-box-content">
                         <span class="info-box-text">ครัวเรือนยากจนทั้งหมด ปี <?php echo $manage_dashboard['year62'] ;?></span>
@@ -66,7 +66,7 @@
           <div class="col-md-3 col-sm-6 col-12">
              <div class="row">
                 <div class="col-md-12 col-sm-6 col-12">
-                     <div class="info-box" style="background-color: #3ad05c; color: #fff">
+                     <div class="info-box" style="background-color: #3ad05c; color: #fff; cursor: pointer;"  onClick="window.location='<?php echo site_url("Household_c/Manage_c/dashbordMoo/"); ?>';">
                       <span class="info-box-icon"><?php echo $manage_dashboard['nara_num'] ;?></span>
                       <div class="info-box-content">
                          <span class="info-box-text">นราธิวาส ปี <?php echo $manage_dashboard['year63'] ;?></span>
@@ -82,7 +82,7 @@
                    </div>
                 </div>
                 <div class="col-md-12 col-sm-6 col-12">
-                     <div class="info-box" style="background-color: #3ad05c; color: #fff">
+                     <div class="info-box" style="background-color: #3ad05c; color: #fff; cursor: pointer;"  onClick="window.location='<?php echo site_url("Household_c/Manage_c/dashbordMoo/"); ?>';">
                       <span class="info-box-icon"><?php echo $manage_dashboard['nara_num62'] ;?></i></span>
                       <div class="info-box-content">
                          <span class="info-box-text">นราธิวาส ปี <?php echo $manage_dashboard['year62'] ;?></span>
@@ -105,7 +105,7 @@
           <div class="col-md-3 col-sm-6 col-12">
              <div class="row">
                 <div class="col-md-12 col-sm-6 col-12">
-                     <div class="info-box" style="background-color: #ffc107; color: #fff">
+                     <div class="info-box" style="background-color: #ffc107; color: #fff; cursor: pointer;"  onClick="window.location='<?php echo site_url("Household_c/Manage_c/dashbordMoo/"); ?>';">
                       <span class="info-box-icon" style="color: #fff"><?php echo $manage_dashboard['yala_num'] ;?></span>
                       <div class="info-box-content" style="color: #fff">
                          <span class="info-box-text">ยะลา ปี <?php echo $manage_dashboard['year63'] ;?></span>
@@ -121,7 +121,7 @@
                    </div>
                 </div>
                 <div class="col-md-12 col-sm-6 col-12">
-                     <div class="info-box" style="background-color: #ffc107; color: #fff">
+                     <div class="info-box" style="background-color: #ffc107; color: #fff; cursor: pointer;"  onClick="window.location='<?php echo site_url("Household_c/Manage_c/dashbordMoo/"); ?>';">
                       <span class="info-box-icon" style="color: #fff"><?php echo $manage_dashboard['yala_num62'] ;?></span>
                       <div class="info-box-content" style="color: #fff">
                          <span class="info-box-text">ยะลา ปี <?php echo $manage_dashboard['year62'] ;?></span>
@@ -142,7 +142,7 @@
           <div class="col-md-3 col-sm-6 col-12">
              <div class="row">
                 <div class="col-md-12 col-sm-6 col-12">
-                     <div class="info-box" style="background-color: #7f8991; color: #fff">
+                     <div class="info-box" style="background-color: #7f8991; color: #fff; cursor: pointer;"  onClick="window.location='<?php echo site_url("Household_c/Manage_c/dashbordMoo/"); ?>';">
                       <span class="info-box-icon"><?php echo $manage_dashboard['pat_num'] ;?></span>
                       <div class="info-box-content">
                          <span class="info-box-text">ปัตตานี ปี <?php echo $manage_dashboard['year63'] ;?></span>
@@ -158,7 +158,7 @@
                    </div>
                 </div>
                 <div class="col-md-12 col-sm-6 col-12">
-                  <div class="info-box" style="background-color: #7f8991; color: #fff">
+                  <div class="info-box" style="background-color: #7f8991; color: #fff; cursor: pointer;"  onClick="window.location='<?php echo site_url("Household_c/Manage_c/dashbordMoo/"); ?>';">
                       <span class="info-box-icon"><?php echo $manage_dashboard['pat_num62'] ;?></span>
                       <div class="info-box-content">
                          <span class="info-box-text">ปัตตานี ปี <?php echo $manage_dashboard['year62'] ;?></span>

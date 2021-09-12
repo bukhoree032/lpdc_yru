@@ -435,492 +435,307 @@ class Dashboard_m extends CI_Model {
 		$data['count']['nara_scholl'] = $onet;
 
 		return $data['count'];
+	}
 
+	public function manage_hol1($budget,$tobudget,$province,$acti)
+	{
+		$year = date('Y')+543;
+		$parish_household = '';
+		$parish_otop = '';
+		$parish_japo = '';
+		$parish_onet = '';
+		$parish_ubi = '';
 
-		$quer_code = $this->db->query(" SELECT h_title,h_province,h_status_past
-										FROM  household
-										LEFT JOIN provinces ON provinces.pro_id = household.h_province
-										LEFT JOIN activity ON activity.ac_id = household.h_occupation
-										WHERE household.h_row_budget = '$year' AND NOT household.h_status_bin = '2' ORDER BY h_id DESC
-									  ");
+		$district_household = '';
+		$district_otop = '';
+		$district_japo = '';
+		$district_onet = '';
+		$district_ubi = '';
+		
+		$household = '';
+		$otop = '';
+		$japomodel = '';
+		$onet = '';
+		$otop_ubi = '';
 
-		$all_num63 = $quer_code->num_rows();
-		$year63 = $year;
-		$all_men63 = 0;
-		$all_women63 = 0;
-		$all_notpass63 = 0;
-		$all_pass63 = 0;
-		$all_wait63 = 0;
-		foreach ($quer_code->result_array() as $rs) { //ไปวิ่งเช็คข้อมูล
-			if ($rs["h_title"] == "นาย") {
-	          $all_men63 = $all_men63+1;
-	        }else{
-	          $all_women63 = $all_women63+1;
-	        }
-
-	        if ($rs["h_status_past"] == "2") {
-	          	$all_notpass63 = $all_notpass63+1;
-	        }else if ($rs["h_status_past"] == "1") {
-	          	$all_pass63 = $all_pass63+1;
-	        }else{
-	        	$all_wait63 = $all_wait63+1;
-	        }
-		}
-
-		$pat_num63 = 0;
-		$pat_men63 = 0;
-		$pat_women63 = 0;
-		$pat_notpass63 = 0;
-		$pat_pass63 = 0;
-		$pat_wait63 = 0;
-		foreach ($quer_code->result_array() as $rs) { //74 = pat
-			if ($rs["h_province"] == "74") {
-				$pat_num63 = $pat_num63+1;
-				if ($rs["h_title"] == "นาย") {
-		          $pat_men63 = $pat_men63+1;
-		        }else{
-		          $pat_women63 = $pat_women63+1;
-		        }
-
-		        if ($rs["h_status_past"] == "2") {
-		          	$pat_notpass63 = $pat_notpass63+1;
-		        }else if ($rs["h_status_past"] == "1") {
-		          	$pat_pass63 = $pat_pass63+1;
-		        }else{
-		        	$pat_wait63 = $pat_wait63+1;
-		        }
-		    }
-		}
-
-		$nara_num63 = 0;
-		$nara_men63 = 0;
-		$nara_women63 = 0;
-		$nara_notpass63 = 0;
-		$nara_pass63 = 0;
-		$nara_wait63 = 0;
-		foreach ($quer_code->result_array() as $rs) { //74 = pat
-			if ($rs["h_province"] == "76") {
-				$nara_num63 = $nara_num63+1;
-				if ($rs["h_title"] == "นาย") {
-		          $nara_men63 = $nara_men63+1;
-		        }else{
-		          $nara_women63 = $nara_women63+1;
-		        }
-
-		        if ($rs["h_status_past"] == "2") {
-		          	$nara_notpass63 = $nara_notpass63+1;
-		        }else if ($rs["h_status_past"] == "1") {
-		          	$nara_pass63 = $nara_pass63+1;
-		        }else{
-		        	$nara_wait63 = $nara_wait63+1;
-		        }
-		    }
-		}
-
-		$yala_num63 = 0;
-		$yala_men63 = 0;
-		$yala_women63 = 0;
-		$yala_notpass63 = 0;
-		$yala_pass63 = 0;
-		$yala_wait63 = 0;
-		foreach ($quer_code->result_array() as $rs) { //74 = pat
-			if ($rs["h_province"] == "75") {
-				$yala_num63 = $yala_num63+1;
-				if ($rs["h_title"] == "นาย") {
-		          $yala_men63 = $yala_men63+1;
-		        }else{
-		          $yala_women63 = $yala_women63+1;
-		        }
-
-		        if ($rs["h_status_past"] == "2") {
-		          	$yala_notpass63 = $yala_notpass63+1;
-		        }else if ($rs["h_status_past"] == "1") {
-		          	$yala_pass63 = $yala_pass63+1;
-		        }else{
-		        	$yala_wait63 = $yala_wait63+1;
-		        }
-		    }
-		}
-
-		$o_parish = $this->db->query(" SELECT DISTINCT h_parish
-										FROM  household
-										WHERE household.h_row_budget != '$year'
-									  ");
-		$o_district = $this->db->query(" SELECT DISTINCT h_district
-										FROM  household
-										WHERE household.h_row_budget != '$year'
-									  ");
-		$data['Household']['all_parish62'] = $o_parish;
-		$data['Household']['all_district62'] = $o_district;
-		$all_parish62 = $o_parish->num_rows();
-		$all_district62 = $o_district->num_rows();
-
-
-		$o_parish = $this->db->query(" SELECT DISTINCT h_parish
-										FROM  household
-										WHERE household.h_row_budget != '$year'AND household.h_province = '74'
-										-- WHERE household.h_province = '74'
-									  ");
-		$o_district = $this->db->query(" SELECT DISTINCT h_district
-										FROM  household
-										WHERE household.h_row_budget != '$year' AND household.h_province = '74'
-										-- WHERE household.h_province = '74'
-									  ");
-		$data['Household']['pat_parish62'] = $o_parish;
-		$data['Household']['pat_district62'] = $o_district;
-		$pat_parish62 = $o_parish->num_rows();
-		$pat_district62 = $o_district->num_rows();
-
-		$o_parish = $this->db->query(" SELECT DISTINCT h_parish
-										FROM  household
-										WHERE household.h_row_budget != '$year'AND household.h_province = '75'
-										-- WHERE household.h_province = '75'
-									  ");
-		$o_district = $this->db->query(" SELECT DISTINCT h_district
-										FROM  household
-										WHERE household.h_row_budget != '$year' AND household.h_province = '75'
-										-- WHERE household.h_province = '75'
-									  ");
-		$data['Household']['yala_parish62'] = $o_parish;
-		$data['Household']['yala_district62'] = $o_district;
-		$yala_parish62 = $o_parish->num_rows();
-		$yala_district62 = $o_district->num_rows();
-
-		$o_parish = $this->db->query(" SELECT DISTINCT h_parish
-										FROM  household
-										WHERE household.h_row_budget != '$year'AND household.h_province = '76'
-										-- WHERE household.h_province = '76'
-									  ");
-		$o_district = $this->db->query(" SELECT DISTINCT h_district
-										FROM  household
-										WHERE household.h_row_budget != '$year' AND household.h_province = '76'
-										-- WHERE household.h_province = '76'
-									  ");
-		$data['Household']['nara_parish62'] = $o_parish;
-		$data['Household']['nara_district62'] = $o_district;
-		$nara_parish62 = $o_parish->num_rows();
-		$nara_district62 = $o_district->num_rows();
-
-
-		$quer_code = $this->db->query(" SELECT h_title,h_province,h_status_past
-										FROM  household
-										LEFT JOIN provinces ON provinces.pro_id = household.h_province
-										LEFT JOIN activity ON activity.ac_id = household.h_occupation
-										WHERE household.h_row_budget != '$year' AND NOT household.h_status_bin = '2' ORDER BY h_id DESC
-									  ");
-		if ($year) {
-			$year = $year-1;
+		if(empty($budget)){
+			if(empty($tobudget)){
+				$budget = 'false';
+				$tobudget = 'false';
+				$NOTbudget = 'NOT';
+			}else{
+				$budget = $tobudget;
+				$tobudget = $tobudget;
+			}
 		}else{
-			$year = "";
-		}
-		$year62 = $year;
-
-		$all_num62 = $quer_code->num_rows();
-		$all_men62 = 0;
-		$all_women62 = 0;
-		$all_notpass62 = 0;
-		$all_pass62 = 0;
-		$all_wait62 = 0;
-		foreach ($quer_code->result_array() as $rs) { //ไปวิ่งเช็คข้อมูล
-			if ($rs["h_title"] == "นาย") {
-	          $all_men62 = $all_men62+1;
-	        }else{
-	          $all_women62 = $all_women62+1;
-	        }
-
-	        if ($rs["h_status_past"] == "2") {
-	          	$all_notpass62 = $all_notpass62+1;
-	        }else if ($rs["h_status_past"] == "1") {
-	          	$all_pass62 = $all_pass62+1;
-	        }else{
-	        	$all_wait62 = $all_wait62+1;
-	        }
+			if(empty($tobudget)){
+				$budget = $budget;
+				$tobudget = $budget;
+				$NOTbudget = 'NOT';
+			}
 		}
 
-		$pat_num62 = 0;
-		$pat_men62 = 0;
-		$pat_women62 = 0;
-		$pat_notpass62 = 0;
-		$pat_pass62 = 0;
-		$pat_wait62 = 0;
-		foreach ($quer_code->result_array() as $rs) { //74 = pat
-			if ($rs["h_province"] == "74") {
-				$pat_num62 = $pat_num62+1;
-				if ($rs["h_title"] == "นาย") {
-		          $pat_men62 = $pat_men62+1;
-		        }else{
-		          $pat_women62 = $pat_women62+1;
-		        }
-
-		        if ($rs["h_status_past"] == "2") {
-		          	$pat_notpass62 = $pat_notpass62+1;
-		        }else if ($rs["h_status_past"] == "1") {
-		          	$pat_pass62 = $pat_pass62+1;
-		        }else{
-		        	$pat_wait62 = $pat_wait62+1;
-		        }
-		    }
+		if(empty($province)){
+			$province = 'false';
+			$NOTprovince = 'NOT';
 		}
 
-		$nara_num62 = 0;
-		$nara_men62 = 0;
-		$nara_women62 = 0;
-		$nara_notpass62 = 0;
-		$nara_pass62 = 0;
-		$nara_wait62 = 0;
-		foreach ($quer_code->result_array() as $rs) { //74 = pat
-			if ($rs["h_province"] == "76") {
-				$nara_num62 = $nara_num62+1;
-				if ($rs["h_title"] == "นาย") {
-		          $nara_men62 = $nara_men62+1;
-		        }else{
-		          $nara_women62 = $nara_women62+1;
-		        }
-
-		        if ($rs["h_status_past"] == "2") {
-		          	$nara_notpass62 = $nara_notpass62+1;
-		        }else if ($rs["h_status_past"] == "1") {
-		          	$nara_pass62 = $nara_pass62+1;
-		        }else{
-		        	$nara_wait62 = $nara_wait62+1;
-		        }
-		    }
+		if($acti == 'household' || $acti == 'all'){
+			$parish_household = $this->db->query(" 	SELECT DISTINCT h_parish
+													FROM  household
+													WHERE NOT h_status_bin = '2'
+													AND $NOTbudget h_row_budget BETWEEN $budget AND $tobudget 
+													AND $NOTprovince h_province = $province;
+												")->result_array();
+			$district_household = $this->db->query(" 	SELECT DISTINCT h_district
+														FROM  household
+														WHERE NOT h_status_bin = '2'
+														AND $NOTbudget h_row_budget BETWEEN $budget AND $tobudget 
+														AND $NOTprovince h_province = $province;
+													")->result_array();
+			foreach ($parish_household as $key_parish => $value_parish) {
+				$parish = $value_parish['h_parish'];
+				$moo_household[$parish] = $this->db->query(" SELECT DISTINCT h_swine
+													FROM  household
+													WHERE NOT h_status_bin = '2'
+													AND $NOTbudget h_row_budget BETWEEN $budget AND $tobudget 
+													AND $NOTprovince h_province = $province
+													AND h_parish = '$parish';
+												")->result_array();
+			}
+			foreach ($parish_household as $key => $value) {
+				$parish_household[$key] = $value['h_parish'];
+			}
+			foreach ($district_household as $key => $value) {
+				$district_household[$key] = $value['h_district'];
+			}
 		}
 
-		$yala_num62 = 0;
-		$yala_men62 = 0;
-		$yala_women62 = 0;
-		$yala_notpass62 = 0;
-		$yala_pass62 = 0;
-		$yala_wait62 = 0;
-		foreach ($quer_code->result_array() as $rs) { //74 = pat
-			if ($rs["h_province"] == "75") {
-				$yala_num62 = $yala_num62+1;
-				if ($rs["h_title"] == "นาย") {
-		          $yala_men62 = $yala_men62+1;
-		        }else{
-		          $yala_women62 = $yala_women62+1;
-		        }
-
-		        if ($rs["h_status_past"] == "2") {
-		          	$yala_notpass62 = $yala_notpass62+1;
-		        }else if ($rs["h_status_past"] == "1") {
-		          	$yala_pass62 = $yala_pass62+1;
-		        }else{
-		        	$yala_wait62 = $yala_wait62+1;
-		        }
-		    }
+		if($acti == 'otop' || $acti == 'all'){
+			$parish_otop = $this->db->query(" 	SELECT DISTINCT o_parish
+												FROM  otop
+												WHERE $NOTbudget o_row_budget BETWEEN $budget AND $tobudget 
+												AND $NOTprovince o_province = $province;
+											")->result_array();
+			$district_otop = $this->db->query(" SELECT DISTINCT o_district
+												FROM  otop
+												WHERE $NOTbudget o_row_budget BETWEEN $budget AND $tobudget 
+												AND $NOTprovince o_province = $province;
+											")->result_array();
+			foreach ($parish_otop as $key_parish => $value_parish) {
+				$parish = $value_parish['o_parish'];
+				$moo_otop[$parish] = $this->db->query(" SELECT DISTINCT o_swine
+													FROM  otop
+													WHERE $NOTbudget o_row_budget BETWEEN $budget AND $tobudget 
+													AND $NOTprovince o_province = $province
+													AND o_parish = '$parish'
+												")->result_array();
+			}
+			foreach ($parish_otop as $key => $value) {
+				$parish_otop[$key] = $value['o_parish'];
+			}
+			foreach ($district_otop as $key => $value) {
+				$district_otop[$key] = $value['o_district'];
+			}
+		}
+		
+		if($acti == 'japomodel' || $acti == 'all'){
+			$parish_japo = $this->db->query(" 	SELECT DISTINCT j_parish
+												FROM  japomodel
+												WHERE $NOTbudget j_row_budget BETWEEN $budget AND $tobudget 
+												AND $NOTprovince j_province = $province;
+										")->result_array();
+			$district_japo = $this->db->query(" SELECT DISTINCT j_district
+												FROM  japomodel
+												WHERE $NOTbudget j_row_budget BETWEEN $budget AND $tobudget 
+												AND $NOTprovince j_province = $province;
+										")->result_array();
+			foreach ($parish_japo as $key_parish => $value_parish) {
+				$parish = $value_parish['j_parish'];
+				$moo_japo[$parish] = $this->db->query(" 	SELECT DISTINCT j_swine
+												FROM  japomodel
+												WHERE $NOTbudget j_row_budget BETWEEN $budget AND $tobudget 
+												AND $NOTprovince j_province = $province
+												AND j_parish = '$parish'
+											")->result_array();
+			}
+			foreach ($parish_japo as $key => $value) {
+				$parish_japo[$key] = $value['j_parish'];
+			}
+			foreach ($district_japo as $key => $value) {
+				$district_japo[$key] = $value['j_district'];
+			}
+		}
+		
+		if($acti == 'onet' || $acti == 'all'){
+			$parish_onet = $this->db->query(" 	SELECT DISTINCT on_parish
+												FROM  onet
+												WHERE $NOTbudget on_row_budget BETWEEN $budget AND $tobudget 
+												AND $NOTprovince on_province = $province;
+											")->result_array();
+			$district_onet = $this->db->query(" SELECT DISTINCT on_district
+												FROM  onet
+												WHERE $NOTbudget on_row_budget BETWEEN $budget AND $tobudget 
+												AND $NOTprovince on_province = $province;
+											")->result_array();		
+			foreach ($parish_onet as $key => $value) {
+				$parish_onet[$key] = $value['on_parish'];
+			}
+			foreach ($district_onet as $key => $value) {
+				$district_onet[$key] = $value['on_district'];
+			}
+		}
+		
+		if($acti == 'ubi' || $acti == 'all'){
+			$parish_ubi = $this->db->query(" 	SELECT DISTINCT o_ubi_parish
+												FROM  otop_ubi
+												WHERE $NOTbudget o_ubi_row_budget BETWEEN $budget AND $tobudget 
+												AND $NOTprovince o_ubi_province = $province;
+										")->result_array();
+			$district_ubi = $this->db->query(" SELECT DISTINCT o_ubi_district
+												FROM  otop_ubi
+												WHERE $NOTbudget o_ubi_row_budget BETWEEN $budget AND $tobudget 
+												AND $NOTprovince o_ubi_province = $province;
+										")->result_array();
+			foreach ($parish_ubi as $key_parish => $value_parish) {
+				$parish = $value_parish['o_ubi_parish'];
+				$moo_ubi[$parish] = $this->db->query(" 	SELECT DISTINCT o_ubi_swine
+												FROM  otop_ubi
+												WHERE $NOTbudget o_ubi_row_budget BETWEEN $budget AND $tobudget
+												AND $NOTprovince o_ubi_province = $province
+												AND o_ubi_parish = '$parish'
+											")->result_array();
+			}
+			foreach ($parish_ubi as $key => $value) {
+				$parish_ubi[$key] = $value['o_ubi_parish'];
+			}
+			foreach ($district_ubi as $key => $value) {
+				$district_ubi[$key] = $value['o_ubi_district'];
+			}
+		}
+		if($acti == 'household'){
+			$all_parish = array_merge($parish_household);
+			$all_district = array_merge($district_household);
+		}
+		if($acti == 'otop'){
+			$all_parish = array_merge($parish_otop);
+			$all_district = array_merge($district_otop);
+		}
+		if($acti == 'japomodel'){
+			$all_parish = array_merge($parish_japo);
+			$all_district = array_merge($district_japo);
+		}
+		if($acti == 'onet'){
+			$all_parish = array_merge($parish_onet);
+			$all_district = array_merge($district_onet);
+		}
+		if($acti == 'ubi'){
+			$all_parish = array_merge($parish_ubi);
+			$all_district = array_merge($district_ubi);
+		}
+		if($acti == 'all'){
+			$all_parish = array_merge($parish_household,$parish_otop,$parish_japo,$parish_onet,$parish_ubi);
+			$all_district = array_merge($district_household,$district_otop,$district_japo,$district_onet,$district_ubi);
 		}
 
-		$quer_code = $this->db->query(" SELECT h_title,h_province,h_status_past
-										FROM  household
-										LEFT JOIN provinces ON provinces.pro_id = household.h_province
-										LEFT JOIN activity ON activity.ac_id = household.h_occupation
-										WHERE NOT household.h_status_bin = '2' ORDER BY h_id DESC
-									  ");
+		$all_parish = array_unique($all_parish);
+		$all_district = array_unique($all_district);
+		
+		foreach ($all_parish as $key_all => $value_all) {
+			if(isset($moo_household[$value_all])){
+				foreach ($moo_household[$value_all] as $key => $value) {
+					$count_moo = '0';
+					if(isset($all_moo[$value_all])){
+						$count_moo = count($all_moo[$value_all]);
+					}
+					$all_moo[$value_all][$count_moo] = $value['h_swine'];
+				}
+			}
+			if(isset($moo_otop[$value_all])){
+				foreach ($moo_otop[$value_all] as $key => $value) {
+					$count_moo = '0';
+					if(isset($all_moo[$value_all])){
+						$count_moo = count($all_moo[$value_all]);
+					}
+					$all_moo[$value_all][$count_moo] = $value['o_swine'];
+				}
+			}
+			if(isset($moo_japo[$value_all])){
+				foreach ($moo_japo[$value_all] as $key => $value) {
+					$count_moo = '0';
+					if(isset($all_moo[$value_all])){
+						$count_moo = count($all_moo[$value_all]);
+					}
+					$all_moo[$value_all][$count_moo] = $value['j_swine'];
+				}
+			}
+			if(isset($moo_ubi[$value_all])){
+				foreach ($moo_ubi[$value_all] as $key => $value) {
+					$count_moo = '0';
+					if(isset($all_moo[$value_all])){
+						$count_moo = count($all_moo[$value_all]);
+					}
+					$all_moo[$value_all][$count_moo] = $value['o_ubi_swine'];
+				}
+			}
+		}
+		foreach ($all_moo as $key => $value) {
+			$un_moo[$key] = array_unique($value);
+			$count_moo += count($un_moo[$key]);
+		}
+		// echo $count_moo;
+		// echo"<pre>";
+		// print_r($un_moo);
+		$data['count']['all_parish'] = count($all_parish);
+		$data['count']['all_district'] = count($all_district);
+		$data['count']['all_moo'] = $count_moo;
 
-		$all_num = $quer_code->num_rows();
-		$all_men = 0;
-		$all_women = 0;
-		$all_notpass = 0;
-		$all_pass = 0;
-		$all_wait = 0;
-		foreach ($quer_code->result_array() as $rs) { //ไปวิ่งเช็คข้อมูล
-			if ($rs["h_title"] == "นาย") {
-	          $all_men = $all_men+1;
-	        }else{
-	          $all_women = $all_women+1;
-	        }
+		$data['count']['data_all_parish'] = $all_parish;
+		$data['count']['data_all_district'] = $all_district;
+		$data['count']['data_all_moo'] = $un_moo;
 
-	        if ($rs["h_status_past"] == "2") {
-	          	$all_notpass = $all_notpass+1;
-	        }else if ($rs["h_status_past"] == "1") {
-	          	$all_pass = $all_pass+1;
-	        }else{
-	        	$all_wait = $all_wait+1;
-	        }
+		if($acti == 'household' || $acti == 'all'){
+			$household = $this->db->query(" SELECT h_province
+											FROM  household
+											WHERE NOT h_status_bin = '2'
+											AND $NOTbudget h_row_budget BETWEEN $budget AND $tobudget 
+											AND $NOTprovince h_province = $province;
+										")->num_rows();
 		}
 
-		$pat_num = 0;
-		$pat_men = 0;
-		$pat_women = 0;
-		$pat_notpass = 0;
-		$pat_pass = 0;
-		$pat_wait = 0;
-		foreach ($quer_code->result_array() as $rs) { //74 = pat
-			if ($rs["h_province"] == "74") {
-				$pat_num = $pat_num+1;
-				if ($rs["h_title"] == "นาย") {
-		          $pat_men = $pat_men+1;
-		        }else{
-		          $pat_women = $pat_women+1;
-		        }
-
-		        if ($rs["h_status_past"] == "2") {
-		          	$pat_notpass = $pat_notpass+1;
-		        }else if ($rs["h_status_past"] == "1") {
-		          	$pat_pass = $pat_pass+1;
-		        }else{
-		        	$pat_wait = $pat_wait+1;
-		        }
-		    }
+		if($acti == 'otop' || $acti == 'all'){
+			$otop = $this->db->query(" 	SELECT o_province
+										FROM  otop
+										WHERE $NOTbudget o_row_budget BETWEEN $budget AND $tobudget 
+										AND $NOTprovince o_province = $province;
+									")->num_rows();
+		}
+		if($acti == 'japomodel' || $acti == 'all'){
+			$japomodel = $this->db->query(" SELECT j_province
+											FROM  japomodel
+											WHERE $NOTbudget j_row_budget BETWEEN $budget AND $tobudget 
+											AND $NOTprovince j_province = $province;
+										")->num_rows();
 		}
 
-		$nara_num = 0;
-		$nara_men = 0;
-		$nara_women = 0;
-		$nara_notpass = 0;
-		$nara_pass = 0;
-		$nara_wait = 0;
-		foreach ($quer_code->result_array() as $rs) { //74 = pat
-			if ($rs["h_province"] == "76") {
-				$nara_num = $nara_num+1;
-				if ($rs["h_title"] == "นาย") {
-		          $nara_men = $nara_men+1;
-		        }else{
-		          $nara_women = $nara_women+1;
-		        }
-
-		        if ($rs["h_status_past"] == "2") {
-		          	$nara_notpass = $nara_notpass+1;
-		        }else if ($rs["h_status_past"] == "1") {
-		          	$nara_pass = $nara_pass+1;
-		        }else{
-		        	$nara_wait = $nara_wait+1;
-		        }
-		    }
+		if($acti == 'onet' || $acti == 'all'){
+			$onet = $this->db->query(" 	SELECT on_province
+										FROM  onet
+										WHERE $NOTbudget on_row_budget BETWEEN $budget AND $tobudget 
+										AND $NOTprovince on_province = $province;
+									")->num_rows();
 		}
 
-		$yala_num = 0;
-		$yala_men = 0;
-		$yala_women = 0;
-		$yala_notpass = 0;
-		$yala_pass = 0;
-		$yala_wait = 0;
-		foreach ($quer_code->result_array() as $rs) { //74 = pat
-			if ($rs["h_province"] == "75") {
-				$yala_num = $yala_num+1;
-				if ($rs["h_title"] == "นาย") {
-		          $yala_men = $yala_men+1;
-		        }else{
-		          $yala_women = $yala_women+1;
-		        }
+		if($acti == 'ubi' || $acti == 'all'){
+			$otop_ubi = $this->db->query(" 	SELECT o_ubi_province
+										FROM  otop_ubi
+										WHERE $NOTbudget o_ubi_row_budget BETWEEN $budget AND $tobudget 
+										AND $NOTprovince o_ubi_province = $province;
+									")->num_rows();
 
-		        if ($rs["h_status_past"] == "2") {
-		          	$yala_notpass = $yala_notpass+1;
-		        }else if ($rs["h_status_past"] == "1") {
-		          	$yala_pass = $yala_pass+1;
-		        }else{
-		        	$yala_wait = $yala_wait+1;
-		        }
-		    }
+			$data['count']['all_h'] = $household+$otop+$japomodel+$otop_ubi;
+			$data['count']['all_scholl'] = $onet;
 		}
-
-		$data['dasbord_hol'] = array(
-					   'all_num' => $all_num,
-					   'all_men' => $all_men,
-					   'all_women' => $all_women,
-					   'all_num62' => $all_num62,
-					   'all_men62' => $all_men62,
-					   'all_women62' => $all_women62,
-					   'year62' => $year62,
-					   'all_num63' => $all_num63,
-					   'all_men63' => $all_men63,
-					   'all_women63' => $all_women63,
-					   'year63' => $year63,
-
-					   'yala_num' => $yala_num,
-					   'yala_men' => $yala_men,
-					   'yala_women' => $yala_women,
-					   'yala_num62' => $yala_num62,
-					   'yala_men62' => $yala_men62,
-					   'yala_women62' => $yala_women62,
-					   'year62' => $year62,
-					   'yala_num63' => $yala_num63,
-					   'yala_men63' => $yala_men63,
-					   'yala_women63' => $yala_women63,
-					   'year63' => $year63,
-
-					   'nara_num' => $nara_num,
-					   'nara_men' => $nara_men,
-					   'nara_women' => $nara_women,
-					   'nara_num62' => $nara_num62,
-					   'nara_men62' => $nara_men62,
-					   'nara_women62' => $nara_women62,
-					   'year62' => $year62,
-					   'nara_num63' => $nara_num63,
-					   'nara_men63' => $nara_men63,
-					   'nara_women63' => $nara_women63,
-					   'year63' => $year63,
-
-					   'pat_num' => $pat_num,
-					   'pat_men' => $pat_men,
-					   'pat_women' => $pat_women,
-					   'pat_num62' => $pat_num62,
-					   'pat_men62' => $pat_men62,
-					   'pat_women62' => $pat_women62,
-					   'year62' => $year62,
-					   'pat_num63' => $pat_num63,
-					   'pat_men63' => $pat_men63,
-					   'pat_women63' => $pat_women63,
-					   'year63' => $year63,
-
-					   'all_notpass' => $all_notpass,
-					   'all_pass' => $all_pass,
-					   'all_wait' => $all_wait,
-					   'all_notpass62' => $all_notpass62,
-					   'all_pass62' => $all_pass62,
-					   'all_wait62' => $all_wait62,
-					   'all_notpass63' => $all_notpass63,
-					   'all_pass63' => $all_pass63,
-					   'all_wait63' => $all_wait63,
-					   'yala_notpass' => $yala_notpass,
-					   'yala_pass' => $yala_pass,
-					   'yala_wait' => $yala_wait,
-					   'yala_notpass62' => $yala_notpass62,
-					   'yala_pass62' => $yala_pass62,
-					   'yala_wait62' => $yala_wait62,
-					   'yala_notpass63' => $yala_notpass63,
-					   'yala_pass63' => $yala_pass63,
-					   'yala_wait63' => $yala_wait63,
-					   'nara_notpass' => $nara_notpass,
-					   'nara_pass' => $nara_pass,
-					   'nara_wait' => $nara_wait,
-				   	   'nara_notpass62' => $nara_notpass62,
-					   'nara_pass62' => $nara_pass62,
-					   'nara_wait62' => $nara_wait62,
-					   'nara_notpass63' => $nara_notpass63,
-					   'nara_pass63' => $nara_pass63,
-					   'nara_wait63' => $nara_wait63,
-					   'pat_notpass' => $pat_notpass,
-					   'pat_pass' => $pat_pass,
-					   'pat_wait' => $pat_wait,
-					   'pat_notpass62' => $pat_notpass62,
-					   'pat_pass62' => $pat_pass62,
-					   'pat_wait62' => $pat_wait62,
-					   'pat_notpass63' => $pat_notpass63,
-					   'pat_pass63' => $pat_pass63,
-					   'pat_wait63' => $pat_wait63,
-
-
-					   'all_parish62' => $all_parish62,
-					   'all_district62' => $all_district62,
-					   'pat_parish62' => $pat_parish62,
-					   'pat_district62' => $pat_district62,
-					   'yala_parish62' => $yala_parish62,
-					   'yala_district62' => $yala_district62,
-					   'nara_parish62' => $nara_parish62,
-					   'nara_district62' => $nara_district62,
-					   
-					   'all_parish' => $all_parish,
-					   'all_district' => $all_district,
-					   'pat_parish' => $pat_parish,
-					   'pat_district' => $pat_district,
-					   'yala_parish' => $yala_parish,
-					   'yala_district' => $yala_district,
-					   'nara_parish' => $nara_parish,
-					   'nara_district' => $nara_district,
-					 );
-		return $data;
+		return $data['count'];
 	}
 }
