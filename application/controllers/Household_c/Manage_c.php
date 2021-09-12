@@ -242,11 +242,16 @@ class Manage_c extends CI_Controller {
 
 	public function dashbordMoo()
 	{
-		$data['manage_dashboard']=$this->Dashboard_m->manage_hol1("","","","household"); //ปี/ถึงปี/จังหวัด/โครงการ
+		$data['budget'] = '';
+		$data['tobudget'] = '';
+		$data['province'] = '';
+		$data['acti'] = '3';
+		$data['manage_dashboard']=$this->Dashboard_m->manage_hol1($data['budget'],$data['tobudget'],$data['province'],$data['acti']); //ปี/ถึงปี/จังหวัด/โครงการ
 		$data['manage_year']=$this->Manage_m->manage_year();
-		// $manage_provinces['manage_provinces']=$this->Manage_m->manage_provinces();
+		$data['manage_provinces']=$this->Manage_m->manage_provinces();
 		$data['activity_nav']=$this->Manage_m->activity_nav();
 		$data['activity_hold']=$this->Evaluate_m->activity_hold();
+
 
 		$this->load->view('page',$data);
 		$this->load->view('head');

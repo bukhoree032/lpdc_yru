@@ -39,7 +39,7 @@
                   <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                 </div>
               </div>
-              <div class="card-body">
+              <div class="card-body" style="cursor: pointer;"  onClick="window.location='<?php echo site_url("Dashboard_c/Dashboard_c/dashbordMoo/"); ?>';">
                 <div id="Household" style="min-height: 400px; height: 250px; max-height: 250px; max-width: 100%;"></div>
               </div>
               <!-- /.card-body -->
@@ -58,7 +58,7 @@
                   <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                 </div>
               </div>
-              <div class="card-body">
+              <div class="card-body" style="cursor: pointer;"  onClick="window.location='<?php echo site_url("Dashboard_c/Dashboard_c/dashbordMoo/"); ?>';">
                 <div id="parish" style="min-height: 400px; height: 250px; max-height: 250px; max-width: 100%;"></div>
               </div>
               <!-- /.card-body -->
@@ -78,7 +78,7 @@
                   <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                 </div>
               </div>
-              <div class="card-body">
+              <div class="card-body" style="cursor: pointer;"  onClick="window.location='<?php echo site_url("Dashboard_c/Dashboard_c/dashbordMoo/"); ?>';">
                 <div id="district" style="min-height: 400px; height: 250px; max-height: 250px; max-width: 100%;"></div>
               </div>
               <!-- /.card-body -->
@@ -97,7 +97,7 @@
                   <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
                 </div>
               </div>
-              <div class="card-body">
+              <div class="card-body" style="cursor: pointer;"  onClick="window.location='<?php echo site_url("Dashboard_c/Dashboard_c/dashbordMoo/"); ?>';">
                 <div id="moo" style="min-height: 400px; height: 250px; max-height: 250px; max-width: 100%;"></div>
               </div>
             </div>

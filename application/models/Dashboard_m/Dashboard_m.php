@@ -440,6 +440,9 @@ class Dashboard_m extends CI_Model {
 	public function manage_hol1($budget,$tobudget,$province,$acti)
 	{
 		$year = date('Y')+543;
+		$NOTbudget = '';
+		$NOTprovince = '';
+
 		$parish_household = '';
 		$parish_otop = '';
 		$parish_japo = '';
@@ -464,14 +467,19 @@ class Dashboard_m extends CI_Model {
 				$tobudget = 'false';
 				$NOTbudget = 'NOT';
 			}else{
-				$budget = $tobudget;
+				$budget = '0';
 				$tobudget = $tobudget;
 			}
 		}else{
 			if(empty($tobudget)){
 				$budget = $budget;
-				$tobudget = $budget;
-				$NOTbudget = 'NOT';
+				$tobudget = '9999';
+			}else{
+				if($budget > $tobudget){
+					$budget_save = $tobudget;
+					$tobudget = $budget;
+					$budget = $budget_save;
+				}
 			}
 		}
 
@@ -480,7 +488,7 @@ class Dashboard_m extends CI_Model {
 			$NOTprovince = 'NOT';
 		}
 
-		if($acti == 'household' || $acti == 'all'){
+		if($acti == '3' || $acti == ''){
 			$parish_household = $this->db->query(" 	SELECT DISTINCT h_parish
 													FROM  household
 													WHERE NOT h_status_bin = '2'
@@ -511,7 +519,7 @@ class Dashboard_m extends CI_Model {
 			}
 		}
 
-		if($acti == 'otop' || $acti == 'all'){
+		if($acti == '2' || $acti == ''){
 			$parish_otop = $this->db->query(" 	SELECT DISTINCT o_parish
 												FROM  otop
 												WHERE $NOTbudget o_row_budget BETWEEN $budget AND $tobudget 
@@ -539,7 +547,7 @@ class Dashboard_m extends CI_Model {
 			}
 		}
 		
-		if($acti == 'japomodel' || $acti == 'all'){
+		if($acti == '9' || $acti == ''){
 			$parish_japo = $this->db->query(" 	SELECT DISTINCT j_parish
 												FROM  japomodel
 												WHERE $NOTbudget j_row_budget BETWEEN $budget AND $tobudget 
@@ -567,7 +575,7 @@ class Dashboard_m extends CI_Model {
 			}
 		}
 		
-		if($acti == 'onet' || $acti == 'all'){
+		if($acti == '4' || $acti == ''){
 			$parish_onet = $this->db->query(" 	SELECT DISTINCT on_parish
 												FROM  onet
 												WHERE $NOTbudget on_row_budget BETWEEN $budget AND $tobudget 
@@ -586,7 +594,7 @@ class Dashboard_m extends CI_Model {
 			}
 		}
 		
-		if($acti == 'ubi' || $acti == 'all'){
+		if($acti == 'ubi' || $acti == ''){
 			$parish_ubi = $this->db->query(" 	SELECT DISTINCT o_ubi_parish
 												FROM  otop_ubi
 												WHERE $NOTbudget o_ubi_row_budget BETWEEN $budget AND $tobudget 
@@ -613,19 +621,19 @@ class Dashboard_m extends CI_Model {
 				$district_ubi[$key] = $value['o_ubi_district'];
 			}
 		}
-		if($acti == 'household'){
+		if($acti == '3'){
 			$all_parish = array_merge($parish_household);
 			$all_district = array_merge($district_household);
 		}
-		if($acti == 'otop'){
+		if($acti == '2'){
 			$all_parish = array_merge($parish_otop);
 			$all_district = array_merge($district_otop);
 		}
-		if($acti == 'japomodel'){
+		if($acti == '9'){
 			$all_parish = array_merge($parish_japo);
 			$all_district = array_merge($district_japo);
 		}
-		if($acti == 'onet'){
+		if($acti == '4'){
 			$all_parish = array_merge($parish_onet);
 			$all_district = array_merge($district_onet);
 		}
@@ -633,108 +641,136 @@ class Dashboard_m extends CI_Model {
 			$all_parish = array_merge($parish_ubi);
 			$all_district = array_merge($district_ubi);
 		}
-		if($acti == 'all'){
+		if($acti == ''){
 			$all_parish = array_merge($parish_household,$parish_otop,$parish_japo,$parish_onet,$parish_ubi);
 			$all_district = array_merge($district_household,$district_otop,$district_japo,$district_onet,$district_ubi);
 		}
-
-		$all_parish = array_unique($all_parish);
-		$all_district = array_unique($all_district);
 		
-		foreach ($all_parish as $key_all => $value_all) {
-			if(isset($moo_household[$value_all])){
-				foreach ($moo_household[$value_all] as $key => $value) {
-					$count_moo = '0';
-					if(isset($all_moo[$value_all])){
-						$count_moo = count($all_moo[$value_all]);
+		if(isset($all_parish)){
+			$all_parish = array_unique($all_parish);
+		}
+		if(isset($all_district)){
+			$all_district = array_unique($all_district);
+		}
+		
+		if(isset($all_parish)){
+			foreach ($all_parish as $key_all => $value_all) {
+				if(isset($moo_household[$value_all])){
+					foreach ($moo_household[$value_all] as $key => $value) {
+						$count_moo = '0';
+						if(isset($all_moo[$value_all])){
+							$count_moo = count($all_moo[$value_all]);
+						}
+						$all_moo[$value_all][$count_moo] = $value['h_swine'];
 					}
-					$all_moo[$value_all][$count_moo] = $value['h_swine'];
 				}
-			}
-			if(isset($moo_otop[$value_all])){
-				foreach ($moo_otop[$value_all] as $key => $value) {
-					$count_moo = '0';
-					if(isset($all_moo[$value_all])){
-						$count_moo = count($all_moo[$value_all]);
+				if(isset($moo_otop[$value_all])){
+					foreach ($moo_otop[$value_all] as $key => $value) {
+						$count_moo = '0';
+						if(isset($all_moo[$value_all])){
+							$count_moo = count($all_moo[$value_all]);
+						}
+						$all_moo[$value_all][$count_moo] = $value['o_swine'];
 					}
-					$all_moo[$value_all][$count_moo] = $value['o_swine'];
 				}
-			}
-			if(isset($moo_japo[$value_all])){
-				foreach ($moo_japo[$value_all] as $key => $value) {
-					$count_moo = '0';
-					if(isset($all_moo[$value_all])){
-						$count_moo = count($all_moo[$value_all]);
+				if(isset($moo_japo[$value_all])){
+					foreach ($moo_japo[$value_all] as $key => $value) {
+						$count_moo = '0';
+						if(isset($all_moo[$value_all])){
+							$count_moo = count($all_moo[$value_all]);
+						}
+						$all_moo[$value_all][$count_moo] = $value['j_swine'];
 					}
-					$all_moo[$value_all][$count_moo] = $value['j_swine'];
 				}
-			}
-			if(isset($moo_ubi[$value_all])){
-				foreach ($moo_ubi[$value_all] as $key => $value) {
-					$count_moo = '0';
-					if(isset($all_moo[$value_all])){
-						$count_moo = count($all_moo[$value_all]);
+				if(isset($moo_ubi[$value_all])){
+					foreach ($moo_ubi[$value_all] as $key => $value) {
+						$count_moo = '0';
+						if(isset($all_moo[$value_all])){
+							$count_moo = count($all_moo[$value_all]);
+						}
+						$all_moo[$value_all][$count_moo] = $value['o_ubi_swine'];
 					}
-					$all_moo[$value_all][$count_moo] = $value['o_ubi_swine'];
 				}
 			}
 		}
-		foreach ($all_moo as $key => $value) {
-			$un_moo[$key] = array_unique($value);
-			$count_moo += count($un_moo[$key]);
+		if(isset($all_moo)){
+			foreach ($all_moo as $key => $value) {
+				$un_moo[$key] = array_unique($value);
+				$count_moo += count($un_moo[$key]);
+			}
 		}
-		// echo $count_moo;
-		// echo"<pre>";
-		// print_r($un_moo);
-		$data['count']['all_parish'] = count($all_parish);
-		$data['count']['all_district'] = count($all_district);
-		$data['count']['all_moo'] = $count_moo;
+		
+		if(isset($all_parish)){
+			$data['count']['all_parish'] = count($all_parish);
+		}
+		if(isset($all_district)){
+			$data['count']['all_district'] = count($all_district);
+		}
+		if(isset($count_moo)){
+			$data['count']['all_moo'] = $count_moo;
+		}
 
-		$data['count']['data_all_parish'] = $all_parish;
-		$data['count']['data_all_district'] = $all_district;
-		$data['count']['data_all_moo'] = $un_moo;
+		if(isset($all_parish)){
+			$data['count']['data_all_parish'] = $all_parish;
+		}
+		if(isset($all_district)){
+			$data['count']['data_all_district'] = $all_district;
+		}
+		if(isset($un_moo)){
+			$data['count']['data_all_moo'] = $un_moo;
+		}
 
-		if($acti == 'household' || $acti == 'all'){
+		if($acti == '3' || $acti == ''){
 			$household = $this->db->query(" SELECT h_province
 											FROM  household
 											WHERE NOT h_status_bin = '2'
 											AND $NOTbudget h_row_budget BETWEEN $budget AND $tobudget 
 											AND $NOTprovince h_province = $province;
 										")->num_rows();
+			$data['count']['all_h'] = $household;
 		}
 
-		if($acti == 'otop' || $acti == 'all'){
+		if($acti == '2' || $acti == ''){
 			$otop = $this->db->query(" 	SELECT o_province
 										FROM  otop
 										WHERE $NOTbudget o_row_budget BETWEEN $budget AND $tobudget 
 										AND $NOTprovince o_province = $province;
 									")->num_rows();
+			$data['count']['all_h'] = $otop;
 		}
-		if($acti == 'japomodel' || $acti == 'all'){
+		if($acti == '9' || $acti == ''){
 			$japomodel = $this->db->query(" SELECT j_province
 											FROM  japomodel
 											WHERE $NOTbudget j_row_budget BETWEEN $budget AND $tobudget 
 											AND $NOTprovince j_province = $province;
 										")->num_rows();
+			$data['count']['all_h'] = $japomodel;
 		}
 
-		if($acti == 'onet' || $acti == 'all'){
+		if($acti == '4' || $acti == ''){
 			$onet = $this->db->query(" 	SELECT on_province
 										FROM  onet
 										WHERE $NOTbudget on_row_budget BETWEEN $budget AND $tobudget 
 										AND $NOTprovince on_province = $province;
 									")->num_rows();
+			$data['count']['all_h'] = $onet;
 		}
 
-		if($acti == 'ubi' || $acti == 'all'){
+		if($acti == 'ubi' || $acti == ''){
 			$otop_ubi = $this->db->query(" 	SELECT o_ubi_province
 										FROM  otop_ubi
 										WHERE $NOTbudget o_ubi_row_budget BETWEEN $budget AND $tobudget 
 										AND $NOTprovince o_ubi_province = $province;
 									")->num_rows();
-
+			$data['count']['all_h'] = $otop_ubi;
+		}
+		
+		if($acti == ''){
 			$data['count']['all_h'] = $household+$otop+$japomodel+$otop_ubi;
 			$data['count']['all_scholl'] = $onet;
+		}
+		if(!isset($data['count'])){
+			$data['count'] = '';
 		}
 		return $data['count'];
 	}
