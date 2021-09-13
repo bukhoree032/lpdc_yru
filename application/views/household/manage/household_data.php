@@ -70,7 +70,7 @@
                       <span class="info-box-icon"><?php echo $manage_dashboard['nara_num'] ;?></span>
                       <div class="info-box-content">
                          <span class="info-box-text">นราธิวาส ปี <?php echo $manage_dashboard['year63'] ;?></span>
-                         <span class="info-box-number"><?php echo $manage_dashboard['nara_num'] ;?></span>
+                         <span class="info-box-number"><?php echo $manage_dashboard['nara_num'] ;?> ครัวเรือน</span>
                          <div class="progress">
                             <div class="progress-bar" style="width: 100%"></div>
                          </div>
@@ -86,7 +86,7 @@
                       <span class="info-box-icon"><?php echo $manage_dashboard['nara_num62'] ;?></i></span>
                       <div class="info-box-content">
                          <span class="info-box-text">นราธิวาส ปี <?php echo $manage_dashboard['year62'] ;?></span>
-                         <span class="info-box-number"><?php echo $manage_dashboard['nara_num62'] ;?></span>
+                         <span class="info-box-number"><?php echo $manage_dashboard['nara_num62'] ;?> ครัวเรือน</span>
                          <div class="progress">
                             <div class="progress-bar" style="width: 100%"></div>
                          </div>
@@ -109,7 +109,7 @@
                       <span class="info-box-icon" style="color: #fff"><?php echo $manage_dashboard['yala_num'] ;?></span>
                       <div class="info-box-content" style="color: #fff">
                          <span class="info-box-text">ยะลา ปี <?php echo $manage_dashboard['year63'] ;?></span>
-                         <span class="info-box-number"><?php echo $manage_dashboard['yala_num'] ;?></span>
+                         <span class="info-box-number"><?php echo $manage_dashboard['yala_num'] ;?> ครัวเรือน</span>
                          <div class="progress">
                             <div class="progress-bar" style="width: 100%"></div>
                          </div>
@@ -125,7 +125,7 @@
                       <span class="info-box-icon" style="color: #fff"><?php echo $manage_dashboard['yala_num62'] ;?></span>
                       <div class="info-box-content" style="color: #fff">
                          <span class="info-box-text">ยะลา ปี <?php echo $manage_dashboard['year62'] ;?></span>
-                         <span class="info-box-number"><?php echo $manage_dashboard['yala_num62'] ;?></span>
+                         <span class="info-box-number"><?php echo $manage_dashboard['yala_num62'] ;?> ครัวเรือน</span>
                          <div class="progress">
                             <div class="progress-bar" style="width: 100%"></div>
                          </div>
@@ -146,7 +146,7 @@
                       <span class="info-box-icon"><?php echo $manage_dashboard['pat_num'] ;?></span>
                       <div class="info-box-content">
                          <span class="info-box-text">ปัตตานี ปี <?php echo $manage_dashboard['year63'] ;?></span>
-                         <span class="info-box-number"><?php echo $manage_dashboard['pat_num'] ;?></span>
+                         <span class="info-box-number"><?php echo $manage_dashboard['pat_num'] ;?> ครัวเรือน</span>
                          <div class="progress">
                             <div class="progress-bar" style="width: 100%"></div>
                          </div>
@@ -162,7 +162,7 @@
                       <span class="info-box-icon"><?php echo $manage_dashboard['pat_num62'] ;?></span>
                       <div class="info-box-content">
                          <span class="info-box-text">ปัตตานี ปี <?php echo $manage_dashboard['year62'] ;?></span>
-                         <span class="info-box-number"><?php echo $manage_dashboard['pat_num62'] ;?></span>
+                         <span class="info-box-number"><?php echo $manage_dashboard['pat_num62'] ;?> ครัวเรือน</span>
                          <div class="progress">
                             <div class="progress-bar" style="width: 100%"></div>
                          </div>
