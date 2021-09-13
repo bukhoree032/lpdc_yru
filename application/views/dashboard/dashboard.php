@@ -197,10 +197,7 @@ Plotly.newPlot("district", data, layout);
 var xArray = ["ยะลา", "นราธิวาส", "ปัตตานี"];
 var yArray = [<?php echo $dashboard_yala['all_parish'] ?>, <?php echo $dashboard_nara['all_parish'] ?>, <?php echo $dashboard_pat['all_parish'] ?>];
 
-// var layout = {title:"ตำบลทั้งหมด <?php echo $dashboard_all['all_parish'] ?> ตำบล"};
-var layout = {
-    title: "ตำบลทั้งหมด <?php echo $dashboard_yala['all_parish']+$dashboard_nara['all_parish']+$dashboard_pat['all_parish'] ?> ตำบล"
-};
+var layout = {title:"ตำบลทั้งหมด <?php echo $dashboard_all['all_parish'] ?> ตำบล"};
 
 var data = [{
     labels: xArray,

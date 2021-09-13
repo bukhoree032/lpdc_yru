@@ -22,7 +22,7 @@
     <section class="content">
       <div class="card">
         <div class="card-header">
-          <div class="card-title">ครัวเรือน ( <?php echo $manage_dashboard['all_h'] ?? 0; ?> ครัวเรือน / <?php echo $manage_dashboard['all_scholl'] ?? 0; ?> โรงเรียน )</div>
+          <div class="card-title">ครัวเรือน ( <?php if(isset($manage_dashboard['all_h'])){echo $manage_dashboard['all_h'];}else{ echo '0';} ?> ครัวเรือน / <?php if(isset($manage_dashboard['all_scholl'])){echo $manage_dashboard['all_scholl'];}else{ echo '0';} ?> โรงเรียน )</div>
         </div>
         <!-- ---------------------------------ค้นหา------------------------- -->
         <form action="<?php echo site_url("Dashboard_c/Dashboard_c/dashbordMoo_search/"); ?>" method="post"enctype="multipart/form-data">
@@ -104,7 +104,7 @@
         <div class="row">
           <!-- /.card-header -->
           <div class="card-body col-sm-4" >
-              <h4>อำเภอ ( <?php echo $manage_dashboard['all_district'] ?? 0; ?> อำเภอ)</h4><br>
+              <h4>อำเภอ ( <?php if(isset($manage_dashboard['all_district'])){echo $manage_dashboard['all_district'];}else{ echo '0';} ?> อำเภอ)</h4><br>
             <table id="example_district" class="table table-bordered table-striped">
               <thead>
                 <tr>
@@ -128,7 +128,7 @@
           <!-- /.card-body -->
           <!-- /.card-header -->
           <div class="card-body col-sm-4" >
-              <h4>ตำบล ( <?php echo $manage_dashboard['all_parish'] ?? 0; ?> ตำบล)</h4><br>
+              <h4>ตำบล ( <?php if(isset($manage_dashboard['all_parish'])){echo $manage_dashboard['all_parish'];}else{ echo '0';} ?> ตำบล)</h4><br>
             <table id="example_parish" class="table table-bordered table-striped">
               <thead>
                 <tr>
@@ -152,7 +152,7 @@
           <!-- /.card-body -->
           <!-- /.card-header -->
           <div class="card-body col-sm-4" >
-              <h4>หมู่บ้าน ( <?php echo $manage_dashboard['all_moo'] ?? 0; ?> หมู่บ้าน)</h4><br>
+              <h4>หมู่บ้าน ( <?php if(isset($manage_dashboard['all_moo'])){echo $manage_dashboard['all_moo'];}else{ echo '0';} ?> หมู่บ้าน)</h4><br>
             <table id="example_moo" class="table table-bordered table-striped">
               <thead>
                 <tr>
