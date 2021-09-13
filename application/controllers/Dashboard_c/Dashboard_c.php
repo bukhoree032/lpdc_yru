@@ -20,10 +20,10 @@ class Dashboard_c extends CI_Controller {
 
 	public function index()
 	{
-		$data['dashboard_pat']=$this->Dashboard_m->manage_hol1('','','74',''); //ปี/ถึงปี/จังหวัด/โครงการ ปัตตานี
-		$data['dashboard_yala']=$this->Dashboard_m->manage_hol1('','','75',''); //ปี/ถึงปี/จังหวัด/โครงการ ยะลา
-		$data['dashboard_nara']=$this->Dashboard_m->manage_hol1('','','76',''); //ปี/ถึงปี/จังหวัด/โครงการ นรา
-		$data['dashboard_all']=$this->Dashboard_m->manage_hol1('','','',''); //ปี/ถึงปี/จังหวัด/โครงการ รวม
+		$data['dashboard_pat']=$this->Dashboard_m->manage_hol('','','74',''); //ปี/ถึงปี/จังหวัด/โครงการ ปัตตานี
+		$data['dashboard_yala']=$this->Dashboard_m->manage_hol('','','75',''); //ปี/ถึงปี/จังหวัด/โครงการ ยะลา
+		$data['dashboard_nara']=$this->Dashboard_m->manage_hol('','','76',''); //ปี/ถึงปี/จังหวัด/โครงการ นรา
+		$data['dashboard_all']=$this->Dashboard_m->manage_hol('','','',''); //ปี/ถึงปี/จังหวัด/โครงการ รวม
 
 		$data['manage_dashboard']=$this->Manage_m->manage_dashboard();
 		$data['activity_nav']=$this->Manage_m->activity_nav();
@@ -39,7 +39,7 @@ class Dashboard_c extends CI_Controller {
 		$data['tobudget'] = '';
 		$data['province'] = '';
 		$data['acti'] = '';
-		$data['manage_dashboard']=$this->Dashboard_m->manage_hol1($data['budget'],$data['tobudget'],$data['province'],$data['acti']); //ปี/ถึงปี/จังหวัด/โครงการ
+		$data['manage_dashboard']=$this->Dashboard_m->manage_hol($data['budget'],$data['tobudget'],$data['province'],$data['acti']); //ปี/ถึงปี/จังหวัด/โครงการ
 		$data['manage_year']=$this->Manage_m->manage_year();
 		$data['manage_provinces']=$this->Manage_m->manage_provinces();
 		$data['activity_nav']=$this->Manage_m->activity_nav();
@@ -57,7 +57,7 @@ class Dashboard_c extends CI_Controller {
 		$data['tobudget'] = $this->input->post('tobudget');
 		$data['province'] = $this->input->post('province');
 		$data['acti'] = $this->input->post('acti');
-		$data['manage_dashboard']=$this->Dashboard_m->manage_hol1($data['budget'],$data['tobudget'],$data['province'],$data['acti']); //ปี/ถึงปี/จังหวัด/โครงการ
+		$data['manage_dashboard']=$this->Dashboard_m->manage_hol($data['budget'],$data['tobudget'],$data['province'],$data['acti']); //ปี/ถึงปี/จังหวัด/โครงการ
 		$data['manage_year']=$this->Manage_m->manage_year();
 		$data['manage_provinces']=$this->Manage_m->manage_provinces();
 		$data['activity_nav']=$this->Manage_m->activity_nav();
