@@ -117,15 +117,17 @@ class Manage_japo_c extends CI_Controller {
 		$data['japo_deal']=$this->Japo_m->japo_deal($j_id);
 
 		if(isset($data['japo_deal']['quer_code']['j_occupation'])){
-			$j_occupation = unserialize($data['japo_deal']['quer_code']['j_occupation']);
-			foreach ($j_occupation as $key => $value) {
-				foreach ($data['japo_deal']['activity'] as $key_activity => $value_activity) {
-					if($value == $value_activity['ac_id']){
-						$data_occupation[$value_activity['ac_id']] = $value_activity['ac_initials'];
+			if($data['japo_deal']['quer_code']['j_occupation'] != ''){
+				$j_occupation = unserialize($data['japo_deal']['quer_code']['j_occupation']);
+				foreach ($j_occupation as $key => $value) {
+					foreach ($data['japo_deal']['activity'] as $key_activity => $value_activity) {
+						if($value == $value_activity['ac_id']){
+							$data_occupation[$value_activity['ac_id']] = $value_activity['ac_initials'];
+						}
 					}
 				}
+				$data['occupation'] = $data_occupation;
 			}
-			$data['occupation'] = $data_occupation;
 		}
 
 		$data['j_id']= $j_id;
