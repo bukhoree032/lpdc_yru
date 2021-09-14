@@ -258,6 +258,7 @@ class Dashboard_m extends CI_Model {
 			}
 		}
 		if(isset($all_moo)){
+			$count_moo = 0;
 			foreach ($all_moo as $key => $value) {
 				$un_moo[$key] = array_unique($value);
 				$count_moo += count($un_moo[$key]);
