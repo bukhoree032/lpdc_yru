@@ -401,6 +401,19 @@ class Japo_m extends CI_Model {
 		}
 	}
 
+	public function update_trace($j_t_id) 
+	{
+		$this->db->where('j_t_id',$j_t_id);
+		$query_check=$this->db->update('japomodel_trace',$this->input->post());
+
+		if ($query_check) {
+			$this->session->set_flashdata('rigister_success','บันทึกการเปลียนแปลงสำเร็จ');
+			return "false_true";
+		}else{
+				return "false_regieter";
+		}
+	}
+
 	public function manage_bin($h_id) //ลบ
 	{
 		$data = array(

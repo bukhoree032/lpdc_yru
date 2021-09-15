@@ -201,4 +201,12 @@ class Manage_japo_c extends CI_Controller {
 
 		$this->load->view('japo_model/url_trace',$data);
 	}
+
+	public function update_trace($j_t_id)
+	{
+		$this->Japo_m->update_trace($j_t_id);
+		$data['j_id'] = $this->input->post('j_t_h_id');
+
+		$this->load->view('japo_model/url_trace',$data);
+	}
 }
