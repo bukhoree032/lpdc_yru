@@ -1,6 +1,19 @@
 <h2>ประวัติการติดตาม</h2>
 <p>คลิกที่ปุ่มภายในเมนูแท็บ:</p>
-
+<?php foreach ($trace['quer_trace'] as $key => $value) {
+  if($value['j_t_occupation'] == '9'){
+    $this->load->view('japo_model/modal_trace_edit/honey',$value);
+  }
+  if($value['j_t_occupation'] == '8'){
+    $this->load->view('japo_model/modal_trace_edit/chicken',$value);
+  }
+  if($value['j_t_occupation'] == '10'){
+    $this->load->view('japo_model/modal_trace_edit/mushroom',$value);
+  }
+  if($value['j_t_occupation'] == '29'){
+    $this->load->view('japo_model/modal_trace_edit/vegetable',$value);
+  }
+} ?>
 <div class="tab">
   <button class="tablinks" onclick="openCity(event, 'honey')" id="defaultOpen">ผึ้งชันโรง</button>
   <button class="tablinks" onclick="openCity(event, 'chicken')">ไก่เบตง</button>

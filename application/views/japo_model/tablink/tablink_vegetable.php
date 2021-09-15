@@ -21,8 +21,8 @@
             <th style="width: 3%">ลำดับ</th>
             <!-- <th style="width: 6%">ช่วยเหลือ</th> -->
             <th style="width: 4%">ผลการติดตาม</th>
-            <th style="width: 8%">เหลือกี่ชนิด</th>
-            <th style="width: 7%">ปลูกแล้วกี่ชนิด</th>
+            <th style="width: 8%">ผักที่ปลูก</th>
+            <th style="width: 7%">ผักที่ยังไม่ปลูก</th>
             <th style="width: 6%">ขายได้กี่ชนิด</th>
             <th style="width: 3%">น้ำหนัก</th>
             <!-- <th style="width: 3%">ระยะเวลา/เดือน</th> -->
@@ -47,8 +47,8 @@
                     <td><?php echo $value['j_t_annotition'] ?></td>
                     <td>
                         <div class="row">
-                            <div class="col-sm-6">
-                                <!-- <button type="button" class="btn btn-block btn-success btn-xs" data-toggle="modal" data-target="#myModal_edit_<?php echo $value['j_s_id'] ?>" style="width: 100%"><i class="fas fa-edit"></i></button> -->
+                            <div class="col-sm-6">                                
+                              <button type="button" class="btn btn-block btn-success btn-xs" data-toggle="modal" data-target="#myModal_trace_edit_<?php echo $value['j_t_occupation'] ?>_<?php echo $value['j_t_id'] ?>" style="width: 100%"><i class="fas fa-edit"></i></button>
                             </div>
                             <div class="col-sm-6">
                               <form action="<?php echo site_url("Japo_c/Manage_japo_c/japo_trace_delete/".$value['j_t_id']); ?>" method="post"enctype="multipart/form-data">
