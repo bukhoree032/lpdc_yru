@@ -37,7 +37,7 @@
         <br>
         <div class="row" style="margin-top: 10px;">
             <div class="col-sm-6">
-            ขยายกี่รัง :<br>
+            มีกี่รัง :<br>
             <input class="form-control" type="text" name="j_t_survive" >
             </div>
             <div class="col-sm-6">

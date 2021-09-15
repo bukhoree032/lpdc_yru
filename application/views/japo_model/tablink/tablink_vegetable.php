@@ -21,8 +21,8 @@
             <th style="width: 3%">ลำดับ</th>
             <!-- <th style="width: 6%">ช่วยเหลือ</th> -->
             <th style="width: 4%">ผลการติดตาม</th>
-            <th style="width: 8%">ผักที่ปลูก</th>
-            <th style="width: 7%">ผักที่ยังไม่ปลูก</th>
+            <th style="width: 8%">เหลือกี่ชนิด</th>
+            <th style="width: 7%">ปลูกแล้วกี่ชนิด</th>
             <th style="width: 6%">ขายได้กี่ชนิด</th>
             <th style="width: 3%">น้ำหนัก</th>
             <!-- <th style="width: 3%">ระยะเวลา/เดือน</th> -->
