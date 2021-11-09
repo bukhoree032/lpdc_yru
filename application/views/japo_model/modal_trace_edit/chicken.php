@@ -24,31 +24,44 @@
                     </select>
                 </div>
             </div>
-            <br>
-                <b class="modal-title">ไก่เบตงที่รอด</b>
-            <br>
             <div class="row" style="margin-top: 10px;">
                 <div class="col-sm-6">
-                ตัวผู้ :<br>
+                ไก่ตัวผู้ที่รอด :<br>
                 <input class="form-control" type="text" name="j_t_survive" value="<?php echo $j_t_survive; ?>">
                 </div>
                 <div class="col-sm-6">
-                ตัวเมีย :<br>
-                <input class="form-control" type="text" name="j_t_survive_female" value="<?php echo $j_t_survive_female; ?>">
-                </div>
-            </div>
-
-            <br>
-                <b class="modal-title">ไก่เบตงที่ตาย</b>
-            <br>
-            <div class="row" style="margin-top: 10px;">
-                <div class="col-sm-6">
-                ตัวผู้ :<br>
+                ไก่ตัวผู้ที่ตาย :<br>
                 <input class="form-control" type="text" name="j_t_not_survive" value="<?php echo $j_t_not_survive; ?>">
                 </div>
+            </div>
+            <div class="row" style="margin-top: 10px;">
                 <div class="col-sm-6">
-                ตัวเมีย :<br>
+                ไก่ตัวเมียที่รอด :<br>
+                <input class="form-control" type="text" name="j_t_survive_female" value="<?php echo $j_t_survive_female; ?>">
+                </div>
+                <div class="col-sm-6">
+                ไก่ตัวเมียที่ตาย :<br>
                 <input class="form-control" type="text" name="j_t_not_survive_female" value="<?php echo $j_t_not_survive_female; ?>">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-sm-6">
+                ลูกไก่ที่รอด :<br>
+                <input class="form-control" type="text" name="j_t_chick" value="<?php echo $j_t_chick; ?>">
+                </div>
+                <div class="col-sm-6">
+                ลูกไก่ที่ตาย :<br>
+                <input class="form-control" type="text" name="j_t_not_chick" value="<?php echo $j_t_not_chick; ?>">
+                </div>
+            </div>
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-sm-6">
+                ไข่ไก่ที่ได้ :<br>
+                <input class="form-control" type="text" name="j_t_egg" value="<?php echo $j_t_egg; ?>">
+                </div>
+                <div class="col-sm-6">
+                ไข่ไก่ที่กิน :<br>
+                <input class="form-control" type="text" name="j_t_egg_eat" value="<?php echo $j_t_egg_eat; ?>">
                 </div>
             </div>
             <br>
