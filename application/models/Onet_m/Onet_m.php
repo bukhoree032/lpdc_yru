@@ -155,6 +155,7 @@ class Onet_m extends CI_Model {
 		$quer_code = $this->db->query(" SELECT *
 										FROM  onet
 										LEFT JOIN provinces ON provinces.pro_id = onet.on_province
+										WHERE onet.on_continue != '1'
 									  ");
 
 		$all_num = $quer_code->num_rows();
@@ -179,8 +180,6 @@ class Onet_m extends CI_Model {
 				$yala_num = $yala_num+1;
 		    }
 		}
-
-
 
 		$data = array(
 					   'year63' => $year63,
