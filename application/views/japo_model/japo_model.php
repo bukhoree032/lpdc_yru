@@ -62,13 +62,7 @@
                       <?php } ?>
                     </select>
                     </div>
-                    <!-- <div class="col-sm-1">
-                      <button type="submit" class="btn btn-block bg-gradient-primary btn-sm" style="width: 100%">ค้นหา</button>
-                    </div> -->
-                    
-                    <!-- <div class="col-sm-4"></div> -->
                   </div>
-                  <!-- <button type="button" class="btn btn-block bg-gradient-primary btn-sm" style="width: 10%">import</button> -->
                 </div>
               </form>
               <!-- --------------------------------/ค้นหา------------------------- -->

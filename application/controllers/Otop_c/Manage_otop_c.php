@@ -178,6 +178,8 @@ class Manage_otop_c extends CI_Controller {
 
 		$goalANDpro['goalANDpro']=$this->Manage_otop_m->goalANDpro();
 		$otop_rate['otop_rate']=$this->Manage_otop_m->otop_rate($o_row_budget);
+		// echo"<pre>";
+		// print_r($otop_rate['otop_rate']);
 		$o_manage_dashboard['o_manage_dashboard']=$this->Manage_otop_m->o_manage_dashboard();
 		$o_manage_parish['o_manage_parish']=$this->Manage_otop_m->o_manage_parish();
 		$off_selecgoalANDpro['off_selecgoalANDpro']=$this->Manage_otop_m->off_selecgoalANDpro();

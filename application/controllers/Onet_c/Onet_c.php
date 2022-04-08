@@ -16,21 +16,15 @@ class Onet_c extends CI_Controller {
 
 	public function index()
 	{
+		$data['onet']=$this->Onet_m->onet();
+		$data['on_dashboard']=$this->Onet_m->on_dashboard();
+		$data['on_parish']=$this->Onet_m->on_parish();
+		$data['manage_year']=$this->Onet_m->onet_year();
+		$data['manage_provinces']=$this->Manage_otop_m->manage_provinces();
+		$data['activity_nav']=$this->Manage_m->activity_nav();
 
-		$onet['onet']=$this->Onet_m->onet();
-		$on_dashboard['on_dashboard']=$this->Onet_m->on_dashboard();
-		$on_parish['on_parish']=$this->Onet_m->on_parish();
-		$manage_year['manage_year']=$this->Onet_m->onet_year();
-		$manage_provinces['manage_provinces']=$this->Manage_otop_m->manage_provinces();
-		$activity_nav['activity_nav']=$this->Manage_m->activity_nav();
-
-		$this->load->view('page',$on_dashboard);
-		$this->load->view('page',$on_parish);
-		$this->load->view('page',$activity_nav);
-		$this->load->view('head',$manage_provinces);
-		$this->load->view('page',$manage_year);
-		$this->load->view('onet/onet',$onet);
-		// $this->load->view('otop/manage/otop');
+		$this->load->view('head',$data);
+		$this->load->view('onet/onet');
 	}
 
 	public function onet_search()
@@ -49,6 +43,42 @@ class Onet_c extends CI_Controller {
 		$this->load->view('page',$manage_year);
 		$this->load->view('onet/onet',$onet);
 	}
+	
+	public function onet_add()
+	{
+		$data['manage_year']=$this->Manage_m->manage_year();
+		$data['provinces']=$this->Manage_m->manage_provinces();
+		$data['activity_nav']=$this->Manage_m->activity_nav();
+
+		$this->load->view('head',$data);
+		$this->load->view('onet/onet_add');
+	}
+
+	public function onet_insert()
+	{
+		$data['househole']=$this->Onet_m->onet_insert();
+
+		$this->load->view('onet/url_index');
+	}
+
+	public function onet_edit($id)
+	{
+		$data['onet_edit']=$this->Onet_m->onet_edit($id);
+		$data['manage_year']=$this->Manage_m->manage_year();
+		$data['provinces']=$this->Manage_m->manage_provinces();
+		$data['activity_nav']=$this->Manage_m->activity_nav();
+		// echo'<pre>';
+		// print_r($data['onet_edit']);
+		$this->load->view('head',$data);
+		$this->load->view('onet/onet_edit');
+	}
+	
+	public function onet_update()
+	{
+		$this->Onet_m->onet_update();
+
+		$this->load->view('onet/url_index');
+	}
 
 	public function ubi_deal($o_id)
 	{
@@ -61,15 +91,6 @@ class Onet_c extends CI_Controller {
 		$this->load->view('page',$activity_nav);
 		$this->load->view('head',$deal);
 		$this->load->view('otop/otop_ubi/otop_deal',$oid);
-	}
-
-	public function ubi_insert($o_id)
-	{
-		$ubi_insert['ubi_insert']=$this->Otop_ubi_m->ubi_insert($o_id);
-		$oid['oid']=$this->Otop_ubi_m->o_id($o_id);
-
-		$this->load->view('otop/otop_ubi/url_deal',$oid);
-
 	}
 
 	public function ubi_edit($id)

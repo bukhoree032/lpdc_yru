@@ -28,14 +28,40 @@ class Manage_m extends CI_Model {
 				$year = "";
 			}
 
-			$quer_code = $this->db->query(" SELECT *
+			$quer_code['household'] = $this->db->query(" SELECT *
 											FROM  household
 											LEFT JOIN provinces ON provinces.pro_id = household.h_province
 											LEFT JOIN activity ON activity.ac_id = household.h_occupation
 											LEFT JOIN evaluate_year ON evaluate_year.e_y_user_id = household.h_id
 											WHERE household.h_row_budget = '$year' AND NOT household.h_status_bin = '2' ORDER BY h_id DESC
-										  ");
-			return $quer_code->result();
+										  ")->result();
+			$quer_code['excell'] = $this->db->query(" SELECT household.*,activity.ac_initials,provinces.name_th
+											FROM  household
+											LEFT JOIN provinces ON provinces.pro_id = household.h_province
+											LEFT JOIN activity ON activity.ac_id = household.h_occupation
+											LEFT JOIN evaluate_year ON evaluate_year.e_y_user_id = household.h_id
+											WHERE household.h_row_budget = '$year' AND NOT household.h_status_bin = '2' ORDER BY h_occupation DESC
+										")->result();
+			
+			foreach($quer_code['excell'] as $key => $value){
+				// echo $value->h_id.'<br>';
+				$quer_code['h_excell'][$key] = $value;
+				$query = $this->db->query("SELECT h_shop_buy
+										FROM honey_shop
+										WHERE h_shop_h_id = '$value->h_id'
+										")->result();
+
+				$query = $this->db->query("SELECT h_shop_buy
+										FROM honey_shop
+										WHERE h_shop_h_id = '$value->h_id'
+										")->result();
+				if(!empty($query)){
+					$quer_code['h_excell'][$key]->h_shop_buy = $query['0']->h_shop_buy;
+				}else{
+					$quer_code['h_excell'][$key]->h_shop_buy = 0;
+				}
+			}
+			return $quer_code;
 		}else{
 			$h_row_budget = $this->session->userdata('househole_search_year');
 			$pro = $this->session->userdata('househole_search_pro');
@@ -66,14 +92,42 @@ class Manage_m extends CI_Model {
 				$paris1 = "=";
 			}
 
-			$quer_code = $this->db->query(" SELECT *
+			$quer_code['household'] = $this->db->query(" SELECT *
 											FROM  household
 											LEFT JOIN provinces ON provinces.pro_id = household.h_province
 											LEFT JOIN activity ON activity.ac_id = household.h_occupation
-											LEFT JOIN evaluate_year ON evaluate_year.e_y_user_id = household.h_id
+											-- LEFT JOIN evaluate_year ON evaluate_year.e_y_user_id = household.h_id
 											WHERE household.h_row_budget $year '$h_row_budget' AND  household.h_province $pro1 '$pro' AND  household.h_occupation $acti1 '$acti' AND  household.h_parish $paris1 '$paris' AND NOT household.h_status_bin = '2' ORDER BY h_id DESC
-										  ");
-			return $quer_code->result();
+										  ")->result();
+										  
+			$quer_code['excell'] = $this->db->query(" SELECT household.*,activity.ac_initials,provinces.name_th
+											FROM  household
+											LEFT JOIN provinces ON provinces.pro_id = household.h_province
+											LEFT JOIN activity ON activity.ac_id = household.h_occupation
+											WHERE household.h_row_budget $year '$h_row_budget' AND  household.h_province $pro1 '$pro' AND  household.h_occupation $acti1 '$acti' AND  household.h_parish $paris1 '$paris' AND NOT household.h_status_bin = '2' 
+											ORDER BY h_occupation DESC
+	
+											")->result();
+
+			foreach($quer_code['excell'] as $key => $value){
+				// echo $value->h_id.'<br>';
+				$quer_code['h_excell'][$key] = $value;
+				$query = $this->db->query("SELECT h_shop_buy
+										FROM honey_shop
+										WHERE h_shop_h_id = '$value->h_id'
+										")->result();
+
+				$query = $this->db->query("SELECT h_shop_buy
+										FROM honey_shop
+										WHERE h_shop_h_id = '$value->h_id'
+										")->result();
+				if(!empty($query)){
+					$quer_code['h_excell'][$key]->h_shop_buy = $query['0']->h_shop_buy;
+				}else{
+					$quer_code['h_excell'][$key]->h_shop_buy = 0;
+				}
+			}
+			return $quer_code;
 		}
 	}
 
@@ -114,15 +168,47 @@ class Manage_m extends CI_Model {
 		}else{
 			$paris1 = "=";
 		}
-
-		$quer_code = $this->db->query(" SELECT *
+		$quer_code['household'] = $this->db->query(" SELECT *
 										FROM  household
 										LEFT JOIN provinces ON provinces.pro_id = household.h_province
 										LEFT JOIN activity ON activity.ac_id = household.h_occupation
-										LEFT JOIN evaluate_year ON evaluate_year.e_y_user_id = household.h_id
+										-- LEFT JOIN evaluate_year ON evaluate_year.e_y_user_id = household.h_id
 										WHERE household.h_row_budget $year '$h_row_budget' AND  household.h_province $pro1 '$pro' AND  household.h_occupation $acti1 '$acti' AND  household.h_parish $paris1 '$paris' AND NOT household.h_status_bin = '2' ORDER BY h_id DESC
-									  ");
-		return $quer_code->result();
+									  ")->result();
+
+		// $quer_code['excell'] = $this->db->query(" SELECT household.*,activity.ac_initials,SUM(honey_shop.h_shop_buy) AS h_shop_buy
+		$quer_code['excell'] = $this->db->query(" SELECT household.*,activity.ac_initials,provinces.name_th
+										FROM  household
+										-- LEFT JOIN honey_shop ON honey_shop.h_shop_h_id = household.h_id
+										LEFT JOIN provinces ON provinces.pro_id = household.h_province
+										LEFT JOIN activity ON activity.ac_id = household.h_occupation
+										WHERE household.h_row_budget $year '$h_row_budget' AND  household.h_province $pro1 '$pro' AND  household.h_occupation $acti1 '$acti' AND  household.h_parish $paris1 '$paris' AND NOT household.h_status_bin = '2' 
+										ORDER BY h_occupation DESC
+										-- group by honey_shop.h_shop_h_id
+										
+									")->result();
+
+		foreach($quer_code['excell'] as $key => $value){
+			// echo $value->h_id.'<br>';
+			$quer_code['h_excell'][$key] = $value;
+			$query = $this->db->query("SELECT h_shop_buy
+									FROM honey_shop
+									WHERE h_shop_h_id = '$value->h_id'
+									")->result();
+
+			$query = $this->db->query("SELECT h_shop_buy
+									FROM honey_shop
+									WHERE h_shop_h_id = '$value->h_id'
+									")->result();
+			if(!empty($query)){
+				$quer_code['h_excell'][$key]->h_shop_buy = $query['0']->h_shop_buy;
+			}else{
+				$quer_code['h_excell'][$key]->h_shop_buy = 0;
+			}
+		}
+		// echo('<pre>');
+		// print_r($aaa);
+		return $quer_code;
 	}
 
 	public function manage_year()
@@ -518,14 +604,66 @@ class Manage_m extends CI_Model {
 		$nara_parish = $o_parish->num_rows();
 		$nara_district = $o_district->num_rows();
 		$nara_moo = 0;
-		foreach ($o_parish->result_array() as $key => $value) {
-			$rows_parish = $this->db->query(" 	SELECT DISTINCT h_swine
-												FROM  household
-												WHERE h_parish = '$value[h_parish]'
-			")->num_rows();
-			$nara_moo += $rows_parish;
-		}
-
+		// foreach ($o_parish->result_array() as $key => $value) {
+		// 	$rows_parish = $this->db->query(" 	SELECT DISTINCT h_swine
+		// 										FROM  household
+		// 										WHERE h_parish = '$value[h_parish]'
+		// 	")->num_rows();
+		// 	$nara_moo += $rows_parish;
+		// }
+		// echo "<pre>";
+		// // echo "รวมทุกจังหวัด";
+		// echo "<br>";
+		// foreach ($data['Household']['all_parish']->result_array() as $key => $value) {
+		// 	// echo $key+1 ."." . $value['h_parish'];
+		// 	echo "<br>";
+		// }
+		// echo "ยะลา";
+		// echo "<br>";
+		// foreach ($data['Household']['yala_parish']->result_array() as $key => $value) {
+		// 	$rows_parish = $this->db->query(" 	SELECT DISTINCT h_swine
+		// 										FROM  household
+		// 										WHERE h_parish = '$value[h_parish]'
+		// 	")->result_array();
+		// 	foreach ($rows_parish as $key11 => $value11) {
+		// 		echo $key+1 ."." . $value['h_parish'];
+		// 		echo "/";
+		// 		echo $key11+1 .".หมู่" . $value11['h_swine'];
+		// 		echo "<br>";
+		// 	}
+		// 	echo "<br>";
+		// }
+		// echo "ปัตตานี";
+		// echo "<br>";
+		// foreach ($data['Household']['pat_parish']->result_array() as $key => $value) {
+		// 	$rows_parish = $this->db->query(" 	SELECT DISTINCT h_swine
+		// 										FROM  household
+		// 										WHERE h_parish = '$value[h_parish]'
+		// 	")->result_array();
+		// 	foreach ($rows_parish as $key11 => $value11) {
+		// 		echo $key+1 ."." . $value['h_parish'];
+		// 		echo "/";
+		// 		echo $key11+1 .".หมู่" . $value11['h_swine'];
+		// 		echo "<br>";
+		// 	}
+		// 	echo "<br>";
+		// }
+		// echo "นราธิวาส";
+		// echo "<br>";
+		// foreach ($data['Household']['nara_parish']->result_array() as $key => $value) {
+		// 	$rows_parish = $this->db->query(" 	SELECT DISTINCT h_swine
+		// 										FROM  household
+		// 										WHERE h_parish = '$value[h_parish]'
+		// 	")->result_array();
+		// 	foreach ($rows_parish as $key11 => $value11) {
+		// 		echo $key+1 ."." . $value['h_parish'];
+		// 		echo "/";
+		// 		echo $key11+1 .".หมู่" . $value11['h_swine'];
+		// 		echo "<br>";
+		// 	}
+		// 	echo "<br>";
+		// }
+		// echo "</pre>";
 
 		$quer_code = $this->db->query(" SELECT h_title,h_province,h_status_past
 										FROM  household
@@ -1055,4 +1193,5 @@ class Manage_m extends CI_Model {
 					 );
 		return $data;
 	}
+
 }

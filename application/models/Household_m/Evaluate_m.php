@@ -146,6 +146,7 @@ class Evaluate_m extends CI_Model {
 		  	return "false_regieter";
 		}
 	}
+
 	public function eva_update($h_id)
 	{
 		$gender = $this->input->post('gender');

@@ -535,13 +535,14 @@ class Manage_otop_m extends CI_Model {
 
 	public function otop_rate($o_row_budget) //ลบ
 	{	
-
 		$quer_code = $this->db->query(" SELECT *
 										FROM  otop
 										LEFT JOIN provinces ON provinces.pro_id = otop.o_province
 										LEFT JOIN otop_segue ON otop_segue.o_s_otop = otop.o_id
 										WHERE otop_segue.o_s_row_budget = '$o_row_budget' ORDER BY o_id DESC
 									  ");
+		// echo"<pre>";
+		// print_r($quer_code->result());
 		return $quer_code->result();
 	}
 

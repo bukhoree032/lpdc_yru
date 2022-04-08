@@ -325,7 +325,7 @@
                   <?php 
                     $o = 0;
                     foreach ($otop_rate as $otop_data) {
-                      if ($otop_data->o_s_status == '1') {
+                      // if ($otop_data->o_s_status == '1') {
                         $o ++;
                         $o_group_name = $otop_data->o_group_name;
                         $num_o_name = iconv_substr($o_group_name,40,41,'UTF-8');
@@ -477,7 +477,7 @@
                           <?php }else{
                           }
                       }
-                    } ?>
+                    // } ?>
                       </tr>
                   </tbody>
                 </table>

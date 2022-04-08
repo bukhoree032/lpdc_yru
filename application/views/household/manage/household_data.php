@@ -194,70 +194,43 @@
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h4 class="modal-title">นำเข้าข้อมูลครัวเรือน (เฉพาะไฟล์ Excel)</h4>
+                            <h4 class="modal-title">นำเข้าข้อมูลครัวเรือน (เฉพาะไฟล์ Excel)</h4>                    
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
-                          <div class="modal-body">
-                            <div class="row">
-                              <div class="col-sm-12">
-                                <label>ข้อมูลครัวเรือน</label>
-                                <div class="row">
-                                  <div class="col-sm-8">
-                                    <input type="file" class="form-control"  >
-                                  </div>
-                                  <div class="col-sm-4">
-                                    <div class="" style="margin-top: 10px">
-                                    ไฟล์ Excel
+                          
+                          <!-- <form action="<?php echo site_url("Household_c/Manage_c/househole_excell/"); ?>" method="post" enctype="multipart/form-data">
+                            Upload excel file : 
+                            <input name="test" type="text">
+
+                            <input id="file-input" name="excell" type="file">
+                            <button type="submit">asd</button>
+                          </form> -->
+                          <form action="<?php echo site_url("Household_c/Manage_c/househole_excell/"); ?>" method="post" enctype="multipart/form-data">
+                            <div class="modal-body">
+                              <div class="row">
+                                <div class="col-sm-12">
+                                  <label>ข้อมูลครัวเรือน</label>
+                                  <div class="row">
+                                    <div class="col-sm-8">
+                                      <input type="file" name="excell" class="form-control"  >
+                                    </div>
+                                    <div class="col-sm-4">
+                                      <div class="" style="margin-top: 10px">
+                                      ไฟล์ Excel
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
                               </div>
-                              <div class="col-sm-12" style="margin-top: 10px">
-                                <label>จังหวัด</label>
-                                <div class="row">
-                                  <div class="col-sm-8">
-                                    <select class="form-control">
-                                      <option>นราธิวาส</option>
-                                      <option>ยะลา</option>
-                                      <option>ปัตตานี</option>
-                                    </select>
-                                  </div>
-                                  <div class="col-sm-4">
-                                    <div class="" style="margin-top: 10px">
-                                    
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-sm-12" style="margin-top: 10px">
-                                <label>ปีงบประมาน</label>
-                                <div class="row">
-                                  <div class="col-sm-3">
-                                    <select class="form-control">
-                                      <?php $date_time = date("Y");?>
-                                      <option value="<?php echo $date_time + '543' ?>" selected="selected"><?php echo $date_time + '543' ?></option>
-                                      <option><?php echo $date_time + '543' + '1' ?></option>
-                                      <option><?php echo $date_time + '543' +  '0' ?></option>
-                                      <option><?php echo $date_time + '543' +  '-1' ?></option>
-                                      <option><?php echo $date_time + '543' +  '-2' ?></option>
-                                    </select>
-                                  </div>
-                                  <div class="col-sm-4">
-                                    <div class="" style="margin-top: 10px">
-                                    
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
+                              
                             </div>
-                            
-                          </div>
-                          <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                          </div>
+                            <div class="modal-footer justify-content-between">
+                              <button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
+                              <button type="submit" class="btn btn-primary">บันทึก</button>
+                            </div>
+                          </form>
                         </div>
                         <!-- /.modal-content -->
                       </div>
@@ -377,7 +350,7 @@
                     <tr>
                       <td><?php echo $i ++; ?></td>
                       <td><?php echo $hous->h_title; ?><?php echo $hous->h_name; ?> <?php echo $hous->h_surname; ?></td>
-                      <td>บ้านเลขที่ <?php echo $hous->h_house_number; ?> ม.<?php echo $hous->h_swine; ?> ต.<?php echo $hous->h_parish; ?> อ.<?php echo $hous->h_district; ?> จ.<?php echo $hous->name_th; ?></td>
+                      <td>บ้านเลขที่ <?php echo $hous->h_house_number; ?> ม.<?php echo $hous->h_swine; ?> ต.<?php echo $hous->h_parish; ?> อ.<?php echo $hous->h_district; ?> จ.<?php echo $hous->h_parish; ?></td>
                       <td><?php echo $hous->ac_initials; ?></td>
                       <td><?php echo $hous->h_tel; ?></td>
                       <td><?php echo $hous->h_revenue; ?></td>
@@ -469,6 +442,50 @@
                     </tr>
                   <?php } ?>
                  
+                  </tbody>
+                </table>
+              </div>
+              
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th >ลำดับ</th>
+                      <th >รหัส</th>
+                      <th >ปี</th>
+                      <th >ชื่อ-สกุล</th>
+                      <th >เพศ</th>
+                      <th >อายุ</th>
+                      <th >รายได้</th>
+                      <th >การศึกษา</th>
+                      <th >ตำบล</th>
+                      <th >อำเภอ</th>
+                      <th >จังหวัด</th>
+                      <th >ส่งเสริมอาชีพ</th>
+                      <th >รายได้เพิ่ม</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                  <?php 
+                    $i = "1";
+                    foreach ($excell as $hous) { ?>
+                    <tr>
+                      <td><?php echo $i ++; ?></td>
+                      <td><?php echo $hous->h_id; ?></td>
+                      <td><?php echo $hous->h_row_budget; ?></td>
+                      <td><?php echo $hous->h_title; ?><?php echo $hous->h_name; ?> <?php echo $hous->h_surname; ?></td>
+                      <td><?php echo $hous->h_gender; ?></td>
+                      <td><?php echo $hous->h_age; ?></td>
+                      <td><?php echo $hous->h_revenue; ?></td>
+                      <td><?php echo $hous->h_education; ?></td>
+                      <td><?php echo $hous->h_parish; ?></td>
+                      <td><?php echo $hous->h_district; ?></td>
+                      <td><?php echo $hous->h_province; ?></td>
+                      <td><?php echo $hous->ac_initials; ?></td>
+                      <td><?php echo $hous->h_shop_buy; ?></td>
+                    </tr>
+                  <?php } ?>
                   </tbody>
                 </table>
               </div>

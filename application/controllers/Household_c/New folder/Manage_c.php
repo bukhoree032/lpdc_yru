@@ -21,7 +21,10 @@ class Manage_c extends CI_Controller {
 
 	public function index()
 	{
-		$househole['househole']=$this->Manage_m->manage();
+		// $househole['househole']=$this->Manage_m->manage();
+		$manage = $this->Manage_m->manage();
+		$househole['househole']=$manage['household'];
+		$househole['excell']=$manage['h_excell'];
 		$manage_dashboard['manage_dashboard']=$this->Manage_m->manage_dashboard();
 		$manage_year['manage_year']=$this->Manage_m->manage_year();
 		$manage_provinces['manage_provinces']=$this->Manage_m->manage_provinces();
@@ -41,7 +44,10 @@ class Manage_c extends CI_Controller {
 
 	public function househole_search()
 	{
-		$househole['househole']=$this->Manage_m->househole_search();
+		// $househole['househole']=$this->Manage_m->househole_search();
+		$manage = $this->Manage_m->househole_search();
+		$househole['househole']=$manage['household'];
+		$househole['excell']=$manage['h_excell'];
 		$manage_dashboard['manage_dashboard']=$this->Manage_m->manage_dashboard();
 		$manage_year['manage_year']=$this->Manage_m->manage_year();
 		$manage_provinces['manage_provinces']=$this->Manage_m->manage_provinces();
@@ -176,7 +182,10 @@ class Manage_c extends CI_Controller {
 	public function househole_bin($h_id)
 	{
 		$this->Manage_m->manage_bin($h_id);
-		$househole['househole']=$this->Manage_m->manage();
+		// $househole['househole']=$this->Manage_m->manage();
+		$manage = $this->Manage_m->manage();
+		$househole['househole']=$manage['household'];
+		$househole['excell']=$manage['h_excell'];
 		$manage_dashboard['manage_dashboard']=$this->Manage_m->manage_dashboard();
 		$manage_year['manage_year']=$this->Manage_m->manage_year();
 		$manage_provinces['manage_provinces']=$this->Manage_m->manage_provinces();

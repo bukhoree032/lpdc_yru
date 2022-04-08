@@ -244,14 +244,17 @@
                   <div class="row">
                      <div class="col-sm-12">
                         <?php foreach ($eva_add as $eva) { ?>
-
                           <?php if($this->session->flashdata('exit_honey')) { ?>
+                          <?php echo('1') ?>
                             <form action="<?php echo site_url("Household_c/Honey_c/eva_insert/"); ?>" method="post" enctype="multipart/form-data">
                           <?php }else if($this->session->flashdata('exit_chicken')) { ?>
+                          <?php echo('2') ?>
                             <form action="<?php echo site_url("Household_c/Chicken_c/eva_insert/"); ?>" method="post"enctype="multipart/form-data">
                           <?php }else if($this->session->flashdata('exit_mush')) { ?>
+                          <?php echo('3') ?>
                             <form action="<?php echo site_url("Household_c/Mushroom_c/eva_insert/"); ?>" method="post"enctype="multipart/form-data">
                           <?php }else{ ?>
+                          <?php echo('4') ?>
                             <form action="<?php echo site_url("Household_c/Manage_c/eva_insert/"); ?>" method="post" enctype="multipart/form-data">
                           <?php } ?>
 

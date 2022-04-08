@@ -1,6 +1,6 @@
 <?php  
 class Onet_m extends CI_Model {
-	
+
 	public function onet()
 	{	
 		$check = "0";
@@ -86,7 +86,57 @@ class Onet_m extends CI_Model {
 										WHERE onet.on_row_budget $year '$on_row_budget' AND  onet.on_province $pro1 '$pro' ORDER BY on_id DESC
 									  ");
 		return $quer_code->result();
-	}	
+	}
+
+	public function onet_insert() 
+	{
+		$date_time = date("Y/m/d H:i:s");//ดึงเวลาปัจจุบันใส่ในตัวแปร
+
+		$data = $this->input->post();
+		$data['on_date'] = $date_time;
+		$data['on_date_up'] = $date_time;
+
+		$query_check=$this->db->insert('onet',$data);
+		
+		if ($query_check) {
+			$this->session->set_flashdata('rigister_success','บันทึกการเปลียนแปลงสำเร็จ');
+			return "false_true";
+		}else{
+			return "false_regieter";
+		}
+	}
+
+	public function onet_edit($id)
+	{ 
+		$data['quer_code'] = $this->db->query(" SELECT *
+										FROM  onet
+										LEFT JOIN provinces ON provinces.pro_id = onet.on_province
+										WHERE onet.on_id = '$id'
+									  ")->result_array()['0'];
+
+		$data['activity'] = $this->db->query(" SELECT ac_id,ac_initials FROM  activity ")->result_array();
+
+		return $data;
+	}
+
+	public function onet_update() 
+	{
+		$date_time = date("Y/m/d H:i:s");//ดึงเวลาปัจจุบันใส่ในตัวแปร
+		$on_id = $this->input->post('on_id');
+
+		$data = $this->input->post();
+		$data['on_date_up'] = $date_time;
+
+		$this->db->where('on_id',$on_id);
+		$query_check=$this->db->update('onet',$data);
+
+		if ($query_check) {
+			$this->session->set_flashdata('rigister_success','บันทึกการเปลียนแปลงสำเร็จ');
+			return "false_true";
+		}else{
+		  	return "false_regieter";
+		}
+	}
 
 	public function onet_year()
 	{ 	

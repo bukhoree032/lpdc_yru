@@ -9,10 +9,6 @@
             <!-- <h1>DataTables</h1> -->
           </div>
           <div class="col-sm-6">
-            <!-- <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">DataTables</li>
-            </ol> -->
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -183,9 +179,16 @@
               <div class="card-header">
                   <h3 class="card-title">รายชื่อ ONET</h3>
               </div>
-              <div class="card-header">
-                <!-- <button type="button" class="btn btn-block bg-gradient-primary btn-sm" style="width: 10%">import</button> -->
-              </div>
+              <?php if (!$this->session->userdata('login') == '') { ?>
+                <div class="card-header">
+                  <div class="row">
+                    <div class="col-sm-2">
+                      <a type="button" class="btn btn-block bg-gradient-primary btn-sm" style="width: 100%" href="<?php echo site_url("Onet_c/Onet_c/Onet_add/"); ?>">+ เพิ่มโรงเรียน</a>
+                    </div>
+                  </div>
+                </div>
+              <?php } ?>
+              <!-- <button type="button" class="btn btn-block bg-gradient-primary btn-sm" style="width: 10%">import</button> -->
               <!-- ---------------------------------ค้นหา------------------------- -->
               <div class="card-header">
                 <form action="<?php echo site_url("Onet_c/Onet_c/onet_search/"); ?>" method="post"enctype="multipart/form-data">
@@ -245,7 +248,7 @@
                     <th style="width: 12%">สังกัด</th>
                     <th style="width: 7%">เบอโทร</th>
                     <th style="width: 7%">นำทาง</th>
-                    <!-- <th style="width: 8%">จัดการ</th> -->
+                    <th style="width: 8%">จัดการ</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -268,11 +271,11 @@
                           <?php } ?>
                           
                         </td>
-                        <!-- <td>
+                        <td>
                           <div class="col-sm-12">
-                            <button type="button" class="btn btn-block btn-success btn-xs" onclick="window.location='<?php echo site_url("Household_c/Manage_c/househole_edit/".$onet->on_id); ?>'"><i class="fas fa-edit"></i></button>
+                            <button type="button" class="btn btn-block btn-success btn-xs" onclick="window.location='<?php echo site_url("Onet_c/Onet_c/onet_edit/".$onet->on_id); ?>'"><i class="fas fa-edit"></i></button>
                           </div>
-                        </td> -->
+                        </td>
                       </tr>
                   <?php } ?>
                   

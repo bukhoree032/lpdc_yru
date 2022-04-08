@@ -21,7 +21,10 @@ class Evaluate_c extends CI_Controller {
 
 	public function index()
 	{
-		$househole['househole']=$this->Manage_m->manage();
+		// $househole['househole']=$this->Manage_m->manage();
+		$manage = $this->Manage_m->manage();
+		$househole['househole']=$manage['household'];
+		$househole['excell']=$manage['h_excell'];
 		$manage_dashboard['manage_dashboard']=$this->Manage_m->manage_dashboard();
 		$activity_nav['activity_nav']=$this->Evaluate_m->activity_nav();
 		$activity_hold['activity_hold']=$this->Evaluate_m->activity_hold();
@@ -40,7 +43,10 @@ class Evaluate_c extends CI_Controller {
 
 	public function eva_search()
 	{
-		$househole['househole']=$this->Manage_m->househole_search();
+		// $househole['househole']=$this->Manage_m->househole_search();
+		$manage = $this->Manage_m->househole_search();
+		$househole['househole']=$manage['household'];
+		$househole['excell']=$manage['h_excell'];
 		$manage_dashboard['manage_dashboard']=$this->Manage_m->manage_dashboard();
 		$activity_nav['activity_nav']=$this->Evaluate_m->activity_nav();
 		$activity_hold['activity_hold']=$this->Evaluate_m->activity_hold();
