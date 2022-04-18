@@ -151,7 +151,7 @@
                                     <!-- /.form-group -->
                                  </div>
                                  <div class="col-md-1">
-                                    <button type="button" class="btn btn-block bg-gradient-primary btn-sm" onclick="window.location='<?php echo site_url("Otop_c/Manage_otop_c/product"); ?>'"  style="width: 100%;margin-top: 30%" >เพิ่ม</button>
+                                    <button type="button" class="btn btn-block bg-gradient-primary btn-sm" onclick="window.location='<?php echo site_url("Otop_c/Manage_otop_c/goal"); ?>'"  style="width: 100%;margin-top: 30%" >เพิ่ม</button>
                                     
                                  </div>
                                  <div class="col-md-12">

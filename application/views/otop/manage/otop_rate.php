@@ -265,42 +265,6 @@
                     </div>
                   </div>
                 </div>
-              <!-- ---------------------------------ค้นหา------------------------- -->
-              <div class="card-header">
-                <form action="<?php echo site_url("Otop_c/Manage_otop_c/otop_search/"); ?>" method="post"enctype="multipart/form-data">
-                  <div class="row">
-                    <div class="col-sm-2">
-                      <select class="form-control select2bs4" name="s_pro" style="width: 100%;">
-                          <?php if ($this->session->userdata('otop_search_pro')) { 
-                            $session_pro = $this->session->userdata('otop_search_pro'); ?>
-                              <?php foreach ($manage_provinces['pro'] as $pro) { 
-                                if ($session_pro == $pro->pro_id) {?>
-                                  <option value="<?php echo $pro->pro_id; ?>"><?php echo $pro->name_th; ?></option>
-                                  <option value="">ทุกจังหวัด</option>
-                                <?php }
-                              } ?>
-                          <?php }else{ ?>
-                           <option value="" selected="selected">-- จังหวัด --</option>
-                          <?php } ?>
-                          <?php foreach ($manage_provinces['pro'] as $pro) { ?>
-                            <option value="<?php echo $pro->pro_id; ?>"><?php echo $pro->name_th; ?></option>
-                          <?php } ?>
-                        </select>
-                    </div>
-
-                    
-
-                    
-                    <div class="col-sm-1">
-                      <button type="submit" class="btn btn-block bg-gradient-primary btn-sm" data-toggle="modal" data-target="#modal-default" style="width: 100%">ค้นหา</button>
-                    </div>
-                    
-                    <!-- <div class="col-sm-4"></div> -->
-                  </div>
-                <!-- <button type="button" class="btn btn-block bg-gradient-primary btn-sm" style="width: 10%">import</button> -->
-                </form>
-              </div>
-              <!-- --------------------------------/ค้นหา------------------------- -->
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
@@ -423,11 +387,12 @@
                                               <div class="col-sm-3">
                                                 <select class="form-control" name="year">
                                                   <?php $date_time = $session_year;?>
-                                                  <option value="<?php echo $date_time ?>" selected="selected"><?php echo $date_time ?></option>
-                                                  <option value="<?php echo $date_time + '1' ?>"><?php echo $date_time + '1' ?></option>
-                                                  <option value="<?php echo $date_time + '0' ?>"><?php echo $date_time + '0' ?></option>
-                                                  <option value="<?php echo $date_time + '-1' ?>"><?php echo $date_time + '-1' ?></option>
-                                                  <option value="<?php echo $date_time + '-2' ?>"><?php echo $date_time + '-2' ?></option>
+                                                  <!-- <option value="<?php echo $date_time ?>" selected="selected"><?php echo $date_time ?></option> -->
+                                                  <option value="<?php echo $date_time + '2' ?>" <?php if($date_time == $date_time + '2'){?> selected <?php } ?>><?php echo $date_time + '2' ?></option>
+                                                  <option value="<?php echo $date_time + '1' ?>" <?php if($date_time == $date_time + '1'){?> selected <?php } ?>><?php echo $date_time + '1' ?></option>
+                                                  <option value="<?php echo $date_time ?>" <?php if($date_time == $date_time ){?> selected <?php } ?>><?php echo $date_time ?></option>
+                                                  <option value="<?php echo $date_time + '-1' ?>" <?php if($date_time == $date_time + '-1'){?> selected <?php } ?>><?php echo $date_time + '-1' ?></option>
+                                                  <option value="<?php echo $date_time + '-2' ?>" <?php if($date_time == $date_time + '-2'){?> selected <?php } ?>><?php echo $date_time + '-2' ?></option>
                                                 </select>
                                               </div>
                                               <div class="col-sm-4">
@@ -439,26 +404,45 @@
                                           </div>
                                           <div class="col-md-12" style="margin-top: 10px">
                                             <div class="form-group">
-                                              <label>การดำเนินงาน</label>
-                                              <select class="select2" multiple="multiple" name="goal[]" data-placeholder="เลือกการดำเนินงาน" style="width: 100%;">
-                                                <?php foreach ($goalANDpro["goal"] as $goal) { ?>
-                                                  <option value="<?php echo $goal->o_g_id; ?>"><?php echo $goal->o_g_name; ?></option> 
-                                                <?php } ?>
-                                              </select>
+                                              <div class="row">
+                                                <div class="col-md-10">
+                                                  <label>ผลิตภัณฑ์</label>
+                                                  <select class="select2" multiple="multiple" name="product[]" data-placeholder="เลือกผลิตภัณฑ์" style="width: 100%;">
+                                                    <?php foreach ($goalANDpro["pro"] as $pro) { ?>
+                                                      <option value="<?php echo $pro->o_p_id; ?>"><?php echo $pro->o_p_name; ?></option> 
+                                                    <?php } ?>
+                                                  </select>
+                                                </div>
+                                                <div class="col-md-2">
+                                                  <button type="button" class="btn btn-block bg-gradient-primary btn-sm" style="width: 100%;margin-top: 55%" onclick="window.location='<?php echo site_url("Otop_c/Manage_otop_c/goal"); ?>'">เพิ่ม</button>
+                                                </div>
+                                              </div>
                                             </div>
                                             <!-- /.form-group -->
                                             <div class="form-group">
-                                              <label>ผลิตภัณฑ์</label>
-                                              <select class="select2" multiple="multiple" name="product[]" data-placeholder="เลือกผลิตภัณฑ์" style="width: 100%;">
-                                                <?php foreach ($goalANDpro["pro"] as $pro) { ?>
-                                                  <option value="<?php echo $pro->o_p_id; ?>"><?php echo $pro->o_p_name; ?></option> 
-                                                <?php } ?>
-                                              </select>
+                                              <div class="row">
+                                                <div class="col-md-10">
+                                                  <label>การดำเนินงาน</label>
+                                                  <select class="select2" multiple="multiple" name="goal[]" data-placeholder="เลือกการดำเนินงาน" style="width: 100%;">
+                                                    <?php foreach ($goalANDpro["goal"] as $goal) { ?>
+                                                      <option value="<?php echo $goal->o_g_id; ?>"><?php echo $goal->o_g_name; ?></option> 
+                                                    <?php } ?>
+                                                  </select>
+                                                </div>
+                                                <div class="col-md-2">
+                                                  <button type="button" class="btn btn-block bg-gradient-primary btn-sm" style="width: 100%;margin-top: 55%" onclick="window.location='<?php echo site_url("Otop_c/Manage_otop_c/product"); ?>'">เพิ่ม</button>
+                                                </div>
+                                              </div>
                                             </div>
                                           </div>
                                         </div>
+                                        <script>
+                                          $(function () {
+                                            //Initialize Select2 Elements
+                                            $('.select2').select2()
+                                          })
+                                        </script>
                                         <div class="modal-footer justify-content-between">
-
                                           <div class="col-md-12">
                                               <button type="submit" class="btn btn-primary" >บันทึก</button>
                                               <button type="button" class="btn btn-danger"data-dismiss="modal">ภายหลัง</button>
@@ -588,77 +572,12 @@
          });
       </script>
       <script>
-         $(function () {
-           //Initialize Select2 Elements
-           $('.select2').select2()
-         
-           //Initialize Select2 Elements
-           $('.select2bs4').select2({
-             theme: 'bootstrap4'
-           })
-         
-           //Datemask dd/mm/yyyy
-           $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-           //Datemask2 mm/dd/yyyy
-           $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-           //Money Euro
-           $('[data-mask]').inputmask()
-         
-           //Date range picker
-           $('#reservationdate').datetimepicker({
-               format: 'L'
-           });
-           //Date range picker
-           $('#reservation').daterangepicker()
-           //Date range picker with time picker
-           $('#reservationtime').daterangepicker({
-             timePicker: true,
-             timePickerIncrement: 30,
-             locale: {
-               format: 'MM/DD/YYYY hh:mm A'
-             }
-           })
-           //Date range as a button
-           $('#daterange-btn').daterangepicker(
-             {
-               ranges   : {
-                 'Today'       : [moment(), moment()],
-                 'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                 'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-                 'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                 'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-                 'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-               },
-               startDate: moment().subtract(29, 'days'),
-               endDate  : moment()
-             },
-             function (start, end) {
-               $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-             }
-           )
-         
-           //Timepicker
-           $('#timepicker').datetimepicker({
-             format: 'LT'
-           })
-           
-           //Bootstrap Duallistbox
-           $('.duallistbox').bootstrapDualListbox()
-         
-           //Colorpicker
-           $('.my-colorpicker1').colorpicker()
-           //color picker with addon
-           $('.my-colorpicker2').colorpicker()
-         
-           $('.my-colorpicker2').on('colorpickerChange', function(event) {
-             $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
-           });
-         
-           $("input[data-bootstrap-switch]").each(function(){
-             $(this).bootstrapSwitch('state', $(this).prop('checked'));
-           });
-         
-         })
+        $(function () {
+          //Initialize Select2 Elements
+          $('.select2bs4').select2({
+            theme: 'bootstrap4'
+          })
+        })
       </script>
 </body>
 </html>
