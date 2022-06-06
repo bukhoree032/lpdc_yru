@@ -34,6 +34,13 @@
   <link rel="stylesheet" href="<?php echo base_url('/lpdc_admin/') ?>dist/css/adminlte.min.css">
   
   <link rel="stylesheet" href="<?php echo base_url('/lpdc_admin/') ?>css/responsive.css">
+
+  <!-- {{-- datetime --}} -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+  <link rel="stylesheet" href="https://www.ninenik.com/js/jquery.datetimepicker.css">
+  <script src="https://www.ninenik.com/js/jquery.datetimepicker.full.js"></script>
+<!-- {{-- datetime --}} -->
   
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
