@@ -98,11 +98,7 @@
                 <div class="col-md-2">
                   <div class="form-group">
                     <label>วัน/เดือน/ปีเกิด</label>
-                    <!-- <input type="text" class="form-control" name="j_birthday" id="testdate5" value=" echo $quer_code['j_birthday']"> -->
-                    <input type="text" class="form-control" name="j_birthday" id="testdate5" value="<?php echo date('d-m-'); echo date('Y')+543?>">
-                    
-                    <!-- <input type="text" name="j_birthday" readonly id="testdate5" value="" style="width:55%;" required> -->
-                    <!-- <input type="text" name="j_birthday" readonly id="testdate5" value="{{ date('d-m-') }}{{date('Y')+543}}" style="width:55%;" required> -->
+                    <input type="text" class="form-control" name="j_birthday" id="testdate5" value="<?php echo $quer_code['j_birthday'] ?>">
                   </div>
                   <!-- /.form-group -->
                 </div>
@@ -379,12 +375,8 @@
 <script src="<?php echo base_url('/lpdc_admin/') ?>dist/js/demo.js"></script>
 <!-- Page script -->
 
-<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>   -->
 <script src="https://www.ninenik.com/js/jquery.datetimepicker.full.js"></script>  
 
-
-
-                
 <script type="text/javascript">
   // $.datetimepicker.setLocale('th'); // ต้องกำหนดเสมอถ้าใช้ภาษาไทย และ เป็นปี พ.ศ.
   // กรณีใช้แบบ input
