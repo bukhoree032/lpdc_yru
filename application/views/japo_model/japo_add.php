@@ -94,15 +94,12 @@
                   </div>
                   <!-- /.form-group -->
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                   <div class="form-group">
-                    <label>อาชีพที่ส่งเสริม</label>
-                    <select class="form-control select2bs4" name="j_occupation[]" style="width: 100%;" multiple>
-                      <?php foreach ($manage_year['acti'] as $acti) { ?>
-                        <option value="<?php echo $acti->ac_id; ?>"><?php echo $acti->ac_initials; ?></option>
-                      <?php } ?>
-                    </select>
+                    <label>วัน/เดือน/ปีเกิด</label>
+                    <input type="text" class="form-control" name="j_birthday" id="testdate5" value="">
                   </div>
+                  <!-- /.form-group -->
                 </div>
                 <div class="col-md-2">
                   <div class="form-group">
@@ -110,20 +107,30 @@
                     <input type="text" class="form-control" name="j_revenue" >
                   </div>
                 </div>
-                <!-- <div class="col-md-2">
+                <div class="col-md-2">
                   <div class="form-group">
-                    <label>ระดับการศึกษา</label>
+                    <label>การศึกษา</label>
                     <input type="text" class="form-control" name="j_education">
                   </div>
-                </div> -->
-                <div class="col-md-2">
+                </div>
+                <div class="col-md-3">
                   <div class="form-group">
                     <label>เบอร์โทร</label>
                     <input type="text" class="form-control" name="j_tel">
                   </div>
                   <!-- /.form-group -->
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-12">
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label>อาชีพที่ส่งเสริม</label>
+                      <select class="form-control select2bs4" name="j_occupation[]" style="width: 100%;" multiple>
+                        <?php foreach ($manage_year['acti'] as $acti) { ?>
+                          <option value="<?php echo $acti->ac_id; ?>"><?php echo $acti->ac_initials; ?></option>
+                        <?php } ?>
+                      </select>
+                    </div>
+                  </div>
                 </div>
                 <div class="col-md-12">
                   <div class="">
@@ -352,6 +359,45 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url('/lpdc_admin/') ?>dist/js/demo.js"></script>
 <!-- Page script -->
+
+<!-- datetimepicker -->
+  <script src="https://www.ninenik.com/js/jquery.datetimepicker.full.js"></script>  
+<!-- datetimepicker -->
+
+<script type="text/javascript">
+  // $.datetimepicker.setLocale('th'); // ต้องกำหนดเสมอถ้าใช้ภาษาไทย และ เป็นปี พ.ศ.
+  // กรณีใช้แบบ input
+  $("#testdate5").datetimepicker({
+      timepicker:false,
+      format:'d-m-Y',  // กำหนดรูปแบบวันที่ ที่ใช้ เป็น 00-00-0000            
+      lang:'th',  // ต้องกำหนดเสมอถ้าใช้ภาษาไทย และ เป็นปี พ.ศ.
+      onSelectDate:function(dp,$input){
+          var yearT=new Date(dp).getFullYear()-0;  
+          var yearTH=yearT+543;
+          var fulldate=$input.val();
+          var fulldateTH=fulldate.replace(yearT,yearTH);
+          $input.val(fulldateTH);
+      },
+  });     
+
+  // กรณีใช้กับ input ต้องกำหนดส่วนนี้ด้วยเสมอ เพื่อปรับปีให้เป็น ค.ศ. ก่อนแสดงปฏิทิน
+  $("#testdate5").on("mouseenter mouseleave",function(e){
+      var dateValue=$(this).val();
+      if(dateValue!=""){
+              var arr_date=dateValue.split("-"); // ถ้าใช้ตัวแบ่งรูปแบบอื่น ให้เปลี่ยนเป็นตามรูปแบบนั้น
+              // ในที่นี้อยู่ในรูปแบบ 00-00-0000 เป็น d-m-Y  แบ่งด่วย - ดังนั้น ตัวแปรที่เป็นปี จะอยู่ใน array
+              //  ตัวที่สอง arr_date[2] โดยเริ่มนับจาก 0 
+              if(e.type=="mouseenter"){
+                  var yearT=arr_date[2]-543;
+              }       
+              if(e.type=="mouseleave"){
+                  var yearT=parseInt(arr_date[2])+543;
+              }   
+              dateValue=dateValue.replace(arr_date[2],yearT);
+              $(this).val(dateValue);                                                 
+      }       
+  });
+</script>
 
 <script type="text/javascript">
   function myFunction() {
