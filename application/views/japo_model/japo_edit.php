@@ -104,14 +104,14 @@
                 </div>
                 <div class="col-md-2">
                   <div class="form-group">
-                    <label>รายได้</label>
+                    <label>รายได้ก่อน</label>
                     <input type="text" class="form-control" name="j_revenue" value="<?php echo $quer_code['j_revenue'] ?>">
                   </div>
                 </div>
                 <div class="col-md-2">
                   <div class="form-group">
-                    <label>การศึกษา</label>
-                    <input type="text" class="form-control" name="j_education" value="<?php echo $quer_code['j_education'] ?>">
+                    <label>รายได้หลัง</label>
+                    <input type="text" class="form-control" name="j_revenueafter" value="<?php echo $quer_code['j_revenueafter'] ?>">
                   </div>
                 </div>
                 <div class="col-md-3">
@@ -120,6 +120,36 @@
                     <input type="text" class="form-control" name="j_tel" value="<?php echo $quer_code['j_tel'] ?>">
                   </div>
                   <!-- /.form-group -->
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>การศึกษา</label>
+                    <input type="text" class="form-control" name="j_education" value="<?php echo $quer_code['j_education'] ?>">
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>ระดับครัวเรือน</label>
+                      <select class="form-control" name="j_level" id="cars">
+                        <option value="0" <?php if($quer_code['j_level'] == '0'){?>selected<?php }?>>ปกติ</option>
+                        <option value="1" <?php if($quer_code['j_level'] == '1'){?>selected<?php }?>>ดี</option>
+                        <option value="2" <?php if($quer_code['j_level'] == '2'){?>selected<?php }?>>ดีมาก</option>
+                      </select>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>กิจกรรมที่โดดเด่น</label>
+                      <select class="form-control" name="j_standout" id="cars">
+                      <?php if($quer_code['j_occupation'] != '') {
+                          $j_occupation = unserialize($quer_code['j_occupation']);
+                        }?>
+                        <option> -- เลือกกิจกรรม --</option>
+                        <?php foreach ($manage_year['acti'] as $acti) { ?>
+                            <option value="<?php echo $acti->ac_id; ?>" <?php if($quer_code['j_standout'] == $acti->ac_id){?>selected<?php }?>><?php echo $acti->ac_initials; ?></option>
+                        <?php } ?>
+                      </select>
+                  </div>
                 </div>
                 <div class="col-md-12">
                   <div class="col-md-3">
