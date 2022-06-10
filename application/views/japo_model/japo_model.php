@@ -98,7 +98,11 @@
                       <td><?php echo $hous->j_tel; ?></td>
                       <!-- <td><?php echo $hous->h_revenue; ?></td> -->
                       <td>
-                        <button type="button" class="btn btn-block btn-success btn-xs" onclick="window.location='http://www.google.com/maps/place/<?php echo $hous->j_latitude; ?>,<?php echo $hous->j_longitude; ?>'">นำทาง</button>
+                        <?php if ($hous->j_latitude) { ?>
+                          <button type="button" class="btn btn-block btn-primary btn-xs" onclick="window.location='http://www.google.com/maps/place/<?php echo $hous->j_latitude; ?>,<?php echo $hous->j_longitude; ?>'">นำทาง</button>
+                        <?php }else{ ?>
+                          <button type="button" class="btn btn-block btn-primary btn-xs" onclick="window.location='#'">ไม่\มีข้อมูลนำทาง</button>
+                        <?php } ?>
                       </td>
                       <?php if (!$this->session->userdata('login') == '') { ?>
                         <td>
