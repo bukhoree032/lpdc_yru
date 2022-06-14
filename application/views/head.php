@@ -308,7 +308,8 @@
 
                       
                       <?php foreach ($activity_nav["activity_hold"] as $ac_hold) { //เพิ่มครัวเรือน กับ ประเมิน
-                        if ($pro->pro_id == $ac_hold->ac_m_id_pro) { ?>
+                        // if ($pro->pro_id == $ac_hold->ac_m_id_pro) { //แบบมีประเมิน
+                        if ($pro->pro_id == $ac_hold->ac_m_id_pro && $ac_hold->ac_m_initials != 'ประเมิน') { ?> 
                           <ul class="nav nav-treeview">
                             <li class="nav-item">
                               <?php if ($ac_hold->ac_m_id == $ac_nav) { ?>
@@ -317,6 +318,7 @@
                                 <a href="<?php echo "$ac_hold->ac_m_link/"; ?>" class="nav-link ">
                               <?php } ?>
                                 <i class="far fa-dot-circle nav-icon"></i>
+                                
                                 <p><?php echo $ac_hold->ac_m_initials; ?></p>
                               </a>
                             </li>
