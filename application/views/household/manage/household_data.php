@@ -336,6 +336,7 @@
                       <th style="width: 8%">รายได้</th>
                       <?php if (!$this->session->userdata('login') == '') { ?>
                       <th style="width: 9%">ประเมิณ</th>
+                      <th style="width: 9%">นำทาง</th>
                         <th style="width: 11%">จัดการ</th>
                       <?php }else{
 
@@ -354,6 +355,16 @@
                       <td><?php echo $hous->ac_initials; ?></td>
                       <td><?php echo $hous->h_tel; ?></td>
                       <td><?php echo $hous->h_revenue; ?></td>
+
+                      <td>
+                        <?php if ($hous->h_latitude) { ?>
+                          <button type="button" class="btn btn-block btn-primary btn-xs" onclick="window.location='http://www.google.com/maps/place/<?php echo $hous->h_latitude; ?>,<?php echo $hous->h_longitude; ?>'">นำทาง</button>
+                        <?php }else{ ?>
+                          <button type="button" class="btn btn-block btn-danger btn-xs" onclick="window.location='#'">ไม่มีข้อมูลนำทาง</button>
+                        <?php } ?>
+                        
+                      </td>
+
 
                       <?php if (!$this->session->userdata('login') == '') { ?>
                         <td>
@@ -423,6 +434,9 @@
                           </div>
                         </div>
                         <!-- ----------------- /modal ------------------- -->
+
+
+
                         <td>
                           <div class="row">
                             <div class="col-sm-4">
