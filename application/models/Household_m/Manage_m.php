@@ -411,6 +411,7 @@ class Manage_m extends CI_Model {
 					  'h_surname' => $this->input->post('h_surname'),
 					  'h_house_number' => $this->input->post('h_house_number'),
 					  'h_age' => $this->input->post('h_age'),
+					  'h_birthday' => $this->input->post('h_birthday'),
 					  'h_gender' => $h_gender_gen,
 					  'h_education' => $this->input->post('h_education'),
 					  'h_alley' => $this->input->post('h_alley'),
@@ -422,7 +423,10 @@ class Manage_m extends CI_Model {
 					  'h_province' => $this->input->post('h_province'),
 					  'h_tel' => $this->input->post('h_tel'),
 					  'h_revenue' => $this->input->post('h_revenue'),
+					  'h_revenueafter' => $this->input->post('h_revenueafter'),
 					  'h_occupation' => $this->input->post('h_occupation'),
+					  'h_level' => $this->input->post('h_level'),
+					  'h_standout' => $this->input->post('h_standout'),
 					  'h_date' => $date_time,
 					);
 		// $this->db->insert('halal_member',$data);

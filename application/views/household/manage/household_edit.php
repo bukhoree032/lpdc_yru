@@ -115,37 +115,70 @@
                   </div>
                   <!-- /.form-group -->
                 </div>
+
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label>วัน/เดือน/ปีเกิด</label>
+                    <input type="text" class="form-control" name="h_birthday" id="testdate5" value="<?php echo $hous->h_birthday; ?>">
+                  </div>
+                  <!-- /.form-group -->
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label>รายได้ก่อน</label>
+                    <input type="text" class="form-control" name="h_revenue" value="<?php echo $hous->h_revenue; ?>">
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label>รายได้หลัง</label>
+                    <input type="text" class="form-control" name="h_revenueafter" value="<?php echo $hous->h_revenueafter; ?>">
+                  </div>
+                </div>
                 <div class="col-md-3">
                   <div class="form-group">
-                    <label>อาชีพที่ส่งเสริม</label>
+                    <label>เบอร์โทร</label>
+                    <input type="text" class="form-control" name="h_tel" value="<?php echo $hous->h_tel; ?>">
+                  </div>
+                  <!-- /.form-group -->
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>การศึกษา</label>
+                    <input type="text" class="form-control" name="h_education" value="<?php echo $hous->h_education; ?>">
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label>ระดับครัวเรือน</label>
+                      <select class="form-control" name="h_level" id="cars">
+                        <option value="0" <?php if($hous->h_level == '0'){?>selected<?php }?>>ปกติ</option>
+                        <option value="1" <?php if($hous->h_level == '1'){?>selected<?php }?>>ดี</option>
+                        <option value="2" <?php if($hous->h_level == '2'){?>selected<?php }?>>ดีมาก</option>
+                      </select>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>กิจกรรมที่โดดเด่น</label>
                     <select class="form-control select2bs4" name="h_occupation" style="width: 100%;">
-                      <option value="<?php echo $hous->h_occupation; ?>" selected="selected"><?php echo $hous->ac_initials; ?></option>
+                      <option>-- เลือกกิจกรรม --</option>
                       <?php foreach ($manage_year['acti'] as $acti) { ?>
-                        <option value="<?php echo $acti->ac_id; ?>"><?php echo $acti->ac_initials; ?></option>
+                        <option value="<?php echo $acti->ac_id; ?>"  <?php if($hous->h_standout == $acti->ac_id){?>selected<?php }?>><?php echo $acti->ac_initials; ?></option>
                       <?php } ?>
                     </select>
                   </div>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-3">
                   <div class="form-group">
-                    <label>รายได้</label>
-                    <input type="text" class="form-control" name="h_revenue" value="<?php echo $hous->h_revenue; ?>" >
+                    <label>อาชีพที่ส่งเสริม</label>
+                    <select class="form-control select2bs4" name="h_occupation" style="width: 100%;">
+                      <option>-- เลือกกิจกรรม --</option>
+                      <?php foreach ($manage_year['acti'] as $acti) { ?>
+                        <option value="<?php echo $acti->ac_id; ?>" <?php if($hous->h_occupation == $acti->ac_id){?>selected<?php }?>><?php echo $acti->ac_initials; ?></option>
+                      <?php } ?>
+                    </select>
                   </div>
-                  <!-- /.form-group -->
-                </div>
-                <div class="col-md-2">
-                  <div class="form-group">
-                    <label>ระดับการศึกษา</label>
-                    <input type="text" class="form-control" name="h_education" value="<?php echo $hous->h_education; ?>" >
-                  </div>
-                  <!-- /.form-group -->
-                </div>
-                <div class="col-md-2">
-                  <div class="form-group">
-                    <label>เบอร์โทร</label>
-                    <input type="text" class="form-control" name="h_tel" value="<?php echo $hous->h_tel; ?>" >
-                  </div>
-                  <!-- /.form-group -->
                 </div>
                 <div class="col-md-9">
                 </div>
@@ -245,16 +278,12 @@
                      <div class="col-sm-12">
                         <?php foreach ($eva_add as $eva) { ?>
                           <?php if($this->session->flashdata('exit_honey')) { ?>
-                          <?php echo('1') ?>
                             <form action="<?php echo site_url("Household_c/Honey_c/eva_insert/"); ?>" method="post" enctype="multipart/form-data">
                           <?php }else if($this->session->flashdata('exit_chicken')) { ?>
-                          <?php echo('2') ?>
                             <form action="<?php echo site_url("Household_c/Chicken_c/eva_insert/"); ?>" method="post"enctype="multipart/form-data">
                           <?php }else if($this->session->flashdata('exit_mush')) { ?>
-                          <?php echo('3') ?>
                             <form action="<?php echo site_url("Household_c/Mushroom_c/eva_insert/"); ?>" method="post"enctype="multipart/form-data">
                           <?php }else{ ?>
-                          <?php echo('4') ?>
                             <form action="<?php echo site_url("Household_c/Manage_c/eva_insert/"); ?>" method="post" enctype="multipart/form-data">
                           <?php } ?>
 
@@ -425,6 +454,43 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url('/lpdc_admin/') ?>dist/js/demo.js"></script>
 <!-- Page script -->
+
+<script src="https://www.ninenik.com/js/jquery.datetimepicker.full.js"></script>  
+
+<script type="text/javascript">
+  // $.datetimepicker.setLocale('th'); // ต้องกำหนดเสมอถ้าใช้ภาษาไทย และ เป็นปี พ.ศ.
+  // กรณีใช้แบบ input
+  $("#testdate5").datetimepicker({
+      timepicker:false,
+      format:'d-m-Y',  // กำหนดรูปแบบวันที่ ที่ใช้ เป็น 00-00-0000            
+      lang:'th',  // ต้องกำหนดเสมอถ้าใช้ภาษาไทย และ เป็นปี พ.ศ.
+      onSelectDate:function(dp,$input){
+          var yearT=new Date(dp).getFullYear()-0;  
+          var yearTH=yearT+543;
+          var fulldate=$input.val();
+          var fulldateTH=fulldate.replace(yearT,yearTH);
+          $input.val(fulldateTH);
+      },
+  });     
+
+  // กรณีใช้กับ input ต้องกำหนดส่วนนี้ด้วยเสมอ เพื่อปรับปีให้เป็น ค.ศ. ก่อนแสดงปฏิทิน
+  $("#testdate5").on("mouseenter mouseleave",function(e){
+      var dateValue=$(this).val();
+      if(dateValue!=""){
+              var arr_date=dateValue.split("-"); // ถ้าใช้ตัวแบ่งรูปแบบอื่น ให้เปลี่ยนเป็นตามรูปแบบนั้น
+              // ในที่นี้อยู่ในรูปแบบ 00-00-0000 เป็น d-m-Y  แบ่งด่วย - ดังนั้น ตัวแปรที่เป็นปี จะอยู่ใน array
+              //  ตัวที่สอง arr_date[2] โดยเริ่มนับจาก 0 
+              if(e.type=="mouseenter"){
+                  var yearT=arr_date[2]-543;
+              }       
+              if(e.type=="mouseleave"){
+                  var yearT=parseInt(arr_date[2])+543;
+              }   
+              dateValue=dateValue.replace(arr_date[2],yearT);
+              $(this).val(dateValue);                                                 
+      }       
+  });
+</script>
 
 <?php foreach ($eva_add as $eva) { ?>
   <?php if ($eva->h_latitude != ''){ ?>
