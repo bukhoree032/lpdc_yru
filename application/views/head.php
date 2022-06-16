@@ -49,6 +49,19 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <?php header("Cache-Control: public, max-age=60, s-maxage=60");?> 
+
+  
+  <script type="text/javascript">
+    function show_title_other()
+    {
+
+        if (document.getElementById('h_mainoccupation').value == "อื่นๆ" ){
+      document.getElementById('title_other').style.display = 'block';}
+        else {document.getElementById('title_other').style.display = 'none';}
+
+    }
+  </script>
+
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">

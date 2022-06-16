@@ -142,30 +142,54 @@
                   </div>
                   <!-- /.form-group -->
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
+                </div>
+
+                <?php
+                  $education = ['ไม่ได้เรียน',
+                                'ประถมศึกษา',
+                                'มัธยมศึกษาตอนต้นหรือเทียบเท่า',
+                                'มัธยมศึกษาตอนปลายหรือเทียบเท่า',
+                                'อนุปริญญาหรือเทียบเท่า',
+                                'ปริญญาตรี',
+                                'สูงกว่าปริญญาตรี'
+                                ]
+                ?>
+                <div class="col-md-2">
                   <div class="form-group">
                     <label>การศึกษา</label>
-                    <input type="text" class="form-control" name="h_education" value="<?php echo $hous->h_education; ?>">
+                    <select class="form-control select2bs4" name="h_education" style="width: 100%;">
+                      <option value="">-- เลือกการศึกษา --</option>
+                      <?php foreach ($education as $edu) { ?>
+                        <option value="<?php echo $edu; ?>" <?php if($hous->h_education == $edu){?>selected<?php }?>><?php echo $edu; ?></option>
+                      <?php } ?>
+                    </select>
                   </div>
                 </div>
+
+                <?php
+                  $occupation = ['นักศึกษา',
+                                'นักเรียน',
+                                'ข้าราชการ',
+                                'พนักงานของรัฐ/รัฐวิสาหกิจ',
+                                'ลูกจ้าง',
+                                'ธุรกิจส่วนตัว',
+                                'อื่นๆ'
+                                ]
+                ?>
                 <div class="col-md-3">
                   <div class="form-group">
-                    <label>ระดับครัวเรือน</label>
-                      <select class="form-control" name="h_level" id="cars">
-                        <option value="0" <?php if($hous->h_level == '0'){?>selected<?php }?>>ปกติ</option>
-                        <option value="1" <?php if($hous->h_level == '1'){?>selected<?php }?>>ดี</option>
-                        <option value="2" <?php if($hous->h_level == '2'){?>selected<?php }?>>ดีมาก</option>
-                      </select>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-group">
-                    <label>กิจกรรมที่โดดเด่น</label>
-                    <select class="form-control select2bs4" name="h_occupation" style="width: 100%;">
-                      <option>-- เลือกกิจกรรม --</option>
-                      <?php foreach ($manage_year['acti'] as $acti) { ?>
-                        <option value="<?php echo $acti->ac_id; ?>"  <?php if($hous->h_standout == $acti->ac_id){?>selected<?php }?>><?php echo $acti->ac_initials; ?></option>
+                    <label>อาชีพหลัก</label>
+                    <select class="form-control" name="h_mainoccupation" id="h_mainoccupation" style="width: 100%;" onchange="show_title_other(this.form);">
+                      <option value="">-- เลือกอาชีพหลัก --</option>
+                      <?php foreach ($occupation as $occu) { ?>
+                        <option value="<?php echo $occu; ?>" <?php if($hous->h_mainoccupation == $occu){?>selected<?php }?>><?php echo $occu; ?></option>
                       <?php } ?>
+                        <?php if($hous->h_mainoccupation == 'อื่นๆ'){ ?>
+                          <input class="form-control" type="text" name="h_other_mainoccu" placeholder="ป้อนข้อมูลอาชีพหลัก" id="title_other" value="<?php echo $hous->h_other_mainoccu; ?>" style="margin-top: 5px; display:block;" />
+                        <?php }else{ ?>
+                          <input class="form-control" type="text" name="h_other_mainoccu" id="title_other" placeholder="ป้อนข้อมูลอาชีพหลัก" value="<?php echo $hous->h_other_mainoccu; ?>" style="margin-top: 5px; display:none;" />
+                        <?php } ?>
                     </select>
                   </div>
                 </div>
@@ -178,6 +202,16 @@
                         <option value="<?php echo $acti->ac_id; ?>" <?php if($hous->h_occupation == $acti->ac_id){?>selected<?php }?>><?php echo $acti->ac_initials; ?></option>
                       <?php } ?>
                     </select>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label>ระดับครัวเรือน</label>
+                      <select class="form-control" name="h_level" id="cars">
+                        <option value="0" <?php if($hous->h_level == '0'){?>selected<?php }?>>ปกติ</option>
+                        <option value="1" <?php if($hous->h_level == '1'){?>selected<?php }?>>ดี</option>
+                        <option value="2" <?php if($hous->h_level == '2'){?>selected<?php }?>>ดีมาก</option>
+                      </select>
                   </div>
                 </div>
                 <div class="col-md-9">
@@ -431,7 +465,7 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="<?php echo base_url('/lpdc_admin/') ?>plugins/jquery/jquery.min.js"></script>
+<script src="<?php echo base_url('/lpdc_admin/') ?>plugins/jquery/jquery.min.js"></sc>
 <!-- Bootstrap 4 -->
 <script src="<?php echo base_url('/lpdc_admin/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Select2 -->

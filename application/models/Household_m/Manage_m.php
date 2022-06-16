@@ -425,6 +425,8 @@ class Manage_m extends CI_Model {
 					  'h_revenue' => $this->input->post('h_revenue'),
 					  'h_revenueafter' => $this->input->post('h_revenueafter'),
 					  'h_occupation' => $this->input->post('h_occupation'),
+					  'h_mainoccupation' => $this->input->post('h_mainoccupation'),
+					  'h_other_mainoccu' => $this->input->post('h_other_mainoccu'),
 					  'h_level' => $this->input->post('h_level'),
 					  'h_standout' => $this->input->post('h_standout'),
 					  'h_date' => $date_time,
