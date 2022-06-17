@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Lpdc extends CI_Controller {
+class Hhlpdc extends CI_Controller {
 
 	public function __construct()
     {
     	parent::__construct();
 		$this->output->set_header("Access-Control-Allow-Origin:*");
-    	$this->load->model('Api_m/Api_lpdc_m');
+    	$this->load->model('Api_m/Api_hhlpdc_m');
     }
 
 	public function select($pro, $budget)
@@ -28,7 +28,7 @@ class Lpdc extends CI_Controller {
 										WHERE h_province $condition_pro '$pro' AND h_row_budget $condition_bud '$budget'
 										")->result_array();
 										
-		$myJSON = $this->Api_lpdc_m->index($data['japo_query']);
+		$myJSON = $this->Api_hhlpdc_m->index($data['japo_query']);
 	
 		echo$myJSON;
 	}
