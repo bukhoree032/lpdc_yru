@@ -33,7 +33,8 @@ class Api_japo_m extends CI_Model {
 								'j_level'=>$value['j_level'],
 								'j_occupation'=>$j_occupation,
 								'j_latitude'=>$value['j_latitude'],
-								'j_longitude'=>$value['j_longitude']
+								'j_longitude'=>$value['j_longitude'],
+								'j_project'=>'japo'
 				];
 			}
 	
