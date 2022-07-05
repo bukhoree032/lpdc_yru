@@ -28,8 +28,11 @@ class Honey_m extends CI_Model {
 											FROM  household
 											LEFT JOIN provinces ON provinces.pro_id = household.h_province
 											LEFT JOIN activity ON activity.ac_id = household.h_occupation
+											LEFT JOIN honey_share ON honey_share.h_sh_h_id = household.h_id
 											WHERE household.h_row_budget = '$year' AND NOT household.h_status_bin = '2'  AND household.h_status_past = '1' AND household.h_occupation = '$ac_id'  ORDER BY h_id DESC
 										  ");
+										  echo "<pre>";
+										  print_r($quer_code->result());
 			return $quer_code->result();
 		}else{
 			$h_row_budget = $this->session->userdata('honey_search_year');
@@ -50,6 +53,7 @@ class Honey_m extends CI_Model {
 			$quer_code = $this->db->query(" SELECT *
 											FROM  household
 											LEFT JOIN provinces ON provinces.pro_id = household.h_province
+											LEFT JOIN honey_share ON honey_share.h_sh_h_id = household.h_id
 											WHERE household.h_row_budget $year '$h_row_budget' AND  household.h_province $pro1 '$pro' AND  household.h_occupation = '$ac_id'  AND household.h_status_past = '1' AND NOT household.h_status_bin = '2' ORDER BY h_id DESC
 										  ");
 			return $quer_code->result();
@@ -84,6 +88,7 @@ class Honey_m extends CI_Model {
 		$quer_code = $this->db->query(" SELECT *
 										FROM  household
 										LEFT JOIN provinces ON provinces.pro_id = household.h_province
+										LEFT JOIN honey_share ON honey_share.h_sh_h_id = household.h_id
 										WHERE household.h_row_budget $year '$h_row_budget' AND  household.h_province $pro1 '$pro' AND  household.h_occupation = '$ac_id'  AND household.h_status_past = '1' AND NOT household.h_status_bin = '2' ORDER BY h_id DESC
 									  ");
 		return $quer_code->result();

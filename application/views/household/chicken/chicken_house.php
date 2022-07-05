@@ -97,7 +97,11 @@
                           <td>
                             <div class="row">
                               <div class="col-sm-5">
+                                <?php if ($hous->id) { ?>
                                  <button type="button" class="btn btn-block btn-primary btn-xs" onclick="window.location='<?php echo site_url("Household_c/Chicken_c/chicken_deal/".$hous->h_id); ?>'">ช่วยเหลือ</button>
+                                <?php }else{ ?>
+                                 <button type="button" class="btn btn-block btn-danger btn-xs" onclick="window.location='<?php echo site_url("Household_c/Chicken_c/chicken_deal/".$hous->h_id); ?>'">ช่วยเหลือ</button>
+                                <?php } ?>
                               </div>
                               <div class="col-sm-5">
                                 <form action="<?php echo site_url("Household_c/Chicken_c/trace/".$hous->h_id); ?>" method="post"enctype="multipart/form-data">
